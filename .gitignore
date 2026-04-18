@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Local planning documents
+MoneySnap_*기획*.md
