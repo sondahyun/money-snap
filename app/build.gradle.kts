@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.moneysnap"
+    namespace = "com.example.tripline"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.moneysnap"
+        applicationId = "com.example.tripline"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

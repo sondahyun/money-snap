@@ -1,2 +1,2 @@
-# tripline
-머니스냅 (MoneySnap) - 빠르고 간편한 돈 관리
+# Tripline
+트립라인 (Tripline) - 여행 계획과 동선, 경비를 잇는 앱

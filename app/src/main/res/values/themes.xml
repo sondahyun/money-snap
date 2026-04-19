@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MoneySnap" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Tripline" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.MoneySnap" parent="Base.Theme.MoneySnap" />
+    <style name="Theme.Tripline" parent="Base.Theme.Tripline" />
 </resources>

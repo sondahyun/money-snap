@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MoneySnap"
+rootProject.name = "Tripline"
 include(":app")
  
