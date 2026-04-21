@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/fragment_home"
-        android:title="홈"
+        android:title="보관함"
         android:icon="@drawable/ic_home"/>
     <item
         android:id="@+id/fragment_calendar"
@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_calendar"/>
     <item
         android:id="@+id/fragment_money"
-        android:title="환율"
+        android:title="자금"
         android:icon="@drawable/ic_money"/>
     <item
         android:id="@+id/fragment_map"

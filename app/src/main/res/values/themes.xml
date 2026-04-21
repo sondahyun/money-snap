@@ -1,8 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Tripline" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/tripline_navy</item>
+        <item name="colorSecondary">@color/tripline_teal</item>
+        <item name="colorTertiary">@color/tripline_coral</item>
+        <item name="android:colorBackground">@color/tripline_background</item>
+        <item name="colorSurface">@color/tripline_surface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/tripline_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="Theme.Tripline" parent="Base.Theme.Tripline" />

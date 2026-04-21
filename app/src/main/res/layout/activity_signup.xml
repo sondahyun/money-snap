@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:text="←"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/pretendardbold"
+                    android:text="회원가입"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="나만의 여행 보관함을\nTripline에 만들어요"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="27sp"
+                android:lineSpacingExtra="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendardregular"
+                android:text="가입 후에는 여행 계획, 장소, 경비를 계정 기준으로 안전하게 저장할 수 있습니다."
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="14sp"
+                android:lineSpacingExtra="2dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/schedule_minimal_surface"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/schedule_minimal_line"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:text="닉네임"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_tripline_input"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:hint="앱에서 사용할 이름"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textColorHint="@color/schedule_minimal_subtle"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:text="이메일"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_tripline_input"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:hint="tripline@example.com"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textColorHint="@color/schedule_minimal_subtle"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:text="비밀번호"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_tripline_input"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:hint="8자 이상 입력"
+                        android:inputType="textPassword"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textColorHint="@color/schedule_minimal_subtle"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:text="비밀번호 확인"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_tripline_input"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:hint="비밀번호를 다시 입력"
+                        android:inputType="textPassword"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textColorHint="@color/schedule_minimal_subtle"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/bg_tripline_action"
+                        android:backgroundTint="@color/schedule_minimal_blue"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:gravity="center"
+                        android:text="회원가입"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

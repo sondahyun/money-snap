@@ -1,6 +1,7 @@
 package com.example.tripline.ui.calendar
 
 import android.annotation.SuppressLint
+import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,7 +65,13 @@ class CalendarAdapter(
             binding.tvDayPlus.visibility = View.VISIBLE
             binding.tvDayMinus.visibility = View.VISIBLE
 
-            binding.root.setBackgroundResource(if (isSelected) R.drawable.bg_selected_date else 0)
+            binding.root.setBackgroundResource(if (isSelected) R.drawable.bg_selected_date else R.drawable.bg_tripline_day)
+            val dayTextColor = if (isSelected) R.color.white else R.color.tripline_text_primary
+            val plusTextColor = if (isSelected) R.color.white else R.color.tripline_teal
+            val minusTextColor = if (isSelected) R.color.white else R.color.tripline_coral
+            binding.tvCellDay.setTextColor(ContextCompat.getColor(binding.root.context, dayTextColor))
+            binding.tvDayPlus.setTextColor(ContextCompat.getColor(binding.root.context, plusTextColor))
+            binding.tvDayMinus.setTextColor(ContextCompat.getColor(binding.root.context, minusTextColor))
 
             incomeViewModel.getTotalIncomeByDate(date.toString())
                 .observe(lifecycleOwner) { totalIncome ->

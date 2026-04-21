@@ -2,4 +2,32 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="tripline_background">#FFFFFF</color>
+    <color name="tripline_surface">#FFFFFF</color>
+    <color name="tripline_surface_alt">#F2F8FF</color>
+    <color name="tripline_navy">#3182F6</color>
+    <color name="tripline_navy_soft">#38C9D7</color>
+    <color name="tripline_teal">#26C6B8</color>
+    <color name="tripline_coral">#FF8A65</color>
+    <color name="tripline_coral_soft">#FFF4F0</color>
+    <color name="tripline_green_soft">#EAFBF8</color>
+    <color name="tripline_text_primary">#1A2433</color>
+    <color name="tripline_text_secondary">#74859A</color>
+    <color name="tripline_stroke">#DCEAF6</color>
+    <color name="tripline_shadow">#120F1A2B</color>
+    <color name="schedule_vivid_bg">#FFF7EE</color>
+    <color name="schedule_vivid_ink">#18263D</color>
+    <color name="schedule_vivid_blue">#2E78FF</color>
+    <color name="schedule_vivid_blue_soft">#DCE8FF</color>
+    <color name="schedule_vivid_orange">#FF7E52</color>
+    <color name="schedule_vivid_orange_soft">#FFE1D6</color>
+    <color name="schedule_vivid_yellow">#FFD86A</color>
+    <color name="schedule_vivid_mint">#DDF3E9</color>
+    <color name="schedule_minimal_bg">#FFFFFF</color>
+    <color name="schedule_minimal_surface">#FFFFFF</color>
+    <color name="schedule_minimal_text">#1A2433</color>
+    <color name="schedule_minimal_subtle">#71839A</color>
+    <color name="schedule_minimal_line">#DDEAF5</color>
+    <color name="schedule_minimal_blue">#3182F6</color>
+    <color name="schedule_minimal_blue_soft">#EDF5FF</color>
 </resources>

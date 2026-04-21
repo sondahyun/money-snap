@@ -3,98 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/tripline_background">
 
-    <View
-        android:id="@+id/main_cal"
-        android:layout_width="108dp"
-        android:layout_height="121dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/cal_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="12월"
-        app:layout_constraintEnd_toEndOf="@+id/main_cal"
-        app:layout_constraintStart_toStartOf="@+id/main_cal"
-        app:layout_constraintTop_toTopOf="@+id/main_cal" />
-
-    <TextView
-        android:id="@+id/cal_day"
-        android:layout_width="52dp"
-        android:layout_height="46dp"
-        android:text="24"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/main_cal"
-        app:layout_constraintEnd_toEndOf="@+id/main_cal"
-        app:layout_constraintStart_toStartOf="@+id/main_cal"
-        app:layout_constraintTop_toBottomOf="@+id/cal_month" />
-
-    <View
-        android:id="@+id/money"
-        android:layout_width="298dp"
-        android:layout_height="116dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/main_cal"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/today"
-        android:layout_width="132dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="24dp"
-        android:text="오늘의 수익 :"
-        android:textSize="24sp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/todayIncome"
-        app:layout_constraintStart_toEndOf="@+id/main_cal"
-        app:layout_constraintTop_toTopOf="@+id/money" />
-
-    <TextView
-        android:id="@+id/todayExpense"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
-        android:text="0"
-        android:textSize="24sp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@+id/today1"
-        app:layout_constraintTop_toBottomOf="@id/todayIncome"
-        />
-
-    <TextView
-        android:id="@+id/todayIncome"
-        android:layout_width="116dp"
-        android:layout_height="34dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginTop="24dp"
-        android:text="0"
-        android:textSize="24sp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toEndOf="@id/today"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-        android:id="@+id/today1"
-        android:layout_width="132dp"
-        android:layout_height="34dp"
-        android:text="오늘의 지출 :"
-        android:textSize="24sp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/main_cal"
-        app:layout_constraintTop_toBottomOf="@+id/today" />
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/money"
-        app:layout_constraintStart_toStartOf="parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linear"
@@ -102,20 +27,268 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/add_button"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:background="#262D81"
-                android:text="추가"
-                android:textSize="20sp" />
+                android:orientation="vertical"
+                android:paddingTop="4dp"
+                android:paddingBottom="2dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/today_list"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tripline_tag"
+                    android:fontFamily="@font/pretendardsemibold"
+                    android:paddingStart="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="6dp"
+                    android:text="TODAY"
+                    android:textColor="@color/tripline_navy"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/pretendardbold"
+                    android:text="오늘 여행 보관함"
+                    android:textColor="@color/tripline_text_primary"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pretendardregular"
+                    android:text="오늘 일정과 지출 흐름을 빠르게 확인하고, 바로 기록을 이어갈 수 있어요."
+                    android:textColor="@color/tripline_text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="746dp"
-                android:layout_marginTop="2dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_tripline_surface"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:text="이번 여행"
+                        android:textColor="@color/tripline_text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tripline_tag"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:paddingStart="10dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="6dp"
+                        android:text="PDF 공유"
+                        android:textColor="@color/tripline_navy"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/pretendardbold"
+                    android:text="상하이 여행"
+                    android:textColor="@color/tripline_text_primary"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/pretendardregular"
+                    android:text="2026.4.18 - 4.19 · 혼자 · 관광지 중심 동선"
+                    android:textColor="@color/tripline_text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/main_cal"
+                    android:layout_width="104dp"
+                    android:layout_height="132dp"
+                    android:background="@drawable/bg_tripline_surface"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/cal_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pretendardsemibold"
+                        android:text="4월"
+                        android:textColor="@color/tripline_text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/cal_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/pretendardbold"
+                        android:text="20"
+                        android:textColor="@color/tripline_text_primary"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tripline_positive"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/today"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pretendardmedium"
+                            android:text="오늘 수입"
+                            android:textColor="@color/tripline_teal"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/todayIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/pretendardbold"
+                            android:text="₩0"
+                            android:textColor="@color/tripline_text_primary"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_tripline_negative"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/today1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pretendardmedium"
+                            android:text="오늘 지출"
+                            android:textColor="@color/tripline_coral"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/todayExpense"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/pretendardbold"
+                            android:text="₩0"
+                            android:textColor="@color/tripline_text_primary"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/add_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_tripline_action"
+                    android:fontFamily="@font/pretendardsemibold"
+                    android:text="기록 추가"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_tripline_secondary_action"
+                    android:fontFamily="@font/pretendardsemibold"
+                    android:gravity="center"
+                    android:text="오늘 일정 바로 가기"
+                    android:textColor="@color/tripline_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_tripline_surface"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendardbold"
+                    android:text="오늘의 기록"
+                    android:textColor="@color/tripline_text_primary"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pretendardregular"
+                    android:text="현재 날짜 기준 지출과 수입을 빠르게 훑어보고, 다음 단계에서 장소별 경비 카드로 확장할 수 있습니다."
+                    android:textColor="@color/tripline_text_secondary"
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="2dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/today_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/today_list_expense" />
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
