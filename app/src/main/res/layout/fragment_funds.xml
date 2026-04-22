@@ -50,16 +50,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="이번 여행에서 실제로 나간 금액과 지출 흐름을 빠르게 확인할 수 있어요."
+                    android:text="이번 여행에서 실제로 나간 금액을 장소별 또는 상위 카테고리별로 확인할 수 있어요."
                     android:textColor="@color/schedule_minimal_subtle" />
             </LinearLayout>
 
             <TextView
-                style="@style/TriplineText.ActionLabel"
+                style="@style/TriplineText.Button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="환율 참고"
-                android:textColor="@color/tripline_text_secondary" />
+                android:layout_height="36dp"
+                android:background="@drawable/bg_tripline_action"
+                android:backgroundTint="@color/schedule_minimal_blue"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="+ 지출 추가"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -153,29 +158,15 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_tripline_secondary_action_neutral"
                 android:gravity="center"
-                android:text="카테고리별"
+                android:text="상위 카테고리별"
                 android:textColor="@color/tripline_text_secondary" />
         </LinearLayout>
-
-        <TextView
-            style="@style/TriplineText.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_tripline_action"
-            android:backgroundTint="@color/schedule_minimal_blue"
-            android:gravity="center"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="+ 지출 추가"
-            android:textColor="@color/white" />
 
         <TextView
             style="@style/TriplineText.SectionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="18dp"
             android:text="장소별 지출"
             android:textColor="@color/schedule_minimal_text" />
 

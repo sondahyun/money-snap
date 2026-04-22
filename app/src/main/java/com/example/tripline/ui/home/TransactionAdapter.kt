@@ -71,7 +71,7 @@ class TransactionAdapter(private val items: List<TransactionItem>) :
         fun bind(expense: Expense) {
             binding.expenseAmount.text = "₩${expense.amount}"
             binding.expensePlace.text = "장소: ${expense.place}"
-            binding.expenseCategory.text = "카테고리: ${expense.category}"
+            binding.expenseCategory.text = "상위 카테고리: ${expense.category}"
             binding.expenseDate.text = "날짜: ${expense.date}"
             binding.expenseDescription.text = "설명: ${expense.description ?: "없음"}"
         }

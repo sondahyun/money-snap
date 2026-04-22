@@ -35,7 +35,7 @@
             android:fontFamily="@font/pretendardbold"
             android:text="아직 만든 여행이 없어요"
             android:textColor="@color/schedule_minimal_text"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"

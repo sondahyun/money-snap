@@ -30,52 +30,52 @@
                 android:paddingTop="12dp">
 
                 <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@drawable/bg_schedule_icon_button"
                     android:contentDescription="뒤로가기"
                     android:padding="8dp"
                     android:src="@drawable/ic_tripline_back" />
 
                 <TextView
+                    style="@style/TriplineText.NavTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    style="@style/TriplineText.NavTitle"
                     android:text="카테고리 관리"
                     android:textColor="@color/schedule_minimal_text" />
             </LinearLayout>
 
             <TextView
+                style="@style/TriplineText.ScreenTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                style="@style/TriplineText.ScreenTitle"
-                android:text="장소와 직접 만든 카테고리를\n함께 관리할 수 있어요"
+                android:text="상위 카테고리를\n직접 관리할 수 있어요"
                 android:textColor="@color/schedule_minimal_text" />
 
             <TextView
+                style="@style/TriplineText.BodyCompact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                style="@style/TriplineText.BodyCompact"
-                android:text="기본 카테고리는 이름만 수정할 수 있고, 사용자 카테고리는 자유롭게 추가·수정·삭제할 수 있어요."
+                android:text="기본으로 제공되는 카테고리 하나는 유지하고, 나머지는 여행에 맞게 직접 추가해서 사용할 수 있어요."
                 android:textColor="@color/schedule_minimal_subtle" />
 
             <TextView
+                style="@style/TriplineText.SectionTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                style="@style/TriplineText.SectionTitle"
-                android:text="사용자 정의 카테고리"
+                android:layout_marginTop="28dp"
+                android:text="상위 카테고리"
                 android:textColor="@color/schedule_minimal_text" />
 
             <TextView
+                style="@style/TriplineText.Meta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                style="@style/TriplineText.Meta"
-                android:text="직접 만든 분류는 자유롭게 편집하거나 삭제할 수 있어요."
+                android:text="`기타`는 기본 분류로 남아 있고, 아래 항목들은 사용자가 직접 추가한 카테고리예요."
                 android:textColor="@color/schedule_minimal_subtle" />
 
             <LinearLayout
@@ -83,6 +83,57 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/bg_tripline_pill"
+                        android:backgroundTint="@color/tripline_stroke_neutral" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TriplineText.Body"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="기타"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            style="@style/TriplineText.Meta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="기본 분류 · 삭제되지 않음"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/TriplineText.ActionLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/schedule_minimal_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -107,25 +158,25 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TriplineText.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
                             android:text="환전"
                             android:textColor="@color/schedule_minimal_text" />
 
                         <TextView
+                            style="@style/TriplineText.Meta"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            style="@style/TriplineText.Meta"
                             android:text="현지 현금 인출, 환전소 이용, 수수료 포함"
                             android:textColor="@color/schedule_minimal_subtle" />
                     </LinearLayout>
 
                     <TextView
+                        style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
                         android:text="편집"
                         android:textColor="@color/schedule_minimal_blue" />
                 </LinearLayout>
@@ -158,25 +209,25 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TriplineText.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
                             android:text="유심/eSIM"
                             android:textColor="@color/schedule_minimal_text" />
 
                         <TextView
+                            style="@style/TriplineText.Meta"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            style="@style/TriplineText.Meta"
                             android:text="데이터 개통비, 추가 충전 비용"
                             android:textColor="@color/schedule_minimal_subtle" />
                     </LinearLayout>
 
                     <TextView
+                        style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
                         android:text="편집"
                         android:textColor="@color/schedule_minimal_blue" />
                 </LinearLayout>
@@ -209,189 +260,39 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/TriplineText.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
                             android:text="부모님 간식"
                             android:textColor="@color/schedule_minimal_text" />
 
                         <TextView
+                            style="@style/TriplineText.Meta"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            style="@style/TriplineText.Meta"
                             android:text="야경 코스 중간 간식, 카페, 디저트 비용"
                             android:textColor="@color/schedule_minimal_subtle" />
                     </LinearLayout>
 
                     <TextView
+                        style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
                         android:text="편집"
                         android:textColor="@color/schedule_minimal_blue" />
                 </LinearLayout>
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                style="@style/TriplineText.SectionTitle"
-                android:text="기본 카테고리"
-                android:textColor="@color/schedule_minimal_text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                style="@style/TriplineText.Meta"
-                android:text="기본 틀은 유지하고, 이름만 여행 스타일에 맞게 바꿀 수 있어요."
-                android:textColor="@color/schedule_minimal_subtle" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="56dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="숙소"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="기본 분류 · 삭제되지 않음"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
-                        android:text="편집"
-                        android:textColor="@color/schedule_minimal_blue" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/schedule_minimal_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="56dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="교통"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="기본 분류 · 이름 변경 가능"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
-                        android:text="편집"
-                        android:textColor="@color/schedule_minimal_blue" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/schedule_minimal_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="56dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="쇼핑"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="기본 분류 · 삭제되지 않음"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
-                        android:text="편집"
-                        android:textColor="@color/schedule_minimal_blue" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
+                style="@style/TriplineText.Button"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/bg_tripline_action"
                 android:backgroundTint="@color/schedule_minimal_blue"
                 android:gravity="center"
-                style="@style/TriplineText.Button"
-                android:text="+ 새 카테고리 추가"
+                android:text="+ 새 상위 카테고리 추가"
                 android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>

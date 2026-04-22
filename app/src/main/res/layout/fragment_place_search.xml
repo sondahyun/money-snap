@@ -73,8 +73,8 @@
             android:rotation="-12" />
 
         <TextView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|center_horizontal"
             android:layout_marginTop="192dp"
             android:layout_marginStart="28dp"
@@ -84,11 +84,11 @@
             android:gravity="center"
             android:text="11"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
         <TextView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|center_horizontal"
             android:layout_marginTop="216dp"
             android:layout_marginStart="-34dp"
@@ -98,11 +98,11 @@
             android:gravity="center"
             android:text="4"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
         <TextView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|center_horizontal"
             android:layout_marginTop="236dp"
             android:layout_marginStart="20dp"
@@ -112,11 +112,11 @@
             android:gravity="center"
             android:text="3"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
         <TextView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|center_horizontal"
             android:layout_marginTop="228dp"
             android:layout_marginStart="70dp"
@@ -126,11 +126,11 @@
             android:gravity="center"
             android:text="2"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="13sp" />
 
         <TextView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_gravity="top|start"
             android:layout_marginStart="54dp"
             android:layout_marginTop="250dp"
@@ -140,44 +140,44 @@
             android:gravity="center"
             android:text="4"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|start"
             android:layout_marginStart="82dp"
             android:layout_marginTop="214dp"
             android:background="@drawable/bg_tripline_pill"
             android:backgroundTint="#FF6B6B"
             android:contentDescription="@null"
-            android:padding="9dp"
+            android:padding="8dp"
             android:src="@drawable/ic_tripline_food"
             android:tint="@color/white" />
 
         <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|end"
             android:layout_marginTop="206dp"
             android:layout_marginEnd="84dp"
             android:background="@drawable/bg_tripline_pill"
             android:backgroundTint="#8B5CF6"
             android:contentDescription="@null"
-            android:padding="9dp"
+            android:padding="8dp"
             android:src="@drawable/ic_tripline_flag"
             android:tint="@color/white" />
 
         <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="top|end"
             android:layout_marginTop="226dp"
             android:layout_marginEnd="122dp"
             android:background="@drawable/bg_tripline_pill"
             android:backgroundTint="#8B5CF6"
             android:contentDescription="@null"
-            android:padding="9dp"
+            android:padding="8dp"
             android:src="@drawable/ic_tripline_flag"
             android:tint="@color/white" />
 
@@ -190,7 +190,7 @@
             android:fontFamily="@font/pretendardbold"
             android:text="상하이"
             android:textColor="@color/tripline_text_primary"
-            android:textSize="34sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -202,7 +202,7 @@
             android:fontFamily="@font/pretendardbold"
             android:text="그랜드마더"
             android:textColor="@color/tripline_text_primary"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -214,7 +214,7 @@
             android:fontFamily="@font/pretendardbold"
             android:text="란팅찬팅"
             android:textColor="@color/tripline_text_primary"
-            android:textSize="17sp" />
+            android:textSize="15sp" />
     </FrameLayout>
 
     <LinearLayout
@@ -231,16 +231,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="50dp"
             android:background="@drawable/bg_place_search_searchbar"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp">
 
             <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="뒤로가기"
                 android:src="@drawable/ic_tripline_back"
                 android:tint="@color/tripline_text_primary" />
@@ -248,15 +248,15 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                style="@style/TriplineText.CardTitle"
+                style="@style/TriplineText.ActionLabel"
                 android:text="관광지/맛집/숙소 검색"
                 android:textColor="@color/tripline_text_hint" />
 
             <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_search_modern"
                 android:tint="@color/tripline_text_secondary" />
@@ -275,16 +275,16 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="44dp"
+                    android:layout_height="38dp"
                     android:background="@drawable/bg_place_search_chip"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:background="@drawable/bg_tripline_pill"
                         android:backgroundTint="#FF6B6B" />
 
@@ -299,17 +299,17 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="44dp"
+                    android:layout_height="38dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_place_search_chip"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:background="@drawable/bg_tripline_pill"
                         android:backgroundTint="#8B5CF6" />
 
@@ -324,17 +324,17 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="44dp"
+                    android:layout_height="38dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_place_search_chip"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <View
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
                         android:background="@drawable/bg_tripline_pill"
                         android:backgroundTint="@color/tripline_navy" />
 
@@ -351,8 +351,8 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="52dp"
-        android:layout_height="112dp"
+        android:layout_width="44dp"
+        android:layout_height="96dp"
         android:layout_marginEnd="16dp"
         android:gravity="bottom"
         android:orientation="vertical"
@@ -360,21 +360,21 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="@drawable/bg_tripline_icon_button_neutral"
             android:contentDescription="현재 위치"
-            android:padding="14dp"
+            android:padding="11dp"
             android:src="@drawable/ic_tripline_current_location"
             android:tint="@color/tripline_navy" />
 
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_tripline_icon_button_neutral"
             android:contentDescription="동선 보기"
-            android:padding="14dp"
+            android:padding="11dp"
             android:src="@drawable/ic_tripline_route"
             android:tint="@color/tripline_navy" />
     </LinearLayout>
@@ -392,8 +392,8 @@
         app:layout_constraintTop_toTopOf="@id/place_search_sheet_guideline">
 
         <View
-            android:layout_width="52dp"
-            android:layout_height="5dp"
+            android:layout_width="44dp"
+            android:layout_height="4dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bg_tripline_pill"
             android:backgroundTint="@color/tripline_stroke_neutral" />
@@ -413,51 +413,51 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="42dp"
+                    android:layout_height="36dp"
                     android:background="@drawable/bg_place_search_chip_selected"
                     android:gravity="center"
-                    android:minWidth="126dp"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
+                    android:minWidth="112dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
                     style="@style/TriplineText.ActionLabel"
                     android:text="Day1 추천"
                     android:textColor="@color/tripline_navy" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="42dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_place_search_chip"
                     android:gravity="center"
-                    android:minWidth="118dp"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
+                    android:minWidth="104dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
                     style="@style/TriplineText.ActionLabel"
                     android:text="최근 저장"
                     android:textColor="@color/tripline_text_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="42dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_place_search_chip"
                     android:gravity="center"
-                    android:minWidth="110dp"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
+                    android:minWidth="96dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
                     style="@style/TriplineText.ActionLabel"
                     android:text="내 숙소"
                     android:textColor="@color/tripline_text_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="42dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_place_search_chip"
                     android:gravity="center"
-                    android:minWidth="132dp"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
+                    android:minWidth="118dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
                     style="@style/TriplineText.ActionLabel"
                     android:text="나만의 장소"
                     android:textColor="@color/tripline_text_primary" />
@@ -467,7 +467,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:fillViewport="true"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
@@ -484,16 +484,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingBottom="18dp">
+                    android:paddingBottom="14dp">
 
                     <FrameLayout
-                        android:layout_width="86dp"
-                        android:layout_height="86dp"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
                         android:background="@drawable/bg_tripline_surface_soft">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_tripline_food"
@@ -503,19 +503,19 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
-                            style="@style/TriplineText.DayTitle"
+                            style="@style/TriplineText.CardTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="상하이 그랜드마더"
                             android:textColor="@color/tripline_text_primary" />
 
                         <TextView
-                            style="@style/TriplineText.Body"
+                            style="@style/TriplineText.BodyCompact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -540,9 +540,9 @@
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_tripline_secondary_action_neutral"
+                        android:layout_width="62dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_tripline_selection_action"
                         android:gravity="center"
                         style="@style/TriplineText.ActionLabel"
                         android:text="선택"
@@ -555,16 +555,16 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingTop="6dp"
-                    android:paddingBottom="18dp">
+                    android:paddingBottom="14dp">
 
                     <FrameLayout
-                        android:layout_width="86dp"
-                        android:layout_height="86dp"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
                         android:background="@drawable/bg_tripline_surface_soft">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_tripline_food"
@@ -574,19 +574,19 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
-                            style="@style/TriplineText.DayTitle"
+                            style="@style/TriplineText.CardTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="란팅찬팅"
                             android:textColor="@color/tripline_text_primary" />
 
                         <TextView
-                            style="@style/TriplineText.Body"
+                            style="@style/TriplineText.BodyCompact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -611,9 +611,9 @@
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_tripline_secondary_action_neutral"
+                        android:layout_width="62dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_tripline_selection_action"
                         android:gravity="center"
                         style="@style/TriplineText.ActionLabel"
                         android:text="선택"
@@ -626,16 +626,16 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingTop="6dp"
-                    android:paddingBottom="24dp">
+                    android:paddingBottom="18dp">
 
                     <FrameLayout
-                        android:layout_width="86dp"
-                        android:layout_height="86dp"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
                         android:background="@drawable/bg_tripline_surface_soft">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/ic_tripline_flag"
@@ -645,19 +645,19 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="14dp"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
-                            style="@style/TriplineText.DayTitle"
+                            style="@style/TriplineText.CardTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="레고"
                             android:textColor="@color/tripline_text_primary" />
 
                         <TextView
-                            style="@style/TriplineText.Body"
+                            style="@style/TriplineText.BodyCompact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -682,9 +682,9 @@
                     </LinearLayout>
 
                     <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_tripline_secondary_action_neutral"
+                        android:layout_width="62dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_tripline_selection_action"
                         android:gravity="center"
                         style="@style/TriplineText.ActionLabel"
                         android:text="선택"

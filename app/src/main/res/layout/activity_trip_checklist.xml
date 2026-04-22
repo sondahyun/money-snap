@@ -1,450 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/schedule_minimal_bg"
+    android:fillViewport="true"
     tools:ignore="HardcodedText">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="28dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:paddingStart="18dp"
-            android:paddingTop="20dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="18dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="뒤로가기"
+                android:padding="6dp"
+                android:src="@drawable/ic_tripline_back"
+                app:tint="@color/schedule_minimal_text" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                style="@style/TriplineText.ActionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="편집"
+                android:textColor="@color/schedule_minimal_blue" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/TriplineText.Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="30dp"
+            android:text="상하이 여행 · 3박4일"
+            android:textColor="@color/schedule_minimal_subtle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text="여행 준비\n체크리스트"
+            android:textColor="@color/schedule_minimal_text"
+            android:textSize="24sp"
+            android:fontFamily="@font/pretendardbold"
+            android:lineSpacingExtra="2dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="36dp"
+            android:background="@color/tripline_surface_neutral" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="18dp"
             android:paddingEnd="18dp"
-            android:paddingBottom="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingTop="16dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/bg_schedule_icon_button"
-                    android:contentDescription="뒤로가기"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_tripline_back" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    style="@style/TriplineText.NavTitle"
-                    android:text="준비물 체크리스트"
-                    android:textColor="@color/schedule_minimal_text" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/TriplineText.ActionLabel"
-                    android:text="편집"
-                    android:textColor="@color/schedule_minimal_blue" />
-            </LinearLayout>
+            android:paddingBottom="18dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                style="@style/TriplineText.ScreenTitle"
-                android:text="출발 전 필요한 준비물을\n여행별로 체크할 수 있어요"
-                android:textColor="@color/schedule_minimal_text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                style="@style/TriplineText.BodyCompact"
-                android:text="상하이 여행 · 2.15 - 2.18 · 부모님과"
-                android:textColor="@color/schedule_minimal_subtle" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_tripline_pill"
-                        android:backgroundTint="@color/schedule_minimal_blue_soft"
-                        android:paddingStart="10dp"
-                        android:paddingTop="6dp"
-                        android:paddingEnd="10dp"
-                        android:paddingBottom="6dp"
-                        style="@style/TriplineText.Badge"
-                        android:text="PACKING"
-                        android:textColor="@color/schedule_minimal_blue" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        style="@style/TriplineText.ScreenTitle"
-                        android:text="7 / 12개 챙김"
-                        android:textColor="@color/schedule_minimal_text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        style="@style/TriplineText.BodyCompact"
-                        android:text="서류와 전자기기는 거의 완료, 세면도구와 부모님 공용 물품만 남았어요."
-                        android:textColor="@color/schedule_minimal_subtle" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="54dp"
-                    android:layout_height="54dp"
-                    android:background="@drawable/bg_tripline_pill"
-                    android:backgroundTint="@color/schedule_minimal_blue_soft"
-                    android:fontFamily="@font/pretendardbold"
-                    android:gravity="center"
-                    android:text="58%"
-                    android:textColor="@color/schedule_minimal_blue"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_tripline_pill"
-                        android:backgroundTint="@color/schedule_minimal_blue"
-                        android:paddingStart="14dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="14dp"
-                        android:paddingBottom="8dp"
-                        style="@style/TriplineText.Badge"
-                        android:text="전체"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:background="@drawable/bg_tripline_secondary_action"
-                        android:paddingStart="14dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="14dp"
-                        android:paddingBottom="8dp"
-                        style="@style/TriplineText.Badge"
-                        android:text="미완료"
-                        android:textColor="@color/schedule_minimal_subtle" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:background="@drawable/bg_tripline_secondary_action"
-                        android:paddingStart="14dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="14dp"
-                        android:paddingBottom="8dp"
-                        style="@style/TriplineText.Badge"
-                        android:text="완료"
-                        android:textColor="@color/schedule_minimal_subtle" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:background="@drawable/bg_tripline_secondary_action"
-                        android:paddingStart="14dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="14dp"
-                        android:paddingBottom="8dp"
-                        style="@style/TriplineText.Badge"
-                        android:text="부모님 공용"
-                        android:textColor="@color/schedule_minimal_subtle" />
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
                 style="@style/TriplineText.SectionTitle"
-                android:text="필수 서류"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="필수 준비물"
                 android:textColor="@color/schedule_minimal_text" />
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:rotation="180"
+                android:src="@drawable/ic_schedule_chevron_down"
+                app:tint="@color/tripline_stroke_neutral" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/tripline_stroke_neutral" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="90dp"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_tripline_circle_outline"
+                app:tint="@color/tripline_stroke_neutral" />
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minHeight="54dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:background="@drawable/bg_tripline_pill"
-                        android:backgroundTint="@color/schedule_minimal_blue"
-                        android:fontFamily="@font/pretendardbold"
-                        android:gravity="center"
-                        android:text="✓"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="여권"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="출국 1주 전 만료일 확인"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
-                        android:text="필수"
-                        android:textColor="@color/schedule_minimal_blue" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/schedule_minimal_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="54dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:background="@drawable/bg_tripline_secondary_action"
-                        android:gravity="center" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="여행자 보험 증서"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="이메일 PDF 저장"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                style="@style/TriplineText.SectionTitle"
-                android:text="전자기기"
-                android:textColor="@color/schedule_minimal_text" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="54dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:background="@drawable/bg_tripline_pill"
-                        android:backgroundTint="@color/schedule_minimal_blue"
-                        android:fontFamily="@font/pretendardbold"
-                        android:gravity="center"
-                        android:text="✓"
-                        android:textColor="@color/white"
-                        android:textSize="11sp" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="보조 배터리"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="기내 반입용"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TriplineText.ActionLabel"
-                        android:text="공용"
-                        android:textColor="@color/tripline_teal" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/schedule_minimal_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="54dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:background="@drawable/bg_tripline_secondary_action"
-                        android:gravity="center" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.Body"
-                            android:text="돼지코 어댑터"
-                            android:textColor="@color/schedule_minimal_text" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            style="@style/TriplineText.Meta"
-                            android:text="호텔 콘센트 규격 확인"
-                            android:textColor="@color/schedule_minimal_subtle" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:orientation="horizontal">
+                    android:text="여권"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pretendardbold" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_tripline_secondary_action"
-                    android:gravity="center"
-                    style="@style/TriplineText.Button"
-                    android:text="+ 준비물 추가"
-                    android:textColor="@color/schedule_minimal_text" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_tripline_action"
-                    android:backgroundTint="@color/schedule_minimal_blue"
-                    android:gravity="center"
-                    style="@style/TriplineText.Button"
-                    android:text="전체 완료로 표시"
-                    android:textColor="@color/white" />
+                    style="@style/TriplineText.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="여권사본, 여권사진 여분"
+                    android:textColor="@color/tripline_stroke_neutral" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="90dp"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_tripline_circle_outline"
+                app:tint="@color/tripline_stroke_neutral" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="환전"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pretendardbold" />
+
+                <TextView
+                    style="@style/TriplineText.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="현지 통화 준비, 환전 영수증 보관"
+                    android:textColor="@color/tripline_stroke_neutral" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="90dp"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_tripline_circle_outline"
+                app:tint="@color/tripline_stroke_neutral" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="항공권티켓"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pretendardbold" />
+
+                <TextView
+                    style="@style/TriplineText.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="항공편명 기록, E-티켓 출력"
+                    android:textColor="@color/tripline_stroke_neutral" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

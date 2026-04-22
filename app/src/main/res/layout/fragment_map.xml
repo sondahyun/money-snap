@@ -43,7 +43,7 @@
             android:fontFamily="@font/pretendardbold"
             android:text="장소 검색"
             android:textColor="@color/tripline_text_primary"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
