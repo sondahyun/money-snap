@@ -43,7 +43,7 @@
             android:fontFamily="@font/pretendardbold"
             android:text="장소 검색"
             android:textColor="@color/tripline_text_primary"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,51 +55,77 @@
             android:textSize="13sp" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/search"
+    <LinearLayout
+        android:id="@+id/search_bar_container"
         android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="132dp"
-        android:background="@drawable/bg_tripline_input"
-        android:fontFamily="@font/pretendardmedium"
-        android:hint="장소, 카페, 역, ATM 등을 검색해보세요"
-        android:paddingStart="18dp"
-        android:paddingEnd="18dp"
-        android:textColor="@color/tripline_text_primary"
-        android:textColorHint="@color/tripline_text_secondary"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/map_header_card" />
+        app:layout_constraintTop_toBottomOf="@id/map_header_card">
 
-    <Button
-        android:id="@+id/btn_search_nearby"
-        android:layout_width="92dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/bg_tripline_action"
-        android:contentDescription="Search Nearby"
-        android:fontFamily="@font/pretendardsemibold"
-        android:text="검색"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/search"
-        app:layout_constraintStart_toEndOf="@id/search"
-        app:layout_constraintTop_toTopOf="@id/search" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tripline_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="4dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_current_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Current Location"
-        android:tint="@color/white"
-        app:backgroundTint="@color/tripline_navy"
-        app:layout_constraintBottom_toBottomOf="@id/search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/search"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/ic_location" />
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_search_modern"
+                android:tint="@color/tripline_text_secondary" />
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/pretendardmedium"
+                android:hint="장소, 카페, 역, ATM 등을 검색해보세요"
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/tripline_text_primary"
+                android:textColorHint="@color/tripline_text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/btn_search_nearby"
+                android:layout_width="64dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_tripline_action"
+                android:fontFamily="@font/pretendardsemibold"
+                android:gravity="center"
+                android:text="검색"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btn_current_location"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_tripline_icon_button"
+            android:contentDescription="Current Location"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_tripline_current_location"
+            android:tint="@color/tripline_navy" />
+    </LinearLayout>
 
     <fragment
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -114,7 +140,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toBottomOf="@id/search"
+        map:layout_constraintTop_toBottomOf="@id/search_bar_container"
         map:cameraTargetLat="37.606537"
         map:cameraTargetLng="127.041758"
         map:cameraZoom="14"

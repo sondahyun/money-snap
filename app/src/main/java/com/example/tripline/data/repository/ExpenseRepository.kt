@@ -11,6 +11,8 @@ class ExpenseRepository(private val expenseDao: ExpenseDao) {
     // 해당 하는 날의 총 지출
     fun getTotalExpenseByDate(date: String): Flow<Int> =  expenseDao.getTotalExpenseByDate(date)
 
+    fun getTotalExpenseAll(): Flow<Int> = expenseDao.getTotalExpenseAll()
+
     // 지출 추가
     suspend fun insertExpense(expense: Expense) {
         expenseDao.insertExpense(expense)

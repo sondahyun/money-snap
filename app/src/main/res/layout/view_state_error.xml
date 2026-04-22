@@ -10,14 +10,14 @@
 
     <TextView
         android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:layout_height="40dp"
         android:background="@drawable/bg_tripline_pill"
         android:backgroundTint="@color/tripline_coral_soft"
         android:fontFamily="@font/pretendardbold"
         android:gravity="center"
         android:text="!"
         android:textColor="@color/tripline_coral"
-        android:textSize="20sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         android:fontFamily="@font/pretendardbold"
         android:text="불러오기에 실패했어요"
         android:textColor="@color/schedule_minimal_text"
-        android:textSize="17sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:layout_marginTop="18dp"
         android:background="@drawable/bg_tripline_action"
         android:backgroundTint="@color/schedule_minimal_blue"

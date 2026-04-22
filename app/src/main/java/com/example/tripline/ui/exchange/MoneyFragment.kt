@@ -55,6 +55,18 @@ class MoneyFragment : Fragment() {
         exchangeAdapter = ExchangeAdapter(emptyList())
         binding.exchangeRecyclerView.adapter = exchangeAdapter
 
+        exchangeViewModel.exchangeItems.observe(viewLifecycleOwner) { exchangeItems ->
+            if (exchangeItems.isNotEmpty()) {
+                Log.d("MoneyFragment", "환율 정보 불러오기 성공: ${exchangeItems.size}개의 데이터")
+                exchangeAdapter.updateData(exchangeItems)
+                binding.exchangeRecyclerView.visibility = View.VISIBLE
+            } else {
+                Log.e("MoneyFragment", "환율 정보를 불러올 수 없습니다. searchDate=$selectedDate")
+                Toast.makeText(requireContext(), "환율 정보를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show()
+                binding.exchangeRecyclerView.visibility = View.GONE
+            }
+        }
+
         // 환율 정보 가져오기
         fetchExchangeRates()
     }
@@ -90,19 +102,5 @@ class MoneyFragment : Fragment() {
         Log.d("MoneyFragment", "환율 정보 요청: authKey=$authKey, searchDate=$selectedDate, data=$data")
 
         exchangeViewModel.getExchanges(authKey, selectedDate, data)
-
-        // LiveData 관찰
-        exchangeViewModel.exchanges.observe(viewLifecycleOwner) { exchanges ->
-            if (exchanges != null && exchanges.isNotEmpty()) {
-                Log.d("MoneyFragment", "환율 정보 불러오기 성공: ${exchanges.size}개의 데이터")
-                // RecyclerView 업데이트
-                exchangeAdapter.updateData(exchanges)
-                binding.exchangeRecyclerView.visibility = View.VISIBLE
-            } else {
-                Log.e("MoneyFragment", "환율 정보를 불러올 수 없습니다. searchDate=$selectedDate")
-                Toast.makeText(requireContext(), "환율 정보를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show()
-                binding.exchangeRecyclerView.visibility = View.GONE
-            }
-        }
     }
 }

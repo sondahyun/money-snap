@@ -20,6 +20,9 @@ interface ExpenseDao {
     @Query("SELECT SUM(amount) FROM expenses WHERE date = :date")
     fun getTotalExpenseByDate(date: String): Flow<Int>
 
+    @Query("SELECT SUM(amount) FROM expenses")
+    fun getTotalExpenseAll(): Flow<Int>
+
     // 해당 하는 _id 의 지출 삭제
     @Query("DELETE FROM expenses WHERE _id = :id")
     suspend fun deleteExpenseById(id: Int)

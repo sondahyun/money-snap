@@ -12,35 +12,35 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="28dp"
+        android:padding="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="88dp"
-            android:layout_height="88dp"
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:background="@drawable/bg_tripline_pill"
             android:backgroundTint="@color/schedule_minimal_blue_soft"
-            android:gravity="center"
-            android:text="✈"
-            android:textColor="@color/schedule_minimal_blue"
+            android:contentDescription="여행 시작"
+            android:padding="20dp"
+            android:src="@drawable/ic_map"
+            app:tint="@color/schedule_minimal_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/pretendardbold"
+            android:text="아직 만든 여행이 없어요"
+            android:textColor="@color/schedule_minimal_text"
             android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/pretendardbold"
-            android:text="아직 만든 여행이 없어요"
-            android:textColor="@color/schedule_minimal_text"
-            android:textSize="24sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/pretendardregular"
             android:gravity="center"
             android:text="첫 여행을 만들면 Tripline이 일정, 장소, 경비를\n한 흐름으로 관리할 수 있게 도와드릴게요."
@@ -50,8 +50,8 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="24dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/bg_tripline_action"
             android:backgroundTint="@color/schedule_minimal_blue"
             android:fontFamily="@font/pretendardsemibold"

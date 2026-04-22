@@ -4,90 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/bg_tripline_surface_soft"
-    android:padding="18dp">
+    android:paddingTop="8dp"
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/expense_icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:background="@drawable/bg_tripline_negative"
-        android:padding="12dp"
-        android:contentDescription="Expense Icon"
+        android:contentDescription="@null"
+        android:padding="10dp"
         android:src="@drawable/ic_minus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/expense_amount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:fontFamily="@font/pretendardbold"
-        android:text="₩0"
-        android:textColor="@color/tripline_text_primary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/expense_icon"
-        app:layout_constraintTop_toTopOf="@+id/expense_icon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/expense_place"
+        style="@style/TriplineText.CardTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/pretendardsemibold"
-        android:text="장소: 상점 이름"
-        android:textColor="@color/tripline_text_primary"
-        android:textSize="15sp"
         android:layout_marginStart="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/expense_icon"
-        app:layout_constraintTop_toBottomOf="@id/expense_amount" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="상점 이름"
+        android:textColor="@color/tripline_text_primary"
+        app:layout_constraintEnd_toStartOf="@+id/expense_amount"
+        app:layout_constraintStart_toEndOf="@id/expense_icon"
+        app:layout_constraintTop_toTopOf="@id/expense_icon" />
+
+    <TextView
+        android:id="@+id/expense_amount"
+        style="@style/TriplineText.Amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₩132,800"
+        android:textColor="@color/tripline_amount_blue"
+        app:layout_constraintBaseline_toBaselineOf="@id/expense_place"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/expense_category"
+        style="@style/TriplineText.Meta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_tripline_pill"
-        android:fontFamily="@font/pretendardmedium"
-        android:paddingStart="10dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="6dp"
-        android:text="카테고리: 교통"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="교통"
         android:textColor="@color/tripline_text_secondary"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/expense_place"
+        app:layout_constraintStart_toEndOf="@id/expense_icon"
         app:layout_constraintTop_toBottomOf="@id/expense_place" />
 
     <TextView
-        android:id="@+id/expense_date"
+        android:id="@+id/expense_divider_dot"
+        style="@style/TriplineText.Meta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/pretendardmedium"
-        android:text="날짜: YYYY-MM-DD"
+        android:layout_marginStart="6dp"
+        android:text="·"
+        android:textColor="@color/tripline_text_hint"
+        app:layout_constraintBaseline_toBaselineOf="@id/expense_category"
+        app:layout_constraintStart_toEndOf="@id/expense_category" />
+
+    <TextView
+        android:id="@+id/expense_date"
+        style="@style/TriplineText.Meta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="2026.04.22"
         android:textColor="@color/tripline_text_secondary"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/expense_place"
-        app:layout_constraintTop_toBottomOf="@id/expense_category" />
+        app:layout_constraintBaseline_toBaselineOf="@id/expense_category"
+        app:layout_constraintStart_toEndOf="@id/expense_divider_dot" />
 
     <TextView
         android:id="@+id/expense_description"
+        style="@style/TriplineText.BodyCompact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/pretendardregular"
-        android:text="설명: 지출에 대한 추가 정보"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
         android:ellipsize="end"
-        android:maxLines="2"
+        android:maxLines="1"
+        android:text="부모님 이동이 편하도록 택시로 변경"
         android:textColor="@color/tripline_text_secondary"
-        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/expense_date"
-        app:layout_constraintTop_toBottomOf="@+id/expense_date" />
+        app:layout_constraintStart_toEndOf="@id/expense_icon"
+        app:layout_constraintTop_toBottomOf="@id/expense_category" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/tripline_stroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/expense_place"
+        app:layout_constraintTop_toBottomOf="@id/expense_description" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

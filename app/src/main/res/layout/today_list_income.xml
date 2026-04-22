@@ -1,81 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:background="@drawable/bg_tripline_surface_soft"
-    android:padding="18dp">
+    android:paddingTop="8dp"
+    android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/income_icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:background="@drawable/bg_tripline_positive"
-        android:padding="12dp"
+        android:contentDescription="@null"
+        android:padding="10dp"
         android:src="@drawable/ic_add"
-        android:contentDescription="Income Icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/income_amount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:fontFamily="@font/pretendardbold"
-        android:text="₩0"
-        android:textColor="@color/tripline_text_primary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/income_icon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/income_place"
+        style="@style/TriplineText.CardTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/pretendardsemibold"
-        android:text="출처: 장소 이름"
-        android:textColor="@color/tripline_text_primary"
-        android:textSize="15sp"
         android:layout_marginStart="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/income_icon"
-        app:layout_constraintTop_toBottomOf="@id/income_amount" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="환불/정산"
+        android:textColor="@color/tripline_text_primary"
+        app:layout_constraintEnd_toStartOf="@+id/income_amount"
+        app:layout_constraintStart_toEndOf="@id/income_icon"
+        app:layout_constraintTop_toTopOf="@id/income_icon" />
+
+    <TextView
+        android:id="@+id/income_amount"
+        style="@style/TriplineText.Amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₩18,000"
+        android:textColor="@color/tripline_text_primary"
+        app:layout_constraintBaseline_toBaselineOf="@id/income_place"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/income_type"
+        style="@style/TriplineText.Meta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="환불"
+        android:textColor="@color/tripline_text_secondary"
+        app:layout_constraintStart_toEndOf="@id/income_icon"
+        app:layout_constraintTop_toBottomOf="@id/income_place" />
+
+    <TextView
+        android:id="@+id/income_divider_dot"
+        style="@style/TriplineText.Meta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="·"
+        android:textColor="@color/tripline_text_hint"
+        app:layout_constraintBaseline_toBaselineOf="@id/income_type"
+        app:layout_constraintStart_toEndOf="@id/income_type" />
 
     <TextView
         android:id="@+id/income_date"
+        style="@style/TriplineText.Meta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_tripline_pill"
-        android:fontFamily="@font/pretendardmedium"
-        android:paddingStart="10dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="6dp"
-        android:text="날짜: YYYY-MM-DD"
+        android:layout_marginStart="6dp"
+        android:text="2026.04.22"
         android:textColor="@color/tripline_text_secondary"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/income_place"
-        app:layout_constraintTop_toBottomOf="@+id/income_place" />
+        app:layout_constraintBaseline_toBaselineOf="@id/income_type"
+        app:layout_constraintStart_toEndOf="@id/income_divider_dot" />
 
     <TextView
         android:id="@+id/income_description"
+        style="@style/TriplineText.BodyCompact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/pretendardregular"
-        android:text="상세 설명: 수입에 대한 추가 정보"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
         android:ellipsize="end"
-        android:maxLines="2"
+        android:maxLines="1"
+        android:text="중복 결제된 항목 환불"
         android:textColor="@color/tripline_text_secondary"
-        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/income_date"
-        app:layout_constraintTop_toBottomOf="@+id/income_date" />
+        app:layout_constraintStart_toEndOf="@id/income_icon"
+        app:layout_constraintTop_toBottomOf="@id/income_type" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/tripline_stroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/income_place"
+        app:layout_constraintTop_toBottomOf="@id/income_description" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

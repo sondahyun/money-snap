@@ -20,317 +20,379 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="18dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="16dp">
+                android:paddingTop="12dp">
 
-                <TextView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:gravity="center"
-                    android:text="←"
-                    android:textColor="@color/schedule_minimal_text"
-                    android:textSize="18sp" />
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_schedule_icon_button"
+                    android:contentDescription="뒤로가기"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tripline_back" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:fontFamily="@font/pretendardbold"
+                    style="@style/TriplineText.NavTitle"
                     android:text="카테고리 관리"
-                    android:textColor="@color/schedule_minimal_text"
-                    android:textSize="18sp" />
+                    android:textColor="@color/schedule_minimal_text" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/pretendardbold"
-                android:lineSpacingExtra="4dp"
+                android:layout_marginTop="14dp"
+                style="@style/TriplineText.ScreenTitle"
                 android:text="장소와 직접 만든 카테고리를\n함께 관리할 수 있어요"
-                android:textColor="@color/schedule_minimal_text"
-                android:textSize="26sp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                app:cardBackgroundColor="@color/schedule_minimal_surface"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/schedule_minimal_line"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/pretendardbold"
-                        android:text="이 여행에서 자주 쓰는 분류"
-                        android:textColor="@color/schedule_minimal_text"
-                        android:textSize="17sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/pretendardregular"
-                        android:text="사용자가 만든 카테고리는 경비 입력 화면에서 반복해서 선택할 수 있습니다."
-                        android:textColor="@color/schedule_minimal_subtle"
-                        android:textSize="13sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                android:textColor="@color/schedule_minimal_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:fontFamily="@font/pretendardbold"
+                android:layout_marginTop="8dp"
+                style="@style/TriplineText.BodyCompact"
+                android:text="기본 카테고리는 이름만 수정할 수 있고, 사용자 카테고리는 자유롭게 추가·수정·삭제할 수 있어요."
+                android:textColor="@color/schedule_minimal_subtle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                style="@style/TriplineText.SectionTitle"
                 android:text="사용자 정의 카테고리"
-                android:textColor="@color/schedule_minimal_text"
-                android:textSize="17sp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/schedule_minimal_surface"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/schedule_minimal_line"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="18dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:background="@drawable/bg_tripline_pill"
-                            android:backgroundTint="@color/schedule_minimal_blue" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/pretendardbold"
-                            android:text="환전"
-                            android:textColor="@color/schedule_minimal_text"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendardmedium"
-                            android:text="편집"
-                            android:textColor="@color/schedule_minimal_blue"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/pretendardregular"
-                        android:text="현지 현금 인출, 환전소 이용, 수수료 포함"
-                        android:textColor="@color/schedule_minimal_subtle"
-                        android:textSize="13sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/schedule_minimal_line" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:background="@drawable/bg_tripline_pill"
-                            android:backgroundTint="@color/tripline_teal" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/pretendardbold"
-                            android:text="유심/eSIM"
-                            android:textColor="@color/schedule_minimal_text"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendardmedium"
-                            android:text="편집"
-                            android:textColor="@color/schedule_minimal_blue"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/pretendardregular"
-                        android:text="데이터 개통비, 추가 충전 비용"
-                        android:textColor="@color/schedule_minimal_subtle"
-                        android:textSize="13sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/schedule_minimal_line" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:background="@drawable/bg_tripline_pill"
-                            android:backgroundTint="@color/tripline_coral" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/pretendardbold"
-                            android:text="부모님 간식"
-                            android:textColor="@color/schedule_minimal_text"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendardmedium"
-                            android:text="편집"
-                            android:textColor="@color/schedule_minimal_blue"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/pretendardregular"
-                        android:text="야경 코스 중간 간식, 카페, 디저트 비용"
-                        android:textColor="@color/schedule_minimal_subtle"
-                        android:textSize="13sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                android:textColor="@color/schedule_minimal_text" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:fontFamily="@font/pretendardbold"
-                android:text="기본 카테고리"
-                android:textColor="@color/schedule_minimal_text"
-                android:textSize="17sp" />
+                android:layout_marginTop="6dp"
+                style="@style/TriplineText.Meta"
+                android:text="직접 만든 분류는 자유롭게 편집하거나 삭제할 수 있어요."
+                android:textColor="@color/schedule_minimal_subtle" />
 
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/schedule_minimal_surface"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/schedule_minimal_line"
-                app:strokeWidth="1dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="18dp">
+                    android:minHeight="58dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:fontFamily="@font/pretendardmedium"
-                        android:gravity="center_vertical"
-                        android:text="숙소"
-                        android:textColor="@color/schedule_minimal_text"
-                        android:textSize="14sp" />
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/bg_tripline_pill"
+                        android:backgroundTint="@color/schedule_minimal_blue" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/schedule_minimal_line" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Body"
+                            android:text="환전"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.Meta"
+                            android:text="현지 현금 인출, 환전소 이용, 수수료 포함"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:fontFamily="@font/pretendardmedium"
-                        android:gravity="center_vertical"
-                        android:text="교통"
-                        android:textColor="@color/schedule_minimal_text"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/schedule_minimal_line" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:fontFamily="@font/pretendardmedium"
-                        android:gravity="center_vertical"
-                        android:text="쇼핑"
-                        android:textColor="@color/schedule_minimal_text"
-                        android:textSize="14sp" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.ActionLabel"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/schedule_minimal_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/bg_tripline_pill"
+                        android:backgroundTint="@color/tripline_teal" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Body"
+                            android:text="유심/eSIM"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.Meta"
+                            android:text="데이터 개통비, 추가 충전 비용"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.ActionLabel"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/schedule_minimal_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="58dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/bg_tripline_pill"
+                        android:backgroundTint="@color/tripline_coral" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Body"
+                            android:text="부모님 간식"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.Meta"
+                            android:text="야경 코스 중간 간식, 카페, 디저트 비용"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.ActionLabel"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                style="@style/TriplineText.SectionTitle"
+                android:text="기본 카테고리"
+                android:textColor="@color/schedule_minimal_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                style="@style/TriplineText.Meta"
+                android:text="기본 틀은 유지하고, 이름만 여행 스타일에 맞게 바꿀 수 있어요."
+                android:textColor="@color/schedule_minimal_subtle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Body"
+                            android:text="숙소"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.Meta"
+                            android:text="기본 분류 · 삭제되지 않음"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.ActionLabel"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/schedule_minimal_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Body"
+                            android:text="교통"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.Meta"
+                            android:text="기본 분류 · 이름 변경 가능"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.ActionLabel"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/schedule_minimal_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Body"
+                            android:text="쇼핑"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.Meta"
+                            android:text="기본 분류 · 삭제되지 않음"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.ActionLabel"
+                        android:text="편집"
+                        android:textColor="@color/schedule_minimal_blue" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/bg_tripline_action"
                 android:backgroundTint="@color/schedule_minimal_blue"
-                android:fontFamily="@font/pretendardsemibold"
                 android:gravity="center"
+                style="@style/TriplineText.Button"
                 android:text="+ 새 카테고리 추가"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

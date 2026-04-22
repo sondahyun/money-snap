@@ -59,10 +59,10 @@ class TransactionAdapter(private val items: List<TransactionItem>) :
     class IncomeViewHolder(private val binding: TodayListIncomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(income: Income) {
-            binding.incomeAmount.text = "₩${income.amount}"
-            binding.incomePlace.text = "출처: ${income.place}"
+            binding.incomeAmount.text = "+₩${income.amount}"
+            binding.incomePlace.text = "항목: ${income.place}"
             binding.incomeDate.text = "날짜: ${income.date}"
-            binding.incomeDescription.text = "설명: ${income.description ?: "없음"}"
+            binding.incomeDescription.text = "메모: ${income.description ?: "없음"}"
         }
     }
 

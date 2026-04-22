@@ -8,25 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tripline.MainActivity
+import com.example.tripline.R
 import com.example.tripline.TriplineApplication
 import com.example.tripline.databinding.FragmentHomeBinding
 import com.example.tripline.ui.expense.ExpenseViewModel
 import com.example.tripline.ui.expense.ExpenseViewModelFactory
-import com.example.tripline.ui.income.IncomeViewModel
-import com.example.tripline.ui.income.IncomeViewModelFactory
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: TransactionAdapter
-
-    private val incomeViewModel: IncomeViewModel by viewModels {
-        IncomeViewModelFactory((requireActivity().application as TriplineApplication).incomeRepository)
-    }
 
     private val expenseViewModel: ExpenseViewModel by viewModels {
         ExpenseViewModelFactory((requireActivity().application as TriplineApplication).expenseRepository)
@@ -47,10 +41,10 @@ class HomeFragment : Fragment() {
         val todayDate = getTodayDate()
 
         // UI에 오늘 날짜 설정
-        setTodayDateUI(todayDate)
+        setTodayDateUI()
 
-        // 오늘의 수익 및 지출 계산
-        calculateTodayIncomeAndExpense(todayDate)
+        // 오늘의 지출 요약 계산
+        calculateExpenseSummary(todayDate)
 
         // 오늘의 거래 데이터 로드 및 정렬
         loadTransactions(todayDate)
@@ -61,45 +55,46 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.buttonMypage.setOnClickListener {
+            (activity as? MainActivity)?.openMyPage()
+        }
+
+        binding.fabTodaySchedule.setOnClickListener {
+            (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
+        }
+
         return binding.root
     }
 
-    private fun setTodayDateUI(todayDate: String) {
+    private fun setTodayDateUI() {
         val calendar = Calendar.getInstance()
         binding.calMonth.text = "${calendar.get(Calendar.MONTH) + 1}월"
         binding.calDay.text = "${calendar.get(Calendar.DAY_OF_MONTH)}"
     }
 
-    private fun calculateTodayIncomeAndExpense(date: String) {
-        incomeViewModel.getTotalIncomeByDate(date).observe(viewLifecycleOwner) { totalIncome ->
-            val formattedIncome = "₩${totalIncome ?: 0}"
-            binding.todayIncome.text = formattedIncome
-            Log.d("HomeFragment", "Total Income: $formattedIncome")
-        }
-
+    private fun calculateExpenseSummary(date: String) {
         expenseViewModel.getTotalExpenseByDate(date).observe(viewLifecycleOwner) { totalExpense ->
             val formattedExpense = "₩${totalExpense ?: 0}"
             binding.todayExpense.text = formattedExpense
             Log.d("HomeFragment", "Total Expense: $formattedExpense")
         }
+
+        expenseViewModel.getTotalExpenseAll().observe(viewLifecycleOwner) { totalExpense ->
+            val formattedExpense = "₩${totalExpense ?: 0}"
+            binding.todayIncome.text = formattedExpense
+            Log.d("HomeFragment", "Total Cumulative Expense: $formattedExpense")
+        }
     }
 
     private fun loadTransactions(date: String) {
-        incomeViewModel.getIncomesByDate(date).observe(viewLifecycleOwner) { incomes ->
-            expenseViewModel.getExpensesByDate(date).observe(viewLifecycleOwner) { expenses ->
-                // Log로 데이터 확인
-                Log.d("HomeFragment", "Incomes: $incomes")
-                Log.d("HomeFragment", "Expenses: $expenses")
+        expenseViewModel.getExpensesByDate(date).observe(viewLifecycleOwner) { expenses ->
+            Log.d("HomeFragment", "Expenses: $expenses")
 
-                // TransactionItem 리스트 생성 및 날짜 순 정렬
-                val transactionItems = (incomes.map { TransactionItem.IncomeItem(it) } +
-                        expenses.map { TransactionItem.ExpenseItem(it) })
-                    .sortedByDescending { it.date }
+            val transactionItems = expenses.map { TransactionItem.ExpenseItem(it) }
+                .sortedByDescending { it.date }
 
-                // RecyclerView 데이터 갱신
-                adapter = TransactionAdapter(transactionItems)
-                binding.todayList.adapter = adapter
-            }
+            adapter = TransactionAdapter(transactionItems)
+            binding.todayList.adapter = adapter
         }
     }
 

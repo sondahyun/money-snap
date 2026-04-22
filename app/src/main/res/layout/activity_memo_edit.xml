@@ -29,13 +29,13 @@
                 android:orientation="horizontal"
                 android:paddingTop="16dp">
 
-                <TextView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:gravity="center"
-                    android:text="←"
-                    android:textColor="@color/schedule_minimal_text"
-                    android:textSize="18sp" />
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_schedule_icon_button"
+                    android:contentDescription="뒤로가기"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tripline_back" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                     android:fontFamily="@font/pretendardbold"
                     android:text="메모 편집"
                     android:textColor="@color/schedule_minimal_text"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="0dp"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 app:cardBackgroundColor="@color/schedule_minimal_surface"
-                app:cardCornerRadius="24dp"
+                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/schedule_minimal_line"
                 app:strokeWidth="1dp">
@@ -74,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
                         android:fontFamily="@font/pretendardbold"
                         android:text="메모는 동선의 맥락을 남기는 데 중요해요"
                         android:textColor="@color/schedule_minimal_text"
-                        android:textSize="20sp" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -117,19 +117,44 @@
                 android:fontFamily="@font/pretendardmedium"
                 android:gravity="top|start"
                 android:inputType="textMultiLine"
-                android:padding="18dp"
+                android:padding="16dp"
                 android:text="와이탄은 해 질 무렵에 도착하는 게 좋아서 동선은 늦어도 5시 전엔 이쪽으로 넘어오기.\n\n부모님이 오래 걷기 힘들면 택시 이동으로 전환.\n\n근처 카페에서 쉬는 시간 30분 확보."
                 android:textColor="@color/schedule_minimal_text"
-                android:textSize="17sp" />
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/pretendardbold"
+                    android:text="추천 태그"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendardsemibold"
+                    android:text="+ 태그 추가"
+                    android:textColor="@color/schedule_minimal_blue"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/pretendardbold"
-                android:text="빠른 메모 태그"
-                android:textColor="@color/schedule_minimal_text"
-                android:textSize="14sp" />
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/pretendardregular"
+                android:text="자주 쓰는 태그를 빠르게 붙이고, 필요하면 직접 만든 태그도 같이 쓸 수 있어요."
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="12sp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -200,8 +225,71 @@
             </HorizontalScrollView>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="내 태그"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="15sp" />
+
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tripline_secondary_action"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        android:text="야경"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_tripline_secondary_action"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        android:text="사진 스팟"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_tripline_secondary_action"
+                        android:fontFamily="@font/pretendardmedium"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        android:text="택시 이동"
+                        android:textColor="@color/schedule_minimal_text"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/bg_tripline_action"
                 android:backgroundTint="@color/schedule_minimal_blue"

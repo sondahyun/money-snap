@@ -51,8 +51,8 @@ class AddIncomeActivity : AppCompatActivity() {
                         description = description
                     )
                     incomeViewModel.insertIncome(income)
-                    Toast.makeText(this, "수입이 저장되었습니다.", Toast.LENGTH_SHORT).show()
-                    Log.d("IncomeActivity", "수입 저장 완료 - ID: ${income._id}, 금액: ${income.amount}, 장소: ${income.place}, 날짜: ${income.date}, 설명: ${income.description}")
+                    Toast.makeText(this, "환불/정산 내역이 저장되었습니다.", Toast.LENGTH_SHORT).show()
+                    Log.d("IncomeActivity", "환불/정산 저장 완료 - ID: ${income._id}, 금액: ${income.amount}, 장소: ${income.place}, 날짜: ${income.date}, 설명: ${income.description}")
                     clearFields()
 
                     navigateToHomeFragment()

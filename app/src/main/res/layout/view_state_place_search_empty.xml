@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_tripline_icon_button"
+        android:contentDescription="검색 결과 없음"
+        android:padding="10dp"
+        android:src="@drawable/ic_search_modern" />
+
+    <TextView
+        style="@style/TriplineText.SectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="검색 결과가 없어요"
+        android:textColor="@color/schedule_minimal_text" />
+
+    <TextView
+        style="@style/TriplineText.BodyCompact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="도시명이나 장소명을 조금 더 짧게 입력하거나, 현재 위치 기준으로 다시 검색해 보세요."
+        android:textColor="@color/schedule_minimal_subtle" />
+</LinearLayout>

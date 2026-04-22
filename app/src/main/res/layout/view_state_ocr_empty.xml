@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp">
+
+    <ImageView
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_tripline_icon_button"
+        android:contentDescription="인식 결과 없음"
+        android:padding="10dp"
+        android:src="@drawable/ic_search_modern" />
+
+    <TextView
+        style="@style/TriplineText.SectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="일정 항목을 찾지 못했어요"
+        android:textColor="@color/schedule_minimal_text" />
+
+    <TextView
+        style="@style/TriplineText.BodyCompact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="사진을 다시 찍거나, 더 선명한 예약서 이미지를 선택하면 인식률이 좋아집니다."
+        android:textColor="@color/schedule_minimal_subtle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TriplineText.Button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tripline_secondary_action"
+            android:gravity="center"
+            android:text="다시 촬영"
+            android:textColor="@color/schedule_minimal_text" />
+
+        <TextView
+            style="@style/TriplineText.Button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_tripline_action"
+            android:backgroundTint="@color/schedule_minimal_blue"
+            android:gravity="center"
+            android:text="직접 추가"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

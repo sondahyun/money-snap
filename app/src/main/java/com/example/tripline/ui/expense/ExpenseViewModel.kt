@@ -22,6 +22,10 @@ class ExpenseViewModel(private val expenseRepo: ExpenseRepository) : ViewModel()
         return expenseRepo.getTotalExpenseByDate(date).asLiveData()
     }
 
+    fun getTotalExpenseAll(): LiveData<Int> {
+        return expenseRepo.getTotalExpenseAll().asLiveData()
+    }
+
     // 지출 추가
     fun insertExpense(expense: Expense) = viewModelScope.launch {
         expenseRepo.insertExpense(expense)

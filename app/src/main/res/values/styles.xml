@@ -10,4 +10,88 @@
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/pretendardmedium</item>
     </style>
+
+    <style name="TriplineText" />
+
+    <style name="TriplineText.NavTitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
+
+    <style name="TriplineText.ScreenTitle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="TriplineText.SectionTitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
+
+    <style name="TriplineText.CardTitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
+
+    <style name="TriplineText.DayTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
+
+    <style name="TriplineText.Label">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/pretendardsemibold</item>
+    </style>
+
+    <style name="TriplineText.Body">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="TriplineText.BodyCompact">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/pretendardregular</item>
+    </style>
+
+    <style name="TriplineText.Meta">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/pretendardmedium</item>
+    </style>
+
+    <style name="TriplineText.Badge">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/pretendardsemibold</item>
+    </style>
+
+    <style name="TriplineText.Input">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendardmedium</item>
+    </style>
+
+    <style name="TriplineText.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/pretendardsemibold</item>
+    </style>
+
+    <style name="TriplineText.ActionLabel">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/pretendardmedium</item>
+    </style>
+
+    <style name="TriplineText.Amount">
+        <item name="android:textSize">17sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
+
+    <style name="TriplineText.Rate">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
+
+    <style name="TriplineText.MarketChange">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/pretendardbold</item>
+    </style>
 </resources>

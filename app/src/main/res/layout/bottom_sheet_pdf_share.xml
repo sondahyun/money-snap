@@ -10,7 +10,7 @@
     tools:ignore="HardcodedText">
 
     <View
-        android:layout_width="44dp"
+        android:layout_width="40dp"
         android:layout_height="4dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/bg_tripline_pill" />
@@ -19,19 +19,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/pretendardbold"
+        style="@style/TriplineText.SectionTitle"
         android:text="일정 공유"
-        android:textColor="@color/schedule_minimal_text"
-        android:textSize="20sp" />
+        android:textColor="@color/schedule_minimal_text" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:fontFamily="@font/pretendardregular"
+        style="@style/TriplineText.BodyCompact"
         android:text="경비는 제외하고 일정표만 PDF로 공유합니다."
-        android:textColor="@color/schedule_minimal_subtle"
-        android:textSize="13sp" />
+        android:textColor="@color/schedule_minimal_subtle" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -68,19 +66,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendardbold"
+                    style="@style/TriplineText.CardTitle"
                     android:text="전체 일정"
-                    android:textColor="@color/schedule_minimal_text"
-                    android:textSize="16sp" />
+                    android:textColor="@color/schedule_minimal_text" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/pretendardregular"
+                    style="@style/TriplineText.Meta"
                     android:text="모든 Day를 한 문서로 저장"
-                    android:textColor="@color/schedule_minimal_subtle"
-                    android:textSize="12sp" />
+                    android:textColor="@color/schedule_minimal_subtle" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -120,19 +116,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendardbold"
+                    style="@style/TriplineText.CardTitle"
                     android:text="선택한 Day만"
-                    android:textColor="@color/schedule_minimal_text"
-                    android:textSize="16sp" />
+                    android:textColor="@color/schedule_minimal_text" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/pretendardregular"
+                    style="@style/TriplineText.Meta"
                     android:text="현재 보고 있는 Day만 저장"
-                    android:textColor="@color/schedule_minimal_subtle"
-                    android:textSize="12sp" />
+                    android:textColor="@color/schedule_minimal_subtle" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -172,32 +166,29 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendardbold"
+                    style="@style/TriplineText.CardTitle"
                     android:text="오늘 일정"
-                    android:textColor="@color/schedule_minimal_text"
-                    android:textSize="16sp" />
+                    android:textColor="@color/schedule_minimal_text" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/pretendardregular"
+                    style="@style/TriplineText.Meta"
                     android:text="오늘 기준 일정만 간단히 저장"
-                    android:textColor="@color/schedule_minimal_subtle"
-                    android:textSize="12sp" />
+                    android:textColor="@color/schedule_minimal_subtle" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_tripline_action"
         android:backgroundTint="@color/schedule_minimal_blue"
-        android:fontFamily="@font/pretendardsemibold"
         android:gravity="center"
+        style="@style/TriplineText.Button"
         android:text="PDF 생성"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textColor="@color/white" />
 </LinearLayout>

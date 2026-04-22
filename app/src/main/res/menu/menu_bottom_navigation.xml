@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/fragment_home"
-        android:title="보관함"
+        android:title="홈"
         android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/fragment_locker"
+        android:title="보관함"
+        android:icon="@drawable/ic_tripline_book"/>
+    <item
+        android:id="@+id/fragment_schedule"
+        android:title="일정"
+        android:icon="@drawable/ic_map"/>
     <item
         android:id="@+id/fragment_calendar"
         android:title="캘린더"
         android:icon="@drawable/ic_calendar"/>
     <item
-        android:id="@+id/fragment_money"
+        android:id="@+id/fragment_funds"
         android:title="자금"
         android:icon="@drawable/ic_money"/>
-    <item
-        android:id="@+id/fragment_map"
-        android:title="지도"
-        android:icon="@drawable/ic_map"/>
 </menu>

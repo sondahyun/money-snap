@@ -2,7 +2,6 @@ package com.example.tripline.ui.exchange
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.tripline.data.network.Exchange
 import com.example.tripline.data.repository.ExchangeRepository
 
 class ExchangeViewModelFactory(private val exchangeRepository: ExchangeRepository) : ViewModelProvider.Factory {

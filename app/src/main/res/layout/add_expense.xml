@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/add_transaction"
         android:layout_width="247dp"
-        android:layout_height="44dp"
+        android:layout_height="40dp"
         android:layout_marginTop="86dp"
         android:text="지출 내역 추가하기"
         android:textAlignment="center"
@@ -20,7 +20,7 @@
     <EditText
         android:id="@+id/expense_amount"
         android:layout_width="326dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="84dp"
         android:inputType="number"
         android:hint="금액을 입력하세요"
@@ -32,7 +32,7 @@
     <EditText
         android:id="@+id/expense_place"
         android:layout_width="326dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="36dp"
         android:hint="지출처를 입력하세요"
         android:paddingStart="5dp"
@@ -53,7 +53,7 @@
     <Spinner
         android:id="@+id/expense_category"
         android:layout_width="326dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/expense_amount"
         app:layout_constraintStart_toStartOf="@+id/expense_amount"
@@ -82,23 +82,23 @@
         <TextView
             android:id="@+id/expense_date"
             android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="날짜를 선택하세요"
-            android:background="#EFEFEF"
+            android:background="@color/tripline_surface_alt"
             android:padding="8dp" />
 
         <Button
             android:id="@+id/date_picker_button"
             android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text="선택" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/expense_description"
         android:layout_width="326dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="40dp"
         android:hint="상세 설명을 입력하세요"
         android:gravity="top|start"
@@ -115,8 +115,8 @@
         android:layout_height="65dp"
         android:layout_marginBottom="16dp"
         android:text="확인"
-        android:textColorHighlight="#262D81"
-        android:textColorLink="#262D81"
+        android:textColorHighlight="@color/schedule_minimal_blue"
+        android:textColorLink="@color/schedule_minimal_blue"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,9 +11,9 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:fillViewport="true"
-        android:paddingStart="20dp"
-        android:paddingTop="20dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="18dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="18dp"
         android:paddingBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
                     android:fontFamily="@font/pretendardbold"
                     android:text="캘린더"
                     android:textColor="@color/tripline_text_primary"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -54,28 +54,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/bg_tripline_surface"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/calendar_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/btn_previous_month"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/bg_tripline_secondary_action"
-                        android:fontFamily="@font/pretendardbold"
-                        android:gravity="center"
-                        android:text="‹"
-                        android:textColor="@color/tripline_navy"
-                        android:textSize="18sp"
+                        android:contentDescription="이전 달"
+                        android:padding="8dp"
+                        android:scaleX="-1"
+                        android:src="@drawable/ic_tripline_chevron_right"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/tripline_navy" />
 
                     <TextView
                         android:id="@+id/tv_month"
@@ -84,32 +82,31 @@
                         android:fontFamily="@font/pretendardbold"
                         android:text="4월"
                         android:textColor="@color/tripline_text_primary"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <ImageView
                         android:id="@+id/btn_next_month"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/bg_tripline_secondary_action"
-                        android:fontFamily="@font/pretendardbold"
-                        android:gravity="center"
-                        android:text="›"
-                        android:textColor="@color/tripline_navy"
-                        android:textSize="18sp"
+                        android:contentDescription="다음 달"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_tripline_chevron_right"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/tripline_navy" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <GridLayout
                     android:id="@+id/week_days_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:columnCount="7"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
@@ -182,19 +179,23 @@
                     android:id="@+id/calendarRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:nestedScrollingEnabled="false"
                     android:scrollbars="none"
                     tools:listitem="@layout/calendar_day_item" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/tripline_stroke" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/bg_tripline_surface"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_marginTop="14dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -210,27 +211,27 @@
                         android:fontFamily="@font/pretendardbold"
                         android:text="20일 월요일"
                         android:textColor="@color/tripline_text_primary"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:background="@drawable/bg_tripline_action"
                         android:fontFamily="@font/pretendardsemibold"
                         android:gravity="center"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
                         android:text="지출 추가"
                         android:textColor="@color/white"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="6dp"
                     android:fontFamily="@font/pretendardregular"
-                    android:text="선택한 날짜의 기록을 훑어보고, 추후 장소별 경비 입력으로 이어질 수 있게 설계합니다."
+                    android:text="선택한 날짜의 일정과 지출 기록을 바로 확인해요."
                     android:textColor="@color/tripline_text_secondary"
                     android:textSize="13sp" />
 
@@ -238,7 +239,7 @@
                     android:id="@+id/selectedRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="12dp"
                     android:nestedScrollingEnabled="false"
                     android:scrollbars="none"
                     tools:listitem="@layout/today_list_expense" />

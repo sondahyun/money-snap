@@ -13,9 +13,9 @@
         android:clipToPadding="false"
         android:fillViewport="true"
         android:paddingStart="20dp"
-        android:paddingTop="20dp"
+        android:paddingTop="18dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="24dp"
+        android:paddingBottom="112dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,49 +30,135 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="top|center_vertical"
+                android:orientation="horizontal"
                 android:paddingTop="4dp"
                 android:paddingBottom="2dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_tripline_tag"
-                    android:fontFamily="@font/pretendardsemibold"
-                    android:paddingStart="12dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="12dp"
-                    android:paddingBottom="6dp"
-                    android:text="TODAY"
-                    android:textColor="@color/tripline_navy"
-                    android:textSize="11sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tripline_tag"
+                        android:paddingStart="12dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="6dp"
+                        style="@style/TriplineText.Badge"
+                        android:text="TODAY"
+                        android:textColor="@color/tripline_navy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        style="@style/TriplineText.ScreenTitle"
+                        android:text="오늘의 여행"
+                        android:textColor="@color/tripline_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        style="@style/TriplineText.BodyCompact"
+                        android:text="오늘 일정과 지출 흐름을 빠르게 확인하고, 바로 기록을 이어갈 수 있어요."
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/button_mypage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_tripline_icon_button"
+                    android:contentDescription="마이페이지"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tripline_profile" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/home_empty_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:fontFamily="@font/pretendardbold"
-                    android:text="오늘 여행 보관함"
-                    android:textColor="@color/tripline_text_primary"
-                    android:textSize="24sp" />
+                    style="@style/TriplineText.SectionTitle"
+                    android:text="아직 여행이 없어요"
+                    android:textColor="@color/tripline_text_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:fontFamily="@font/pretendardregular"
-                    android:text="오늘 일정과 지출 흐름을 빠르게 확인하고, 바로 기록을 이어갈 수 있어요."
-                    android:textColor="@color/tripline_text_secondary"
-                    android:textSize="13sp" />
+                    style="@style/TriplineText.BodyCompact"
+                    android:text="새 여행을 만들거나, 일정표를 바로 가져와 시작할 수 있어요."
+                    android:textColor="@color/tripline_text_secondary" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_tripline_action"
+                        android:backgroundTint="@color/schedule_minimal_blue"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_add"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            style="@style/TriplineText.Button"
+                            android:text="새 여행 만들기"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_tripline_secondary_action"
+                    android:paddingStart="12dp"
+                    android:paddingTop="7dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="7dp"
+                    style="@style/TriplineText.BodyCompact"
+                    android:text="OCR로 일정 가져오기"
+                    android:textColor="@color/tripline_text_primary" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/current_trip_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:background="@drawable/bg_tripline_surface"
-                android:orientation="vertical"
-                android:padding="18dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,145 +170,343 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/pretendardsemibold"
+                        style="@style/TriplineText.Meta"
                         android:text="이번 여행"
-                        android:textColor="@color/tripline_text_secondary"
-                        android:textSize="12sp" />
+                        android:textColor="@color/tripline_text_secondary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tripline_tag"
-                        android:fontFamily="@font/pretendardmedium"
                         android:paddingStart="10dp"
                         android:paddingTop="6dp"
                         android:paddingEnd="10dp"
                         android:paddingBottom="6dp"
-                        android:text="PDF 공유"
-                        android:textColor="@color/tripline_navy"
-                        android:textSize="11sp" />
+                        style="@style/TriplineText.Badge"
+                        android:text="진행 중"
+                        android:textColor="@color/tripline_navy" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pretendardbold"
+                    android:layout_marginTop="8dp"
+                    style="@style/TriplineText.NavTitle"
                     android:text="상하이 여행"
-                    android:textColor="@color/tripline_text_primary"
-                    android:textSize="20sp" />
+                    android:textColor="@color/tripline_text_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:fontFamily="@font/pretendardregular"
+                    style="@style/TriplineText.BodyCompact"
                     android:text="2026.4.18 - 4.19 · 혼자 · 관광지 중심 동선"
-                    android:textColor="@color/tripline_text_secondary"
-                    android:textSize="13sp" />
+                    android:textColor="@color/tripline_text_secondary" />
             </LinearLayout>
 
+            <View
+                android:id="@+id/current_trip_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/tripline_stroke" />
+
             <LinearLayout
+                android:id="@+id/next_schedule_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.SectionTitle"
+                        android:text="다음 일정"
+                        android:textColor="@color/tripline_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.Meta"
+                        android:text="오늘 14:00"
+                        android:textColor="@color/tripline_navy" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tripline_tag"
+                        android:paddingStart="10dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="6dp"
+                        style="@style/TriplineText.Badge"
+                        android:text="와이탄"
+                        android:textColor="@color/tripline_navy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        style="@style/TriplineText.CardTitle"
+                        android:text="야경 보기 좋은 시간에 맞춰 이동"
+                        android:textColor="@color/tripline_text_primary" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    style="@style/TriplineText.BodyCompact"
+                    android:text="현재 위치에서 도보 12분 · 이동 후 카페 들르기 좋아요."
+                    android:textColor="@color/tripline_text_secondary" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/next_schedule_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/tripline_stroke" />
+
+            <LinearLayout
+                android:id="@+id/route_overview_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TriplineText.SectionTitle"
+                    android:text="오늘 동선"
+                    android:textColor="@color/tripline_text_primary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Meta"
+                            android:text="방문 장소"
+                            android:textColor="@color/tripline_text_secondary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.CardTitle"
+                            android:text="3곳"
+                            android:textColor="@color/tripline_text_primary" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="34dp"
+                        android:background="@color/tripline_stroke" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Meta"
+                            android:text="이동 거리"
+                            android:textColor="@color/tripline_text_secondary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.CardTitle"
+                            android:text="2.6km"
+                            android:textColor="@color/tripline_text_primary" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="34dp"
+                        android:background="@color/tripline_stroke" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Meta"
+                            android:text="도보 예상"
+                            android:textColor="@color/tripline_text_secondary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.CardTitle"
+                            android:text="38분"
+                            android:textColor="@color/tripline_text_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/route_overview_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/tripline_stroke" />
+
+            <LinearLayout
+                android:id="@+id/today_summary_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/main_cal"
-                    android:layout_width="104dp"
-                    android:layout_height="132dp"
-                    android:background="@drawable/bg_tripline_surface"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp">
 
                     <TextView
                         android:id="@+id/cal_month"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/pretendardsemibold"
+                        style="@style/TriplineText.BodyCompact"
                         android:text="4월"
-                        android:textColor="@color/tripline_text_secondary"
-                        android:textSize="14sp" />
+                        android:textColor="@color/tripline_text_secondary" />
 
                     <TextView
                         android:id="@+id/cal_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/pretendardbold"
+                        android:layout_marginTop="4dp"
+                        style="@style/TriplineText.ScreenTitle"
                         android:text="20"
-                        android:textColor="@color/tripline_text_primary"
-                        android:textSize="30sp" />
+                        android:textColor="@color/tripline_text_primary" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="14dp"
+                    android:background="@color/tripline_stroke" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="14dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_tripline_positive"
-                        android:gravity="center_vertical"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:padding="18dp">
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp">
 
                         <TextView
                             android:id="@+id/today"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendardmedium"
-                            android:text="오늘 수입"
-                            android:textColor="@color/tripline_teal"
-                            android:textSize="13sp" />
+                            style="@style/TriplineText.Meta"
+                            android:text="누적 지출"
+                            android:textColor="@color/tripline_navy" />
 
                         <TextView
                             android:id="@+id/todayIncome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="@font/pretendardbold"
+                            style="@style/TriplineText.Amount"
                             android:text="₩0"
-                            android:textColor="@color/tripline_text_primary"
-                            android:textSize="22sp" />
+                            android:textColor="@color/tripline_text_primary" />
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="14dp"
+                        android:background="@color/tripline_stroke" />
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_tripline_negative"
-                        android:gravity="center_vertical"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:padding="18dp">
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp">
 
                         <TextView
                             android:id="@+id/today1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pretendardmedium"
+                            style="@style/TriplineText.Meta"
                             android:text="오늘 지출"
-                            android:textColor="@color/tripline_coral"
-                            android:textSize="13sp" />
+                            android:textColor="@color/tripline_coral" />
 
                         <TextView
                             android:id="@+id/todayExpense"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="@font/pretendardbold"
+                            style="@style/TriplineText.Amount"
                             android:text="₩0"
-                            android:textColor="@color/tripline_text_primary"
-                            android:textSize="22sp" />
+                            android:textColor="@color/tripline_text_primary" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:id="@+id/today_summary_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/tripline_stroke" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -232,63 +516,61 @@
 
                 <Button
                     android:id="@+id/add_button"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
                     android:background="@drawable/bg_tripline_action"
-                    android:fontFamily="@font/pretendardsemibold"
+                    style="@style/TriplineText.Button"
                     android:text="기록 추가"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_tripline_secondary_action"
-                    android:fontFamily="@font/pretendardsemibold"
-                    android:gravity="center"
-                    android:text="오늘 일정 바로 가기"
-                    android:textColor="@color/tripline_text_primary"
-                    android:textSize="14sp" />
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/today_records_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/bg_tripline_surface"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendardbold"
+                    style="@style/TriplineText.CardTitle"
                     android:text="오늘의 기록"
-                    android:textColor="@color/tripline_text_primary"
-                    android:textSize="17sp" />
+                    android:textColor="@color/tripline_text_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:fontFamily="@font/pretendardregular"
-                    android:text="현재 날짜 기준 지출과 수입을 빠르게 훑어보고, 다음 단계에서 장소별 경비 카드로 확장할 수 있습니다."
-                    android:textColor="@color/tripline_text_secondary"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp" />
+                    style="@style/TriplineText.BodyCompact"
+                    android:text="현재 날짜 기준 지출 기록을 빠르게 훑어보고, 다음 단계에서 장소별 경비 흐름으로 이어갈 수 있습니다."
+                    android:textColor="@color/tripline_text_secondary" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/today_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="12dp"
                     android:nestedScrollingEnabled="false"
                     tools:listitem="@layout/today_list_expense" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_today_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="오늘 일정 바로 가기"
+        android:src="@drawable/ic_calendar"
+        android:tint="@color/white"
+        app:backgroundTint="@color/schedule_minimal_blue"
+        app:borderWidth="0dp"
+        app:elevation="2dp"
+        app:fabCustomSize="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
