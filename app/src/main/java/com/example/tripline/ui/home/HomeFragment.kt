@@ -1,6 +1,5 @@
 package com.example.tripline.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripline.MainActivity
+import com.example.tripline.PrototypeScreenActivity
 import com.example.tripline.R
 import com.example.tripline.TriplineApplication
 import com.example.tripline.databinding.FragmentHomeBinding
@@ -49,10 +49,13 @@ class HomeFragment : Fragment() {
         // 오늘의 거래 데이터 로드 및 정렬
         loadTransactions(todayDate)
 
-        // 추가 버튼 클릭 이벤트
         binding.addButton.setOnClickListener {
-            val intent = Intent(requireContext(), AddTransactionActivity::class.java)
-            startActivity(intent)
+            startActivity(
+                PrototypeScreenActivity.intent(
+                    requireContext(),
+                    PrototypeScreenActivity.Screen.EXPENSE_ENTRY
+                )
+            )
         }
 
         binding.buttonMypage.setOnClickListener {
@@ -60,6 +63,32 @@ class HomeFragment : Fragment() {
         }
 
         binding.fabTodaySchedule.setOnClickListener {
+            (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
+        }
+
+        binding.buttonCreateTripEmpty.setOnClickListener {
+            startActivity(
+                PrototypeScreenActivity.intent(
+                    requireContext(),
+                    PrototypeScreenActivity.Screen.TRIP_CREATE
+                )
+            )
+        }
+
+        binding.buttonImportOcrEmpty.setOnClickListener {
+            startActivity(
+                PrototypeScreenActivity.intent(
+                    requireContext(),
+                    PrototypeScreenActivity.Screen.OCR_IMPORT
+                )
+            )
+        }
+
+        binding.currentTripSection.setOnClickListener {
+            (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
+        }
+
+        binding.nextScheduleSection.setOnClickListener {
             (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
         }
 

@@ -23,6 +23,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/buttonPlaceDetailBack"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@drawable/bg_schedule_icon_button"
@@ -208,6 +209,7 @@
             android:textColor="@color/schedule_minimal_subtle" />
 
         <TextView
+            android:id="@+id/buttonAddPlaceToSchedule"
             style="@style/TriplineText.Button"
             android:layout_width="match_parent"
             android:layout_height="38dp"

@@ -24,8 +24,9 @@
             android:paddingEnd="18dp"
             android:paddingBottom="14dp">
 
-            <ImageView
-                android:layout_width="32dp"
+                <ImageView
+                    android:id="@+id/buttonChecklistEditBack"
+                    android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:contentDescription="뒤로가기"
                 android:padding="6dp"
@@ -55,8 +56,9 @@
                     android:textColor="@color/schedule_minimal_subtle" />
             </LinearLayout>
 
-            <TextView
-                style="@style/TriplineText.ActionLabel"
+                <TextView
+                    android:id="@+id/buttonChecklistEditDone"
+                    style="@style/TriplineText.ActionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="완료"
@@ -87,6 +89,7 @@
                 android:textColor="@color/schedule_minimal_text" />
 
             <ImageView
+                android:id="@+id/buttonChecklistCategoryMenu"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:contentDescription="@null"
@@ -128,6 +131,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/buttonChecklistItemMenu1"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:contentDescription="@null"
@@ -135,6 +139,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/buttonChecklistItemAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -483,6 +488,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/buttonChecklistCategoryAdd"
             style="@style/TriplineText.Button"
             android:layout_width="168dp"
             android:layout_height="48dp"

@@ -1,5 +1,7 @@
 package com.example.tripline
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +17,16 @@ import com.example.tripline.ui.schedule.ScheduleFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private companion object {
+    companion object {
         const val MY_PAGE_BACK_STACK = "my_page_panel"
+        const val EXTRA_INITIAL_TAB = "extra_initial_tab"
+
+        fun intentForTab(context: Context, itemId: Int): Intent {
+            return Intent(context, MainActivity::class.java).apply {
+                putExtra(EXTRA_INITIAL_TAB, itemId)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
+        }
     }
 
     private val binding: ActivityMainBinding by lazy {
@@ -33,17 +43,22 @@ class MainActivity : AppCompatActivity() {
         }
         updateOverlayVisibility()
 
-        val navigateTo = intent.getStringExtra("navigate_to")
-
         if (savedInstanceState == null) {
-            val initialTab = when (navigateTo) {
-                "HomeFragment" -> R.id.fragment_home
-                else -> R.id.fragment_home
-            }
+            val initialTab = intent.getIntExtra(EXTRA_INITIAL_TAB, R.id.fragment_home)
             navigateToTab(initialTab)
         } else {
             updateOverlayVisibility()
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        val initialTab = intent.getIntExtra(
+            EXTRA_INITIAL_TAB,
+            binding.bottomNavigationView.selectedItemId
+        )
+        navigateToTab(initialTab)
     }
 
     private fun showFragment(

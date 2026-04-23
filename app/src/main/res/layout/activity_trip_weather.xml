@@ -24,6 +24,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/buttonWeatherBack"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:contentDescription="뒤로가기"
@@ -52,7 +53,7 @@
                 android:gravity="center"
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
-                android:text="상하이"
+                android:text="중국 · 상하이"
                 android:textColor="@color/schedule_minimal_text" />
         </LinearLayout>
 
@@ -61,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
-            android:text="상하이 여행 · 2.15 - 2.18"
+            android:text="상하이 여행 · 중국 · 2.15 - 2.18"
             android:textColor="@color/schedule_minimal_subtle" />
 
         <TextView
@@ -70,7 +71,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/pretendardbold"
             android:lineSpacingExtra="2dp"
-            android:text="여행 기간 중\n상하이 날씨"
+            android:text="여행 기간 중\n중국 날씨"
             android:textColor="@color/schedule_minimal_text"
             android:textSize="24sp" />
 
@@ -79,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:text="여행 일정과 함께 볼 수 있도록 일별 날씨와 시차를 정리했어요."
+            android:text="여행 일정과 함께 볼 수 있도록 대표 도시 상하이 기준 일별 날씨와 시차를 정리했어요."
             android:textColor="@color/schedule_minimal_subtle" />
 
         <LinearLayout
@@ -324,7 +325,7 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="5dp"
-                    android:text="상하이"
+                    android:text="중국 현지"
                     android:textColor="@color/tripline_text_secondary" />
             </LinearLayout>
         </LinearLayout>
@@ -397,6 +398,13 @@
             android:layout_marginTop="12dp"
             android:gravity="top"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="&#xA;Total 81 (delta 19), reused 0 (delta 0), pack-reused 0 (from 0)" />
 
             <View
                 android:layout_width="8dp"

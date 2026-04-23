@@ -24,6 +24,7 @@
             android:paddingEnd="18dp">
 
             <ImageView
+                android:id="@+id/buttonChecklistBack"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:contentDescription="뒤로가기"
@@ -37,6 +38,7 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/buttonChecklistEdit"
                 style="@style/TriplineText.ActionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

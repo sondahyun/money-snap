@@ -65,6 +65,7 @@
                 android:orientation="horizontal">
 
                 <FrameLayout
+                    android:id="@+id/buttonLockerSearch"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/bg_schedule_icon_button">
@@ -78,6 +79,7 @@
                 </FrameLayout>
 
                 <FrameLayout
+                    android:id="@+id/buttonCreateTrip"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
@@ -156,6 +158,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/tripRowShanghai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -223,6 +226,7 @@
                 android:background="@color/schedule_minimal_line" />
 
             <LinearLayout
+                android:id="@+id/tripRowKyoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -276,6 +280,7 @@
                 android:background="@color/schedule_minimal_line" />
 
             <LinearLayout
+                android:id="@+id/tripRowTokyo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

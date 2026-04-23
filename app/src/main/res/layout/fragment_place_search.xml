@@ -239,6 +239,7 @@
             android:paddingEnd="14dp">
 
             <ImageView
+                android:id="@+id/buttonPlaceSearchBack"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:contentDescription="뒤로가기"
@@ -540,6 +541,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonPlaceSelect1"
                         android:layout_width="62dp"
                         android:layout_height="36dp"
                         android:background="@drawable/bg_tripline_selection_action"
@@ -611,6 +613,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonPlaceSelect2"
                         android:layout_width="62dp"
                         android:layout_height="36dp"
                         android:background="@drawable/bg_tripline_selection_action"
@@ -682,6 +685,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonPlaceSelect3"
                         android:layout_width="62dp"
                         android:layout_height="36dp"
                         android:background="@drawable/bg_tripline_selection_action"

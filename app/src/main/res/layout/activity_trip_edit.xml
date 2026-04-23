@@ -26,6 +26,7 @@
             android:paddingBottom="28dp">
 
             <ImageView
+                android:id="@+id/buttonTripEditBack"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:contentDescription="뒤로가기"
@@ -240,6 +241,7 @@
                         android:textColor="@color/schedule_minimal_subtle" />
 
                     <TextView
+                        android:id="@+id/buttonTripEditSave"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
