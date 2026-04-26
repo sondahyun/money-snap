@@ -62,7 +62,17 @@ create table trips (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now(),
     deleted_at timestamptz,
-    constraint chk_trip_date_range check (start_date <= end_date)
+    constraint chk_trip_date_range check (start_date <= end_date),
+    unique (user_id, id)
+);
+
+create table user_current_trip_selections (
+    user_id uuid primary key references users(id) on delete cascade,
+    trip_id uuid not null references trips(id) on delete cascade,
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now(),
+    constraint fk_user_current_trip_selection_trip_owner
+        foreign key (user_id, trip_id) references trips(user_id, id)
 );
 
 create table trip_days (
@@ -75,6 +85,7 @@ create table trip_days (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now(),
     constraint chk_trip_day_index check (day_index > 0),
+    unique (id, trip_id),
     unique (trip_id, day_index),
     unique (trip_id, calendar_date)
 );
@@ -132,15 +143,16 @@ create table trip_place_snapshots (
     metadata jsonb not null default '{}'::jsonb,
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now(),
+    unique (id, trip_id),
     unique (trip_id, google_place_id)
 );
 
 create table schedule_items (
     id uuid primary key default gen_random_uuid(),
     trip_id uuid not null references trips(id) on delete cascade,
-    trip_day_id uuid not null references trip_days(id) on delete cascade,
+    trip_day_id uuid not null,
     item_type schedule_item_type_enum not null,
-    trip_place_snapshot_id uuid references trip_place_snapshots(id) on delete set null,
+    trip_place_snapshot_id uuid,
     created_from_ocr_candidate_id uuid references ocr_candidates(id) on delete set null,
     title varchar(200),
     memo_content text,
@@ -148,6 +160,12 @@ create table schedule_items (
     sort_order integer not null,
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now(),
+    unique (id, trip_id),
+    unique (id, trip_day_id),
+    constraint fk_schedule_items_trip_day
+        foreign key (trip_day_id, trip_id) references trip_days(id, trip_id) on delete cascade,
+    constraint fk_schedule_items_trip_place_snapshot
+        foreign key (trip_place_snapshot_id, trip_id) references trip_place_snapshots(id, trip_id),
     constraint chk_schedule_item_shape check (
         (item_type = 'place' and trip_place_snapshot_id is not null)
         or
@@ -158,8 +176,8 @@ create table schedule_items (
 create table trip_route_segments (
     id uuid primary key default gen_random_uuid(),
     trip_day_id uuid not null references trip_days(id) on delete cascade,
-    from_schedule_item_id uuid not null references schedule_items(id) on delete cascade,
-    to_schedule_item_id uuid not null references schedule_items(id) on delete cascade,
+    from_schedule_item_id uuid not null,
+    to_schedule_item_id uuid not null,
     sort_order integer not null default 0,
     distance_meters integer not null default 0,
     walk_minutes integer,
@@ -167,6 +185,10 @@ create table trip_route_segments (
     polyline text,
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now(),
+    constraint fk_trip_route_segments_from_item
+        foreign key (from_schedule_item_id, trip_day_id) references schedule_items(id, trip_day_id) on delete cascade,
+    constraint fk_trip_route_segments_to_item
+        foreign key (to_schedule_item_id, trip_day_id) references schedule_items(id, trip_day_id) on delete cascade,
     unique (from_schedule_item_id, to_schedule_item_id)
 );
 
@@ -179,7 +201,8 @@ create table trip_expense_categories (
     is_default boolean not null default false,
     sort_order integer not null default 0,
     created_at timestamptz not null default now(),
-    updated_at timestamptz not null default now()
+    updated_at timestamptz not null default now(),
+    unique (id, trip_id)
 );
 
 create unique index ux_trip_expense_categories_trip_lower_name
@@ -188,9 +211,9 @@ create unique index ux_trip_expense_categories_trip_lower_name
 create table expenses (
     id uuid primary key default gen_random_uuid(),
     trip_id uuid not null references trips(id) on delete cascade,
-    schedule_item_id uuid references schedule_items(id) on delete set null,
-    trip_place_snapshot_id uuid references trip_place_snapshots(id) on delete set null,
-    top_category_id uuid not null references trip_expense_categories(id) on delete restrict,
+    schedule_item_id uuid,
+    trip_place_snapshot_id uuid,
+    top_category_id uuid not null,
     flow_type expense_flow_type_enum not null default 'expense',
     title varchar(200) not null,
     expense_date date not null,
@@ -204,6 +227,12 @@ create table expenses (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now(),
     deleted_at timestamptz,
+    constraint fk_expenses_schedule_item
+        foreign key (schedule_item_id, trip_id) references schedule_items(id, trip_id),
+    constraint fk_expenses_trip_place_snapshot
+        foreign key (trip_place_snapshot_id, trip_id) references trip_place_snapshots(id, trip_id),
+    constraint fk_expenses_top_category
+        foreign key (top_category_id, trip_id) references trip_expense_categories(id, trip_id),
     constraint chk_expense_amounts check (
         amount_local >= 0
         and amount_krw >= 0
@@ -273,6 +302,9 @@ create table exchange_rates (
 create index ix_auth_refresh_tokens_user_id
     on auth_refresh_tokens (user_id);
 
+create index ix_user_current_trip_selections_trip_id
+    on user_current_trip_selections (trip_id);
+
 create index ix_trips_user_id_status_start_date
     on trips (user_id, status, start_date);
 
@@ -315,3 +347,5 @@ create index ix_checklist_items_section_id_sort_order
 -- 3. 지출은 amount_local / amount_krw를 동시에 저장해 여행 전용 캘린더와 전역 캘린더에서 바로 활용한다.
 -- 4. 상위 카테고리의 기본값 '기타'는 서비스 로직에서 여행 생성 시 자동 생성하는 것을 전제로 한다.
 -- 5. 날씨 / 환율은 외부 API 결과를 캐시하는 용도로 테이블을 두었고, 캐시 미사용 시 생략 가능하다.
+-- 6. 현재 선택된 여행은 user_current_trip_selections로 관리하며, 여행 삭제 시 함께 제거된다.
+-- 7. trips.status는 사용자가 직접 수정하지 않고 서버가 날짜 기준으로 계산/저장/동기화한다.

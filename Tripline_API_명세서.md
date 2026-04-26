@@ -54,9 +54,10 @@ X-Timezone: Asia/Seoul
 - 통화는 ISO 4217 코드 사용 (`KRW`, `CNY`, `USD`)
 - 금액은 모두 양수 저장
 - 실제 화면의 `-지출`, `+환불/정산` 표시는 `flowType`으로 판별
-- 모든 지출 응답은 가능하면 아래 두 값을 함께 준다.
+- 모든 지출 응답은 아래 세 값을 항상 함께 준다.
   - `amountLocal`
   - `amountKrw`
+  - `exchangeRateToKrw`
 
 ### 2-5. 공통 응답 구조
 
@@ -179,7 +180,12 @@ Refresh Token 폐기
   "data": {
     "baseCurrencyCode": "KRW",
     "defaultPdfScope": "trip_all",
-    "defaultRouteTransportMode": "mixed"
+    "defaultRouteTransportMode": "mixed",
+    "currentTrip": {
+      "tripId": "uuid",
+      "title": "상하이 여행",
+      "status": "active"
+    }
   },
   "meta": null,
   "error": null
@@ -189,6 +195,46 @@ Refresh Token 폐기
 ### `PATCH /me/settings`
 
 사용자 설정 수정
+
+### `GET /me/current-trip`
+
+현재 선택된 여행 조회
+
+응답 예시:
+
+```json
+{
+  "success": true,
+  "data": {
+    "tripId": "uuid",
+    "title": "상하이 여행",
+    "countryName": "중국",
+    "cityName": "상하이",
+    "status": "active",
+    "startDate": "2026-02-15",
+    "endDate": "2026-02-18"
+  },
+  "meta": null,
+  "error": null
+}
+```
+
+### `PUT /me/current-trip`
+
+현재 선택된 여행 변경
+
+요청:
+
+```json
+{
+  "tripId": "uuid"
+}
+```
+
+규칙:
+
+- 요청한 여행은 반드시 로그인 사용자 본인의 여행이어야 한다.
+- 변경 성공 후 일정/준비물/날씨/여행 전용 캘린더는 이 여행을 기준으로 동작한다.
 
 ## 4. 여행
 
@@ -200,6 +246,11 @@ Refresh Token 폐기
 
 - `status=planned|active|completed`
 - `q=검색어`
+
+규칙:
+
+- `status`는 서버가 날짜 기준으로 계산해 저장한 값을 사용한다.
+- 사용자는 상태를 직접 수정할 수 없다.
 
 응답 예시:
 
@@ -245,6 +296,10 @@ Refresh Token 폐기
 }
 ```
 
+규칙:
+
+- 여행 생성이 완료되면 생성된 여행은 자동으로 사용자의 `현재 선택된 여행`으로 저장된다.
+
 ### `GET /trips/{tripId}`
 
 여행 상세 조회
@@ -274,6 +329,12 @@ Refresh Token 폐기
   "success": true,
   "data": {
     "hasActiveTrip": true,
+    "hasCurrentTrip": true,
+    "currentTrip": {
+      "tripId": "uuid",
+      "title": "상하이 여행",
+      "status": "active"
+    },
     "activeTrip": {
       "tripId": "uuid",
       "title": "상하이 여행",
@@ -319,6 +380,12 @@ Refresh Token 폐기
   "error": null
 }
 ```
+
+상태 규칙:
+
+- `hasActiveTrip=true`면 실행형 대시보드 블록을 내려준다.
+- `hasActiveTrip=false`이고 `hasCurrentTrip=true`면 현재 선택된 여행 진입용 요약 블록만 내려준다.
+- 여행이 하나도 없으면 `hasActiveTrip=false`, `hasCurrentTrip=false`로 반환한다.
 
 ## 6. 일정 / 지도
 
@@ -680,6 +747,7 @@ Google Places 자동완성/검색 프록시
 OCR 업로드 생성
 
 - 멀티파트 업로드 또는 이미지 URL 기준
+- OCR 업로드는 반드시 `여행 생성 후`, 해당 여행이 선택 또는 진입된 상태에서만 시작할 수 있다.
 
 응답:
 
