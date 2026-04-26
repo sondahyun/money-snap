@@ -4,18 +4,24 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.tripline.ui.common.ChecklistItemActionsBottomSheetFragment
 import com.example.tripline.ui.common.PdfShareBottomSheetFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class PrototypeScreenActivity : AppCompatActivity() {
 
     enum class Screen(@LayoutRes val layoutRes: Int) {
         TRIP_CREATE(R.layout.activity_trip_create),
         TRIP_EDIT(R.layout.activity_trip_edit),
+        TRIP_SEARCH(R.layout.activity_trip_search),
         CHECKLIST(R.layout.activity_trip_checklist),
         CHECKLIST_EDIT(R.layout.activity_trip_checklist_edit),
         CHECKLIST_ITEM_ADD(R.layout.activity_trip_checklist_item_add),
@@ -25,6 +31,8 @@ class PrototypeScreenActivity : AppCompatActivity() {
         MEMO_EDIT(R.layout.activity_memo_edit),
         OCR_IMPORT(R.layout.activity_ocr_import),
         WEATHER(R.layout.activity_trip_weather),
+        TRIP_CALENDAR(R.layout.activity_trip_calendar),
+        TRIP_ROUTE_MAP(R.layout.activity_trip_route_map),
         PLACE_DETAIL(R.layout.fragment_place_detail),
         PLACE_SEARCH(R.layout.fragment_place_search),
         SCHEDULE_EDIT(R.layout.fragment_schedule_edit),
@@ -50,7 +58,28 @@ class PrototypeScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(screen.layoutRes)
+        applySystemBarInsets()
         bindScreen()
+    }
+
+    private fun applySystemBarInsets() {
+        val content = findViewById<ViewGroup>(android.R.id.content)
+        val root = content.getChildAt(0) ?: return
+        val initialTop = root.paddingTop
+        val initialBottom = root.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(
+                view.paddingLeft,
+                initialTop + systemBars.top,
+                view.paddingRight,
+                initialBottom + systemBars.bottom
+            )
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(root)
     }
 
     private fun bindScreen() {
@@ -62,6 +91,13 @@ class PrototypeScreenActivity : AppCompatActivity() {
 
             Screen.TRIP_EDIT -> {
                 finishOnClick(R.id.buttonTripEditBack, R.id.buttonTripEditSave)
+            }
+
+            Screen.TRIP_SEARCH -> {
+                finishOnClick(R.id.buttonTripSearchBack)
+                openTabOnClick(R.id.tripSearchResultShanghai, R.id.fragment_schedule)
+                openTabOnClick(R.id.tripSearchResultKyoto, R.id.fragment_schedule)
+                openTabOnClick(R.id.tripSearchResultTokyo, R.id.fragment_schedule)
             }
 
             Screen.CHECKLIST -> {
@@ -137,6 +173,16 @@ class PrototypeScreenActivity : AppCompatActivity() {
                 finishOnClick(R.id.buttonWeatherBack)
             }
 
+            Screen.TRIP_CALENDAR -> {
+                finishOnClick(R.id.buttonTripCalendarBack)
+                openScreenOnClick(R.id.buttonTripCalendarAddExpense, Screen.EXPENSE_ENTRY)
+                bindBottomSheet(R.id.tripCalendarBottomSheet)
+            }
+
+            Screen.TRIP_ROUTE_MAP -> {
+                finishOnClick(R.id.buttonTripRouteMapBack)
+            }
+
             Screen.PLACE_DETAIL -> {
                 finishOnClick(R.id.buttonPlaceDetailBack, R.id.buttonAddPlaceToSchedule)
             }
@@ -160,6 +206,15 @@ class PrototypeScreenActivity : AppCompatActivity() {
                 showMockActionOnClick(R.id.rowProfileEdit, "프로필 편집은 다음 단계에서 연결할게요.")
                 openTabOnClick(R.id.buttonLogout, R.id.fragment_home)
             }
+        }
+    }
+
+    private fun bindBottomSheet(@IdRes id: Int) {
+        val sheet = findViewById<LinearLayout?>(id) ?: return
+        BottomSheetBehavior.from(sheet).apply {
+            state = BottomSheetBehavior.STATE_COLLAPSED
+            skipCollapsed = false
+            isDraggable = true
         }
     }
 

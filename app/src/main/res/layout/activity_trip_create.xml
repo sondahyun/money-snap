@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingStart="22dp"
-            android:paddingTop="20dp"
+            android:paddingTop="28dp"
             android:paddingEnd="22dp"
             android:paddingBottom="28dp">
 
@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="44dp"
                 style="@style/TriplineText.ScreenTitle"
                 android:text="여행의 기본 골격부터\n차분하게 채워볼게요"
                 android:textColor="@color/schedule_minimal_text" />

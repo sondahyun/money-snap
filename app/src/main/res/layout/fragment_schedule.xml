@@ -102,6 +102,71 @@
                 </FrameLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/scheduleEmptySection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TriplineText.ScreenTitle"
+                    android:text="먼저 여행을 만들어 주세요"
+                    android:textColor="@color/schedule_minimal_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    style="@style/TriplineText.Body"
+                    android:text="여행을 만든 뒤 해당 여행 안에서 장소를 추가하고 day별 일정을 짤 수 있어요."
+                    android:textColor="@color/schedule_minimal_subtle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonScheduleEmptyCreateTrip"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.Button"
+                        android:text="새 여행 만들기"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/schedule_minimal_blue"
+                        app:cornerRadius="18dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonScheduleEmptyOpenLocker"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.Button"
+                        android:text="보관함 보기"
+                        android:textAllCaps="false"
+                        android:textColor="@color/schedule_minimal_text"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="18dp"
+                        app:strokeColor="@color/schedule_minimal_line"
+                        app:strokeWidth="1dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/scheduleContentSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mapPreviewContainer"
                 android:layout_width="match_parent"
@@ -230,40 +295,11 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TriplineText.SectionTitle"
-                    android:text="day 일정"
-                    android:textColor="@color/schedule_minimal_text" />
-
-                <TextView
-                    android:id="@+id/buttonShowFullMap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_schedule_distance_chip"
-                    android:paddingStart="12dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="12dp"
-                    android:paddingBottom="8dp"
-                    style="@style/TriplineText.Meta"
-                    android:text="전체 지도"
-                    android:textColor="@color/schedule_minimal_text" />
-            </LinearLayout>
-
             <View
                 android:layout_width="54dp"
                 android:layout_height="5dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/bg_tripline_pill"
                 android:backgroundTint="@color/schedule_minimal_line" />
 
@@ -548,13 +584,6 @@
                             </LinearLayout>
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/buttonEditDay2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/TriplineText.ActionLabel"
-                            android:text="편집"
-                            android:textColor="@color/schedule_minimal_blue" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -733,6 +762,7 @@
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

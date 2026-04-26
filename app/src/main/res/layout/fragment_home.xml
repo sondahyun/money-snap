@@ -15,7 +15,7 @@
         android:paddingStart="20dp"
         android:paddingTop="18dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="112dp"
+        android:paddingBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -395,6 +395,112 @@
                 android:background="@color/tripline_stroke" />
 
             <LinearLayout
+                android:id="@+id/today_context_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TriplineText.SectionTitle"
+                    android:text="오늘 정보"
+                    android:textColor="@color/tripline_text_primary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/today_weather_section"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Meta"
+                            android:text="오늘 날씨"
+                            android:textColor="@color/tripline_text_secondary" />
+
+                        <TextView
+                            android:id="@+id/tv_home_weather_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.CardTitle"
+                            android:text="맑음 18° / 24°"
+                            android:textColor="@color/tripline_text_primary" />
+
+                        <TextView
+                            android:id="@+id/tv_home_weather_meta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.BodyCompact"
+                            android:text="상하이 기준 · 우산 필요 없음"
+                            android:textColor="@color/tripline_text_secondary" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="14dp"
+                        android:background="@color/tripline_stroke" />
+
+                    <LinearLayout
+                        android:id="@+id/today_fx_section"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/TriplineText.Meta"
+                            android:text="오늘 환율"
+                            android:textColor="@color/tripline_text_secondary" />
+
+                        <TextView
+                            android:id="@+id/tv_home_fx_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.CardTitle"
+                            android:text="USD 1,382.50"
+                            android:textColor="@color/schedule_minimal_blue" />
+
+                        <TextView
+                            android:id="@+id/tv_home_fx_meta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            style="@style/TriplineText.BodyCompact"
+                            android:text="전 영업일 대비 +0.38%"
+                            android:textColor="@color/tripline_text_secondary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/today_context_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/tripline_stroke" />
+
+            <LinearLayout
                 android:id="@+id/today_summary_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -560,19 +666,4 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_today_schedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="오늘 일정 바로 가기"
-        android:src="@drawable/ic_calendar"
-        android:tint="@color/white"
-        app:backgroundTint="@color/schedule_minimal_blue"
-        app:borderWidth="0dp"
-        app:elevation="2dp"
-        app:fabCustomSize="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,15 @@ class LockerFragment : Fragment() {
             )
         }
 
+        binding.buttonLockerSearch.setOnClickListener {
+            startActivity(
+                PrototypeScreenActivity.intent(
+                    requireContext(),
+                    PrototypeScreenActivity.Screen.TRIP_SEARCH
+                )
+            )
+        }
+
         val openSchedule = {
             (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
         }

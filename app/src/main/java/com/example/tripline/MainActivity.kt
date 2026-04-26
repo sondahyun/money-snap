@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.tripline.databinding.ActivityMainBinding
 import com.example.tripline.ui.calendar.CalendarFragment
-import com.example.tripline.ui.funds.FundsFragment
 import com.example.tripline.ui.home.HomeFragment
 import com.example.tripline.ui.locker.LockerFragment
 import com.example.tripline.ui.mypage.MypageFragment
@@ -95,11 +94,6 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.fragment_calendar -> {
                     showFragment(CalendarFragment())
-                    true
-                }
-
-                R.id.fragment_funds -> {
-                    showFragment(FundsFragment())
                     true
                 }
 

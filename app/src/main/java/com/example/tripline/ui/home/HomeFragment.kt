@@ -21,6 +21,7 @@ import java.util.*
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: TransactionAdapter
+    private val hasCurrentTripMock = true
 
     private val expenseViewModel: ExpenseViewModel by viewModels {
         ExpenseViewModelFactory((requireActivity().application as TriplineApplication).expenseRepository)
@@ -48,6 +49,7 @@ class HomeFragment : Fragment() {
 
         // 오늘의 거래 데이터 로드 및 정렬
         loadTransactions(todayDate)
+        renderHomeState(hasCurrentTripMock)
 
         binding.addButton.setOnClickListener {
             startActivity(
@@ -60,10 +62,6 @@ class HomeFragment : Fragment() {
 
         binding.buttonMypage.setOnClickListener {
             (activity as? MainActivity)?.openMyPage()
-        }
-
-        binding.fabTodaySchedule.setOnClickListener {
-            (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
         }
 
         binding.buttonCreateTripEmpty.setOnClickListener {
@@ -92,7 +90,34 @@ class HomeFragment : Fragment() {
             (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
         }
 
+        binding.todayWeatherSection.setOnClickListener {
+            startActivity(
+                PrototypeScreenActivity.intent(
+                    requireContext(),
+                    PrototypeScreenActivity.Screen.WEATHER
+                )
+            )
+        }
+
         return binding.root
+    }
+
+    private fun renderHomeState(hasCurrentTrip: Boolean) {
+        binding.homeEmptySection.visibility = if (hasCurrentTrip) View.GONE else View.VISIBLE
+
+        val contentVisibility = if (hasCurrentTrip) View.VISIBLE else View.GONE
+        binding.currentTripSection.visibility = contentVisibility
+        binding.currentTripDivider.visibility = contentVisibility
+        binding.nextScheduleSection.visibility = contentVisibility
+        binding.nextScheduleDivider.visibility = contentVisibility
+        binding.routeOverviewSection.visibility = contentVisibility
+        binding.routeOverviewDivider.visibility = contentVisibility
+        binding.todayContextSection.visibility = contentVisibility
+        binding.todayContextDivider.visibility = contentVisibility
+        binding.todaySummarySection.visibility = contentVisibility
+        binding.todaySummaryDivider.visibility = contentVisibility
+        binding.addButton.visibility = contentVisibility
+        binding.todayRecordsSection.visibility = contentVisibility
     }
 
     private fun setTodayDateUI() {

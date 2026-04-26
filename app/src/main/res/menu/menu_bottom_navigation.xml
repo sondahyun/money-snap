@@ -16,8 +16,4 @@
         android:id="@+id/fragment_calendar"
         android:title="캘린더"
         android:icon="@drawable/ic_calendar"/>
-    <item
-        android:id="@+id/fragment_funds"
-        android:title="자금"
-        android:icon="@drawable/ic_money"/>
 </menu>

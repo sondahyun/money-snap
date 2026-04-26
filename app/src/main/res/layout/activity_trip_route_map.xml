@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingTop="92dp"
+        android:paddingBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="620dp"
+                android:background="@color/tripline_background">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_schedule_distance_chip"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        android:text="day 1 일정"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="홍차오 국제공항 → 캄파닐레 호텔"
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="420dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="-40dp"
+                    android:layout_marginTop="110dp"
+                    android:alpha="0.35"
+                    android:background="@color/tripline_stroke_neutral"
+                    android:rotation="18" />
+
+                <View
+                    android:layout_width="380dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="260dp"
+                    android:alpha="0.35"
+                    android:background="@color/tripline_stroke_neutral"
+                    android:rotation="-12" />
+
+                <View
+                    android:layout_width="260dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center"
+                    android:alpha="0.75"
+                    android:background="@color/schedule_minimal_blue"
+                    android:rotation="-16" />
+
+                <TextView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginTop="360dp"
+                    android:background="@drawable/bg_tripline_pill"
+                    android:backgroundTint="@color/tripline_marker_violet"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="170dp"
+                    android:layout_marginTop="250dp"
+                    android:background="@drawable/bg_tripline_pill"
+                    android:backgroundTint="@color/tripline_marker_amber"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="94dp"
+                    android:layout_marginTop="352dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TriplineText.NavTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="홍차오 국제공항"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="2.15 · 도착"
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="214dp"
+                    android:layout_marginTop="240dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TriplineText.NavTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="캄파닐레 호텔"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="차량 28분"
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginBottom="20dp"
+                    android:alpha="0.6"
+                    android:fontFamily="@font/pretendardsemibold"
+                    android:text="Google"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_schedule_distance_chip"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        style="@style/TriplineText.Meta"
+                        android:text="차량 28분"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_schedule_distance_chip"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        style="@style/TriplineText.Meta"
+                        android:text="14.6km"
+                        android:textColor="@color/schedule_minimal_text" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="620dp"
+                android:background="@color/tripline_background">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_schedule_distance_chip"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        android:text="day 2 일정"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="와이탄 → 란팅찬팅"
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="420dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="-30dp"
+                    android:layout_marginTop="90dp"
+                    android:alpha="0.35"
+                    android:background="@color/tripline_stroke_neutral"
+                    android:rotation="14" />
+
+                <View
+                    android:layout_width="360dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="250dp"
+                    android:alpha="0.35"
+                    android:background="@color/tripline_stroke_neutral"
+                    android:rotation="-18" />
+
+                <View
+                    android:layout_width="250dp"
+                    android:layout_height="4dp"
+                    android:layout_gravity="center"
+                    android:alpha="0.75"
+                    android:background="@color/schedule_minimal_blue"
+                    android:rotation="-8" />
+
+                <TextView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginTop="352dp"
+                    android:background="@drawable/bg_tripline_pill"
+                    android:backgroundTint="@color/tripline_marker_blue"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="250dp"
+                    android:layout_marginTop="224dp"
+                    android:background="@drawable/bg_tripline_pill"
+                    android:backgroundTint="@color/tripline_marker_teal"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="134dp"
+                    android:layout_marginTop="344dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TriplineText.NavTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="와이탄"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="도보 11분"
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="170dp"
+                    android:layout_marginTop="214dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TriplineText.NavTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="란팅찬팅"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        style="@style/TriplineText.Meta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="음식점 · 저녁"
+                        android:textColor="@color/tripline_text_secondary" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginBottom="20dp"
+                    android:alpha="0.6"
+                    android:fontFamily="@font/pretendardsemibold"
+                    android:text="Google"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_schedule_distance_chip"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        style="@style/TriplineText.Meta"
+                        android:text="도보 11분"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_schedule_distance_chip"
+                        android:paddingStart="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="8dp"
+                        style="@style/TriplineText.Meta"
+                        android:text="1.3km"
+                        android:textColor="@color/schedule_minimal_text" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/buttonTripRouteMapBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_schedule_icon_button">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_schedule_back"
+                app:tint="@color/schedule_minimal_text" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TriplineText.NavTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상하이 여행"
+                android:textColor="@color/schedule_minimal_text" />
+
+            <TextView
+                style="@style/TriplineText.Meta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="2.15 - 2.18 · 3박 4일"
+                android:textColor="@color/tripline_text_secondary" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,10 @@
 package com.example.tripline.ui.home
 
+import android.view.View
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tripline.R
 import com.example.tripline.data.entity.Expense
 import com.example.tripline.data.entity.Income
 import com.example.tripline.databinding.TodayListExpenseBinding
@@ -60,20 +62,60 @@ class TransactionAdapter(private val items: List<TransactionItem>) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(income: Income) {
             binding.incomeAmount.text = "+₩${income.amount}"
-            binding.incomePlace.text = "항목: ${income.place}"
-            binding.incomeDate.text = "날짜: ${income.date}"
-            binding.incomeDescription.text = "메모: ${income.description ?: "없음"}"
+            binding.incomePlace.text = income.place
+            binding.incomeType.text = "환불/정산"
+            binding.incomeDate.text = income.date.replace("-", ".")
+            binding.incomeIcon.setImageResource(resolveIncomeIcon(income))
+            if (income.description.isNullOrBlank()) {
+                binding.incomeDescription.visibility = View.GONE
+            } else {
+                binding.incomeDescription.visibility = View.VISIBLE
+                binding.incomeDescription.text = income.description
+            }
         }
     }
 
     class ExpenseViewHolder(private val binding: TodayListExpenseBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(expense: Expense) {
-            binding.expenseAmount.text = "₩${expense.amount}"
-            binding.expensePlace.text = "장소: ${expense.place}"
-            binding.expenseCategory.text = "상위 카테고리: ${expense.category}"
-            binding.expenseDate.text = "날짜: ${expense.date}"
-            binding.expenseDescription.text = "설명: ${expense.description ?: "없음"}"
+            binding.expenseAmount.text = "-₩${expense.amount}"
+            binding.expensePlace.text = expense.place ?: expense.category
+            binding.expenseCategory.text = expense.category
+            binding.expenseDate.text = expense.date.replace("-", ".")
+            binding.expenseIcon.setImageResource(resolveExpenseIcon(expense))
+            if (expense.description.isNullOrBlank()) {
+                binding.expenseDescription.visibility = View.GONE
+            } else {
+                binding.expenseDescription.visibility = View.VISIBLE
+                binding.expenseDescription.text = expense.description
+            }
         }
+    }
+}
+
+private fun resolveExpenseIcon(expense: Expense): Int {
+    val bucket = listOfNotNull(expense.category, expense.place, expense.description)
+        .joinToString(" ")
+        .lowercase()
+
+    return when {
+        bucket.contains("카드") || bucket.contains("visa") || bucket.contains("master") || bucket.contains("신용") ->
+            R.drawable.ic_tripline_payment_card
+        bucket.contains("환전") || bucket.contains("현금") || bucket.contains("atm") || bucket.contains("cash") ->
+            R.drawable.ic_tripline_payment_cash
+        bucket.contains("pay") || bucket.contains("페이") || bucket.contains("머니") || bucket.contains("alipay") || bucket.contains("카카오") || bucket.contains("토스") ->
+            R.drawable.ic_tripline_payment_wallet
+        else -> R.drawable.ic_tripline_payment_card
+    }
+}
+
+private fun resolveIncomeIcon(income: Income): Int {
+    val bucket = listOfNotNull(income.place, income.description).joinToString(" ").lowercase()
+    return when {
+        bucket.contains("환불") || bucket.contains("정산") || bucket.contains("pay") || bucket.contains("페이") ->
+            R.drawable.ic_tripline_payment_wallet
+        bucket.contains("현금") || bucket.contains("atm") || bucket.contains("cash") ->
+            R.drawable.ic_tripline_payment_cash
+        else -> R.drawable.ic_tripline_payment_card
     }
 }

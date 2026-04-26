@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingStart="22dp"
-            android:paddingTop="20dp"
+            android:paddingTop="28dp"
             android:paddingEnd="22dp"
             android:paddingBottom="28dp">
 
@@ -37,7 +37,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -260,7 +260,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="34dp"
+                        android:layout_marginTop="28dp"
                         style="@style/TriplineText.Body"
                         android:text="여행 한 줄 소개"
                         android:textColor="@color/schedule_minimal_subtle" />
@@ -268,14 +268,16 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="6dp"
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/pretendardmedium"
-                        android:gravity="top|start"
-                        android:inputType="textMultiLine"
-                        android:minLines="3"
+                        android:gravity="center_vertical|start"
+                        android:inputType="textCapSentences"
+                        android:lines="1"
+                        android:maxLines="1"
                         android:paddingTop="0dp"
-                        android:paddingBottom="12dp"
+                        android:paddingBottom="8dp"
+                        android:ellipsize="end"
                         android:text="부모님과 함께, 동선은 여유롭게 잡고 대표 관광지는 꼭 가는 일정"
                         android:textColor="@color/schedule_minimal_text"
                         android:textSize="14sp" />

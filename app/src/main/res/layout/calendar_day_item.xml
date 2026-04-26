@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
-    android:layout_margin="3dp"
-    android:paddingStart="4dp"
-    android:paddingTop="5dp"
-    android:paddingEnd="4dp"
-    android:paddingBottom="5dp">
+    android:layout_height="56dp"
+    android:layout_margin="2dp"
+    android:paddingStart="3dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="3dp"
+    android:paddingBottom="4dp">
 
     <TextView
         android:id="@+id/tv_cell_day"
@@ -18,7 +18,7 @@
         android:text="1"
         android:textAlignment="center"
         android:textColor="@color/tripline_text_primary"
-        android:textSize="12sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,13 +27,13 @@
         android:id="@+id/tv_day_plus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         android:fontFamily="@font/pretendardregular"
         android:gravity="center"
         android:text="+0"
         android:textAlignment="center"
         android:textColor="@color/tripline_teal"
-        android:textSize="7sp"
+        android:textSize="6sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_cell_day" />
@@ -48,7 +48,7 @@
         android:text="-0"
         android:textAlignment="center"
         android:textColor="@color/tripline_coral"
-        android:textSize="7sp"
+        android:textSize="6sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_day_plus" />

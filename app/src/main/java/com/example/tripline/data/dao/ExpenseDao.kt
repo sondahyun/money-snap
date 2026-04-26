@@ -16,6 +16,9 @@ interface ExpenseDao {
     @Query("SELECT * FROM expenses WHERE date = :date")
     fun getExpensesByDate(date: String): Flow<List<Expense>>
 
+    @Query("SELECT * FROM expenses WHERE substr(date, 1, 7) = :month ORDER BY date DESC")
+    fun getExpensesByMonth(month: String): Flow<List<Expense>>
+
     // 해당 하는 날의 총 지출
     @Query("SELECT SUM(amount) FROM expenses WHERE date = :date")
     fun getTotalExpenseByDate(date: String): Flow<Int>

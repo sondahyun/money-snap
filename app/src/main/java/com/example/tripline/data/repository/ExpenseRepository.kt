@@ -8,6 +8,8 @@ class ExpenseRepository(private val expenseDao: ExpenseDao) {
     // 해당 하는 날의 모든 지출
     fun getExpensesByDate(date: String): Flow<List<Expense>> = expenseDao.getExpensesByDate(date)
 
+    fun getExpensesByMonth(month: String): Flow<List<Expense>> = expenseDao.getExpensesByMonth(month)
+
     // 해당 하는 날의 총 지출
     fun getTotalExpenseByDate(date: String): Flow<Int> =  expenseDao.getTotalExpenseByDate(date)
 

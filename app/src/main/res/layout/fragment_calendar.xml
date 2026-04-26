@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,18 +7,14 @@
     android:background="@color/tripline_background">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         android:fillViewport="true"
         android:paddingStart="18dp"
         android:paddingTop="18dp"
         android:paddingEnd="18dp"
-        android:paddingBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingBottom="180dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,85 +24,132 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="4dp"
-                android:paddingBottom="2dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendardbold"
-                    android:text="캘린더"
-                    android:textColor="@color/tripline_text_primary"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/pretendardregular"
-                    android:text="날짜를 눌러 그날의 일정과 지출 흐름을 바로 확인해요."
-                    android:textColor="@color/tripline_text_secondary"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/calendar_header"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingTop="2dp">
 
                     <ImageView
                         android:id="@+id/btn_previous_month"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:background="@drawable/bg_tripline_secondary_action"
                         android:contentDescription="이전 달"
                         android:padding="8dp"
                         android:scaleX="-1"
                         android:src="@drawable/ic_tripline_chevron_right"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_month"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/tripline_navy" />
+                        app:layout_constraintTop_toTopOf="@id/tv_month"
+                        app:tint="@color/tripline_text_secondary" />
 
                     <TextView
                         android:id="@+id/tv_month"
+                        style="@style/TriplineText.NavTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/pretendardbold"
                         android:text="4월"
                         android:textColor="@color/tripline_text_primary"
-                        android:textSize="15sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/btn_next_month"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:background="@drawable/bg_tripline_secondary_action"
                         android:contentDescription="다음 달"
                         android:padding="8dp"
                         android:src="@drawable/ic_tripline_chevron_right"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_month"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/tripline_navy" />
+                        app:layout_constraintTop_toTopOf="@id/tv_month"
+                        app:tint="@color/tripline_text_secondary" />
+
+                    <LinearLayout
+                        android:id="@+id/calendar_summary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_month">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TriplineText.Meta"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="이번 달 전체 여행 지출"
+                                android:textColor="@color/tripline_text_secondary" />
+
+                            <TextView
+                                android:id="@+id/tv_month_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendardbold"
+                                android:text="₩877,082"
+                                android:textColor="@color/tripline_text_primary"
+                                android:textSize="23sp" />
+
+                            <TextView
+                                android:id="@+id/tv_month_top_category"
+                                style="@style/TriplineText.Meta"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="최다 소비 식비"
+                                android:textColor="@color/tripline_text_secondary" />
+                        </LinearLayout>
+
+                        <FrameLayout
+                            android:layout_width="110dp"
+                            android:layout_height="66dp"
+                            android:background="@drawable/bg_schedule_map_card">
+
+                            <View
+                                android:layout_width="70dp"
+                                android:layout_height="3dp"
+                                android:layout_gravity="center_horizontal|bottom"
+                                android:layout_marginBottom="22dp"
+                                android:background="@color/tripline_market_up"
+                                android:rotation="-16" />
+
+                            <View
+                                android:layout_width="52dp"
+                                android:layout_height="3dp"
+                                android:layout_gravity="end|center_vertical"
+                                android:layout_marginEnd="10dp"
+                                android:background="@color/tripline_market_up"
+                                android:rotation="22" />
+
+                            <View
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_gravity="end|center_vertical"
+                                android:layout_marginEnd="9dp"
+                                android:background="@drawable/bg_tripline_positive" />
+                        </FrameLayout>
+                    </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <GridLayout
                     android:id="@+id/week_days_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="18dp"
                     android:columnCount="7"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
@@ -183,67 +226,133 @@
                     android:nestedScrollingEnabled="false"
                     android:scrollbars="none"
                     tools:listitem="@layout/calendar_day_item" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="18dp"
-                android:background="@color/tripline_stroke" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_selected_day"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/pretendardbold"
-                        android:text="20일 월요일"
-                        android:textColor="@color/tripline_text_primary"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:background="@drawable/bg_tripline_action"
-                        android:fontFamily="@font/pretendardsemibold"
-                        android:gravity="center"
-                        android:paddingStart="14dp"
-                        android:paddingEnd="14dp"
-                        android:text="지출 추가"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/pretendardregular"
-                    android:text="선택한 날짜의 일정과 지출 기록을 바로 확인해요."
-                    android:textColor="@color/tripline_text_secondary"
-                    android:textSize="13sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/selectedRecyclerView"
+                    android:id="@+id/weekCalendarRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:nestedScrollingEnabled="false"
                     android:scrollbars="none"
-                    tools:listitem="@layout/today_list_expense" />
+                    android:visibility="gone"
+                    tools:listitem="@layout/calendar_day_item" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/calendar_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_place_search_sheet"
+        android:elevation="12dp"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="18dp"
+        app:behavior_draggable="true"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="210dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="18dp">
+
+            <View
+                android:id="@+id/calendar_drag_handle"
+                android:layout_width="56dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_tripline_sheet_handle" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_selected_day"
+                    style="@style/TriplineText.DayTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23일 목요일"
+                    android:textColor="@color/tripline_text_primary" />
+
+                <TextView
+                    android:id="@+id/tv_selected_day_hint"
+                    style="@style/TriplineText.BodyCompact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="선택한 날짜의 전체 여행 지출 내역을 아래에서 자세히 확인해요."
+                    android:textColor="@color/tripline_text_secondary" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buttonCalendarAddExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_tripline_action"
+                android:fontFamily="@font/pretendardsemibold"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="지출 추가"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_calendar_detail_title"
+                    style="@style/TriplineText.SectionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="전체 여행 지출 내역"
+                    android:textColor="@color/tripline_text_primary" />
+
+                <TextView
+                    android:id="@+id/tv_calendar_detail_meta"
+                    style="@style/TriplineText.Meta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="3건 · ₩132,800"
+                    android:textColor="@color/tripline_text_secondary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectedRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="none"
+            tools:listitem="@layout/today_list_expense" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

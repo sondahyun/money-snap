@@ -1,6 +1,5 @@
 package com.example.tripline.ui.calendar
 
-import android.annotation.SuppressLint
 import androidx.core.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +17,11 @@ class CalendarAdapter(
     private val incomeViewModel: IncomeViewModel,
     private val expenseViewModel: ExpenseViewModel,
     private val lifecycleOwner: LifecycleOwner,
+    initialSelectedDate: LocalDate,
     private val onItemListener: OnItemListener
 ) : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
-    private var selectedPosition: Int = days.indexOf(LocalDate.now()) // 오늘 날짜 기본 선택
+    private var selectedPosition: Int = days.indexOf(initialSelectedDate).takeIf { it >= 0 } ?: 0
 
     interface OnItemListener {
         fun onItemClick(date: LocalDate?)
@@ -75,12 +75,24 @@ class CalendarAdapter(
 
             incomeViewModel.getTotalIncomeByDate(date.toString())
                 .observe(lifecycleOwner) { totalIncome ->
-                    binding.tvDayPlus.text = "+${formatCurrency(totalIncome)}"
+                    if (totalIncome != null && totalIncome > 0) {
+                        binding.tvDayPlus.visibility = View.VISIBLE
+                        binding.tvDayPlus.text = "+${formatCurrency(totalIncome)}"
+                    } else {
+                        binding.tvDayPlus.text = ""
+                        binding.tvDayPlus.visibility = View.GONE
+                    }
                 }
 
             expenseViewModel.getTotalExpenseByDate(date.toString())
                 .observe(lifecycleOwner) { totalExpense ->
-                    binding.tvDayMinus.text = "-${formatCurrency(totalExpense)}"
+                    if (totalExpense != null && totalExpense > 0) {
+                        binding.tvDayMinus.visibility = View.VISIBLE
+                        binding.tvDayMinus.text = "-${formatCurrency(totalExpense)}"
+                    } else {
+                        binding.tvDayMinus.text = ""
+                        binding.tvDayMinus.visibility = View.GONE
+                    }
                 }
         }
 

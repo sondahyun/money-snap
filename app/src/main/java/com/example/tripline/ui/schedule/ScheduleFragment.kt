@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.tripline.MainActivity
 import com.example.tripline.PrototypeScreenActivity
@@ -16,6 +17,7 @@ class ScheduleFragment : Fragment() {
 
     private var _binding: FragmentScheduleBinding? = null
     private val binding get() = _binding!!
+    private val hasScheduleMock = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,12 +38,14 @@ class ScheduleFragment : Fragment() {
             PopupMenu(requireContext(), anchor).apply {
                 menu.add(0, 1, 0, "여행 정보 수정")
                 menu.add(0, 2, 1, "준비물 체크리스트")
-                menu.add(0, 3, 2, "날씨")
+                menu.add(0, 3, 2, "여행 캘린더")
+                menu.add(0, 4, 3, "날씨")
                 setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         1 -> openScreen(PrototypeScreenActivity.Screen.TRIP_EDIT)
                         2 -> openScreen(PrototypeScreenActivity.Screen.CHECKLIST)
-                        3 -> openScreen(PrototypeScreenActivity.Screen.WEATHER)
+                        3 -> openScreen(PrototypeScreenActivity.Screen.TRIP_CALENDAR)
+                        4 -> openScreen(PrototypeScreenActivity.Screen.WEATHER)
                     }
                     true
                 }
@@ -49,13 +53,10 @@ class ScheduleFragment : Fragment() {
             }
         }
 
-        binding.buttonShowFullMap.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.PLACE_SEARCH)
+        binding.mapPreviewContainer.setOnClickListener {
+            openScreen(PrototypeScreenActivity.Screen.TRIP_ROUTE_MAP)
         }
         binding.buttonEditDay1.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.SCHEDULE_EDIT)
-        }
-        binding.buttonEditDay2.setOnClickListener {
             openScreen(PrototypeScreenActivity.Screen.SCHEDULE_EDIT)
         }
         binding.cardPlaceAirport.setOnClickListener {
@@ -76,8 +77,22 @@ class ScheduleFragment : Fragment() {
         binding.buttonAddMemoDay1.setOnClickListener {
             openScreen(PrototypeScreenActivity.Screen.MEMO_EDIT)
         }
+        binding.buttonScheduleEmptyCreateTrip.setOnClickListener {
+            openScreen(PrototypeScreenActivity.Screen.TRIP_CREATE)
+        }
+        binding.buttonScheduleEmptyOpenLocker.setOnClickListener {
+            (activity as? MainActivity)?.navigateToTab(R.id.fragment_locker)
+        }
+
+        renderScheduleState(hasScheduleMock)
 
         return binding.root
+    }
+
+    private fun renderScheduleState(hasSchedule: Boolean) {
+        binding.scheduleContentSection.isVisible = hasSchedule
+        binding.scheduleEmptySection.isVisible = !hasSchedule
+        binding.buttonShare.isVisible = hasSchedule
     }
 
     private fun openScreen(screen: PrototypeScreenActivity.Screen) {
