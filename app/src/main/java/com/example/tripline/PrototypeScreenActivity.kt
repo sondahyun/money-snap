@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tripline.ui.common.ChecklistItemActionsBottomSheetFragment
+import com.example.tripline.ui.common.ExpenseCurrencyBottomSheetFragment
 import com.example.tripline.ui.common.PdfShareBottomSheetFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -124,10 +125,40 @@ class PrototypeScreenActivity : AppCompatActivity() {
             }
 
             Screen.EXPENSE_ENTRY -> {
-                finishOnClick(
-                    R.id.buttonExpenseEntryBack,
-                    R.id.buttonExpenseEntrySave,
-                    R.id.buttonExpenseEntrySaveBottom
+                finishOnClick(R.id.buttonExpenseEntryBack)
+                findViewById<View?>(R.id.buttonExpenseCurrency)?.setOnClickListener {
+                    ExpenseCurrencyBottomSheetFragment().show(
+                        supportFragmentManager,
+                        "expense_currency"
+                    )
+                }
+                showMockActionOnClick(
+                    R.id.buttonExpenseDateSelect,
+                    "날짜 선택은 다음 단계에서 연결할게요."
+                )
+                showMockActionOnClick(
+                    R.id.buttonExpensePaymentSelect,
+                    "결제수단 선택은 다음 단계에서 연결할게요."
+                )
+                showMockActionOnClick(
+                    R.id.buttonExpenseCategoryMore,
+                    "추가 카테고리는 다음 단계에서 연결할게요."
+                )
+                showMockActionOnClick(
+                    R.id.buttonExpensePlaceClear,
+                    "장소 연결 해제는 다음 단계에서 연결할게요."
+                )
+                showMockActionOnClick(
+                    R.id.buttonExpenseEntryPhotoAdd,
+                    "사진 첨부는 다음 단계에서 연결할게요."
+                )
+                showMockActionOnClick(
+                    R.id.buttonExpenseEntryMore,
+                    "추가 옵션은 다음 단계에서 연결할게요."
+                )
+                showMockActionOnClick(
+                    R.id.buttonExpenseEntrySaveBottom,
+                    "완료 저장은 다음 단계에서 연결할게요."
                 )
             }
 

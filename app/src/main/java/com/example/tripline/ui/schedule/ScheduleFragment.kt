@@ -12,6 +12,8 @@ import com.example.tripline.PrototypeScreenActivity
 import com.example.tripline.R
 import com.example.tripline.databinding.FragmentScheduleBinding
 import com.example.tripline.ui.common.PdfShareBottomSheetFragment
+import com.example.tripline.ui.common.ScheduleMemoBottomSheetFragment
+import com.example.tripline.ui.common.SchedulePlaceBottomSheetFragment
 
 class ScheduleFragment : Fragment() {
 
@@ -60,22 +62,50 @@ class ScheduleFragment : Fragment() {
             openScreen(PrototypeScreenActivity.Screen.SCHEDULE_EDIT)
         }
         binding.cardPlaceAirport.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.PLACE_DETAIL)
+            openPlaceSheet(
+                placeName = "상하이 홍차오 국제공항",
+                placeMeta = "교통시설 · 홍차오 공항 주변",
+                placeHours = "운영시간 00:00 - 24:00"
+            )
         }
         binding.cardPlaceHotel.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.PLACE_DETAIL)
+            openPlaceSheet(
+                placeName = "캄파닐레 호텔 상하이 번드",
+                placeMeta = "3성급 · 인민 광장 주변",
+                placeHours = "체크인 15:00"
+            )
+        }
+        binding.cardMemoDay1.setOnClickListener {
+            openMemoSheet("해 질 무렵 와이탄 쪽으로 이동하기", "18:00")
         }
         binding.cardPlaceWaitan.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.PLACE_DETAIL)
+            openPlaceSheet(
+                placeName = "와이탄",
+                placeMeta = "관광명소 · 인민 광장 주변 · 예약가능",
+                placeHours = "영업시간 09:00 - 22:00"
+            )
         }
         binding.cardPlaceRestaurant.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.PLACE_DETAIL)
+            openPlaceSheet(
+                placeName = "남상만두 예원 점",
+                placeMeta = "음식점 · 인민 광장 주변 · 예약가능",
+                placeHours = "영업시간 08:30 - 21:00"
+            )
+        }
+        binding.cardMemoDay2.setOnClickListener {
+            openMemoSheet("비 오면 근처 실내 일정으로 바로 변경", "")
         }
         binding.buttonAddPlaceDay1.setOnClickListener {
             openScreen(PrototypeScreenActivity.Screen.PLACE_SEARCH)
         }
         binding.buttonAddMemoDay1.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.MEMO_EDIT)
+            openMemoSheet("메모 입력", "")
+        }
+        binding.buttonAddPlaceDay2.setOnClickListener {
+            openScreen(PrototypeScreenActivity.Screen.PLACE_SEARCH)
+        }
+        binding.buttonAddMemoDay2.setOnClickListener {
+            openMemoSheet("메모 입력", "")
         }
         binding.buttonScheduleEmptyCreateTrip.setOnClickListener {
             openScreen(PrototypeScreenActivity.Screen.TRIP_CREATE)
@@ -97,6 +127,25 @@ class ScheduleFragment : Fragment() {
 
     private fun openScreen(screen: PrototypeScreenActivity.Screen) {
         startActivity(PrototypeScreenActivity.intent(requireContext(), screen))
+    }
+
+    private fun openMemoSheet(memoText: String, memoTime: String) {
+        ScheduleMemoBottomSheetFragment.newInstance(
+            memoText = memoText,
+            memoTime = memoTime
+        ).show(childFragmentManager, "schedule_memo")
+    }
+
+    private fun openPlaceSheet(
+        placeName: String,
+        placeMeta: String,
+        placeHours: String
+    ) {
+        SchedulePlaceBottomSheetFragment.newInstance(
+            placeName = placeName,
+            placeMeta = placeMeta,
+            placeHours = placeHours
+        ).show(childFragmentManager, "schedule_place")
     }
 
     override fun onDestroyView() {

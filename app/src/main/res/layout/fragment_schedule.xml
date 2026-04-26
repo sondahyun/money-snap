@@ -405,6 +405,19 @@
                                 android:text="2"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="44dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/bg_schedule_timeline_line" />
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/bg_tripline_pill"
+                                android:backgroundTint="@color/tripline_marker_blue" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -492,6 +505,29 @@
                                         android:text="3성급 · 인민 광장 주변"
                                         android:textColor="@color/schedule_minimal_subtle" />
                                 </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cardMemoDay1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                app:cardBackgroundColor="@color/schedule_minimal_surface"
+                                app:cardCornerRadius="18dp"
+                                app:cardElevation="0dp"
+                                app:strokeColor="@color/schedule_minimal_line"
+                                app:strokeWidth="1dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="16dp"
+                                    android:paddingTop="16dp"
+                                    android:paddingEnd="16dp"
+                                    android:paddingBottom="16dp"
+                                    style="@style/TriplineText.CardTitle"
+                                    android:text="해 질 무렵 와이탄 쪽으로 이동하기"
+                                    android:textColor="@color/schedule_minimal_text" />
                             </com.google.android.material.card.MaterialCardView>
                         </LinearLayout>
                     </LinearLayout>
@@ -626,6 +662,19 @@
                                 android:text="2"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
+
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_height="44dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/bg_schedule_timeline_line" />
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/bg_tripline_pill"
+                                android:backgroundTint="@color/tripline_marker_teal" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -759,7 +808,70 @@
                                         android:textColor="@color/schedule_minimal_subtle" />
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cardMemoDay2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                app:cardBackgroundColor="@color/schedule_minimal_surface"
+                                app:cardCornerRadius="18dp"
+                                app:cardElevation="0dp"
+                                app:strokeColor="@color/schedule_minimal_line"
+                                app:strokeWidth="1dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="16dp"
+                                    android:paddingTop="16dp"
+                                    android:paddingEnd="16dp"
+                                    android:paddingBottom="16dp"
+                                    style="@style/TriplineText.CardTitle"
+                                    android:text="비 오면 근처 실내 일정으로 바로 변경"
+                                    android:textColor="@color/schedule_minimal_text" />
+                            </com.google.android.material.card.MaterialCardView>
                         </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonAddPlaceDay2"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_weight="1"
+                            style="@style/TriplineText.Button"
+                            android:text="장소 추가"
+                            android:textAllCaps="false"
+                            android:textColor="@color/schedule_minimal_text"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="18dp"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonAddMemoDay2"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            style="@style/TriplineText.Button"
+                            android:text="메모 추가"
+                            android:textAllCaps="false"
+                            android:textColor="@color/schedule_minimal_text"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_schedule_note"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            app:iconTint="@color/schedule_minimal_text"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
