@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -52,28 +53,41 @@
             android:textColor="@color/schedule_minimal_subtle" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp">
+        style="@style/TriplineText.Label"
+        android:text="메모 입력"
+        android:textColor="@color/schedule_minimal_subtle" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_schedule_note"
-            android:tint="@color/schedule_minimal_text" />
+    <EditText
+        android:id="@+id/editMemoContent"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_tripline_input"
+        android:gravity="top|start"
+        android:hint="이 day 안에서 자유롭게 메모를 남겨보세요."
+        android:inputType="textMultiLine|textCapSentences"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="14dp"
+        android:textColor="@color/schedule_minimal_text"
+        android:textColorHint="@color/schedule_minimal_subtle"
+        android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/textMemoContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            style="@style/TriplineText.CardTitle"
-            android:text="dd"
-            android:textColor="@color/schedule_minimal_text" />
-    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMemoSave"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="메모 저장"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/schedule_minimal_blue"
+        app:cornerRadius="18dp"
+        app:strokeWidth="0dp"
+        style="@style/TriplineText.Button" />
 </LinearLayout>

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.EditText
 import com.example.tripline.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -23,12 +23,21 @@ class ScheduleMemoBottomSheetFragment : BottomSheetDialogFragment() {
         val memoText = arguments?.getString(ARG_MEMO_TEXT).orEmpty()
         val memoTime = arguments?.getString(ARG_MEMO_TIME).orEmpty()
 
-        view.findViewById<TextView>(R.id.textMemoContent)?.text =
-            memoText.ifBlank { "메모 입력" }
-        view.findViewById<TextView>(R.id.textMemoTime)?.text =
+        view.findViewById<android.widget.TextView>(R.id.textMemoTime)?.text =
             memoTime.ifBlank { "시간 추가" }
+        view.findViewById<EditText>(R.id.editMemoContent)?.setText(
+            memoText.takeUnless { it == "메모 입력" }.orEmpty()
+        )
 
         view.findViewById<View>(R.id.buttonMemoTimeAdd)?.setOnClickListener {
+            val manager = parentFragmentManager
+            dismiss()
+            ScheduleTimeBottomSheetFragment.newInstance(
+                time = memoTime
+            ).show(manager, "schedule_time")
+        }
+
+        view.findViewById<View>(R.id.buttonMemoSave)?.setOnClickListener {
             dismiss()
         }
     }

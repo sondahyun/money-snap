@@ -413,11 +413,11 @@
                                 android:background="@drawable/bg_schedule_timeline_line" />
 
                             <View
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_tripline_pill"
-                                android:backgroundTint="@color/tripline_marker_blue" />
+                                android:backgroundTint="@color/schedule_minimal_subtle" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -670,11 +670,11 @@
                                 android:background="@drawable/bg_schedule_timeline_line" />
 
                             <View
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_tripline_pill"
-                                android:backgroundTint="@color/tripline_marker_teal" />
+                                android:backgroundTint="@color/schedule_minimal_subtle" />
                         </LinearLayout>
 
                         <LinearLayout
