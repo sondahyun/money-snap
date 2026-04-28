@@ -103,6 +103,15 @@ X-Timezone: Asia/Seoul
 | `WEATHER_UNAVAILABLE` | 날씨 정보 조회 불가 |
 | `FX_UNAVAILABLE` | 환율 정보 조회 불가 |
 
+### 2-7. 삭제 정책
+
+- 별도 언급이 없는 `DELETE` API는 hard delete가 아니라 `deletedAt` 기반 soft delete로 처리한다.
+- soft delete된 데이터는 목록/상세/캘린더/체크리스트/일정 응답에서 기본적으로 제외한다.
+- `expenses` 삭제 시 연결된 `expense_photos`도 함께 soft delete한다.
+- `checklist_sections` 삭제 시 하위 `checklist_items`도 함께 soft delete한다.
+- `trip_days`, `schedule_items`, `trip_route_segments`는 일정 편집 과정에서 soft delete될 수 있으며, 삭제된 데이터는 일정/지도 응답에서 제외한다.
+- `ocr_candidates`는 삭제 API를 두지 않고 `pending/accepted/rejected/edited` 상태 전이로 관리한다.
+
 ## 3. 인증 / 사용자
 
 ### `POST /auth/signup`
@@ -310,7 +319,7 @@ Refresh Token 폐기
 
 ### `DELETE /trips/{tripId}`
 
-여행 삭제(소프트 삭제 권장)
+여행 삭제(soft delete)
 
 ## 5. 홈 대시보드
 
@@ -392,6 +401,8 @@ Refresh Token 폐기
 ### `GET /trips/{tripId}/schedule`
 
 여행 일정 조회
+
+- soft delete된 `tripDay`, `scheduleItem`은 응답에서 제외한다.
 
 응답 예시:
 
@@ -508,11 +519,15 @@ Refresh Token 폐기
 
 ### `DELETE /trips/{tripId}/schedule/items/{itemId}`
 
-일정 아이템 삭제
+일정 아이템 soft delete
+
+- 연결된 동선 구간은 후속 조회에서 제외되도록 함께 정리한다.
 
 ### `GET /trips/{tripId}/route-map`
 
 전면 지도용 동선 데이터 조회
+
+- soft delete된 일정/동선 구간은 응답에서 제외한다.
 
 응답에는 아래를 포함한다.
 
@@ -607,11 +622,15 @@ Google Places 자동완성/검색 프록시
 
 ### `DELETE /expenses/{expenseId}`
 
-지출 삭제
+지출 soft delete
+
+- 연결된 `expense_photos`도 함께 soft delete한다.
 
 ### `GET /trips/{tripId}/expense-categories`
 
 상위 카테고리 목록
+
+- soft delete되지 않은 활성 카테고리만 반환한다.
 
 ### `POST /trips/{tripId}/expense-categories`
 
@@ -632,8 +651,10 @@ Google Places 자동완성/검색 프록시
 
 ### `DELETE /trips/{tripId}/expense-categories/{categoryId}`
 
-상위 카테고리 삭제  
-단, 기본 카테고리 `기타`는 삭제 불가
+상위 카테고리 soft delete
+
+- 기본 카테고리 `기타`는 삭제 불가
+- 이미 연결된 과거 지출은 유지하고, 삭제된 카테고리는 신규 선택 목록에서 제외한다.
 
 ## 9. 캘린더
 
@@ -702,6 +723,7 @@ Google Places 자동완성/검색 프록시
 - 섹션 목록
 - 섹션별 아이템
 - 체크 여부
+- soft delete되지 않은 섹션/아이템만 포함
 
 ### `POST /trips/{tripId}/checklist/sections`
 
@@ -713,7 +735,9 @@ Google Places 자동완성/검색 프록시
 
 ### `DELETE /trips/{tripId}/checklist/sections/{sectionId}`
 
-섹션 삭제
+섹션 soft delete
+
+- 하위 아이템도 함께 soft delete한다.
 
 ### `POST /trips/{tripId}/checklist/items`
 
@@ -738,7 +762,7 @@ Google Places 자동완성/검색 프록시
 
 ### `DELETE /trips/{tripId}/checklist/items/{itemId}`
 
-아이템 삭제
+아이템 soft delete
 
 ## 11. OCR
 
@@ -770,6 +794,8 @@ OCR 추출 결과 조회
 ### `PATCH /trips/{tripId}/ocr/imports/{ocrImportId}/candidates/{candidateId}`
 
 OCR 후보 수정 / 승인 / 거절
+
+- OCR 후보는 별도 삭제 API 없이 상태 변경으로 관리한다.
 
 ### `POST /trips/{tripId}/ocr/imports/{ocrImportId}/confirm`
 
