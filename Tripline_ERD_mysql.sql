@@ -9,6 +9,7 @@
 -- 1. UUID는 MySQL default function 대신 애플리케이션에서 생성하는 것을 권장한다.
 -- 2. 모든 테이블은 utf8mb4 / InnoDB 기준으로 생성한다.
 -- 3. trips.status 는 사용자가 직접 수정하지 않고 서버가 날짜 기준으로 계산/저장/동기화한다.
+-- 4. expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 deleted_at 기반 soft delete를 사용한다.
 
 SET NAMES utf8mb4;
 
@@ -21,6 +22,7 @@ create table users (
     last_login_at datetime(6) null,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
     primary key (id),
     unique key uk_users_email (email)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
@@ -247,9 +249,11 @@ create table trip_expense_categories (
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
     primary key (id),
     unique key uk_trip_expense_categories_id_trip_id (id, trip_id),
     unique key uk_trip_expense_categories_trip_id_name (trip_id, name),
+    key ix_trip_expense_categories_trip_id_deleted_at_sort_order (trip_id, deleted_at, sort_order),
     constraint fk_trip_expense_categories_trip
         foreign key (trip_id) references trips(id) on delete cascade
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
@@ -274,7 +278,7 @@ create table expenses (
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
     deleted_at datetime(6) null,
     primary key (id),
-    key ix_expenses_trip_id_expense_date (trip_id, expense_date),
+    key ix_expenses_trip_id_deleted_at_expense_date (trip_id, deleted_at, expense_date),
     key ix_expenses_trip_place_snapshot_id (trip_place_snapshot_id),
     key ix_expenses_top_category_id (top_category_id),
     constraint fk_expenses_trip
@@ -298,8 +302,10 @@ create table expense_photos (
     image_url text not null,
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
+    deleted_at datetime(6) null,
     primary key (id),
     unique key uk_expense_photos_expense_id_sort_order (expense_id, sort_order),
+    key ix_expense_photos_expense_id_deleted_at_sort_order (expense_id, deleted_at, sort_order),
     constraint fk_expense_photos_expense
         foreign key (expense_id) references expenses(id) on delete cascade
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
@@ -312,8 +318,9 @@ create table checklist_sections (
     is_collapsed boolean not null default false,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
     primary key (id),
-    key ix_checklist_sections_trip_id_sort_order (trip_id, sort_order),
+    key ix_checklist_sections_trip_id_deleted_at_sort_order (trip_id, deleted_at, sort_order),
     constraint fk_checklist_sections_trip
         foreign key (trip_id) references trips(id) on delete cascade
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
@@ -328,8 +335,9 @@ create table checklist_items (
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
     primary key (id),
-    key ix_checklist_items_section_id_sort_order (section_id, sort_order),
+    key ix_checklist_items_section_id_deleted_at_sort_order (section_id, deleted_at, sort_order),
     constraint fk_checklist_items_section
         foreign key (section_id) references checklist_sections(id) on delete cascade
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
