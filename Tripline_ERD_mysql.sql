@@ -9,7 +9,7 @@
 -- 1. UUID는 MySQL default function 대신 애플리케이션에서 생성하는 것을 권장한다.
 -- 2. 모든 테이블은 utf8mb4 / InnoDB 기준으로 생성한다.
 -- 3. trips.status 는 사용자가 직접 수정하지 않고 서버가 날짜 기준으로 계산/저장/동기화한다.
--- 4. expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 deleted_at 기반 soft delete를 사용한다.
+-- 4. trip_days / schedule_items / trip_route_segments / expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 deleted_at 기반 soft delete를 사용한다.
 
 SET NAMES utf8mb4;
 
@@ -102,11 +102,14 @@ create table trip_days (
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
+    active_day_index int generated always as (case when deleted_at is null then day_index else null end) stored,
+    active_calendar_date date generated always as (case when deleted_at is null then calendar_date else null end) stored,
     primary key (id),
     unique key uk_trip_days_id_trip_id (id, trip_id),
-    unique key uk_trip_days_trip_id_day_index (trip_id, day_index),
-    unique key uk_trip_days_trip_id_calendar_date (trip_id, calendar_date),
-    key ix_trip_days_trip_id_calendar_date (trip_id, calendar_date),
+    unique key uk_trip_days_trip_id_active_day_index (trip_id, active_day_index),
+    unique key uk_trip_days_trip_id_active_calendar_date (trip_id, active_calendar_date),
+    key ix_trip_days_trip_id_deleted_at_calendar_date (trip_id, deleted_at, calendar_date),
     constraint fk_trip_days_trip
         foreign key (trip_id) references trips(id) on delete cascade,
     constraint chk_trip_day_index check (day_index > 0)
@@ -197,10 +200,11 @@ create table schedule_items (
     sort_order int not null,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
     primary key (id),
     unique key uk_schedule_items_id_trip_id (id, trip_id),
     unique key uk_schedule_items_id_trip_day_id (id, trip_day_id),
-    key ix_schedule_items_day_sort_order (trip_day_id, sort_order),
+    key ix_schedule_items_trip_day_id_deleted_at_sort_order (trip_day_id, deleted_at, sort_order),
     constraint fk_schedule_items_trip
         foreign key (trip_id) references trips(id) on delete cascade,
     constraint fk_schedule_items_trip_day
@@ -228,9 +232,12 @@ create table trip_route_segments (
     polyline text null,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
+    active_from_schedule_item_id char(36) generated always as (case when deleted_at is null then from_schedule_item_id else null end) stored,
+    active_to_schedule_item_id char(36) generated always as (case when deleted_at is null then to_schedule_item_id else null end) stored,
     primary key (id),
-    unique key uk_trip_route_segments_from_to (from_schedule_item_id, to_schedule_item_id),
-    key ix_trip_route_segments_day_sort_order (trip_day_id, sort_order),
+    unique key uk_trip_route_segments_day_active_from_to (trip_day_id, active_from_schedule_item_id, active_to_schedule_item_id),
+    key ix_trip_route_segments_trip_day_id_deleted_at_sort_order (trip_day_id, deleted_at, sort_order),
     constraint fk_trip_route_segments_trip_day
         foreign key (trip_day_id) references trip_days(id) on delete cascade,
     constraint fk_trip_route_segments_from_item
@@ -250,9 +257,10 @@ create table trip_expense_categories (
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
     deleted_at datetime(6) null,
+    active_name varchar(50) generated always as (case when deleted_at is null then name else null end) stored,
     primary key (id),
     unique key uk_trip_expense_categories_id_trip_id (id, trip_id),
-    unique key uk_trip_expense_categories_trip_id_name (trip_id, name),
+    unique key uk_trip_expense_categories_trip_id_active_name (trip_id, active_name),
     key ix_trip_expense_categories_trip_id_deleted_at_sort_order (trip_id, deleted_at, sort_order),
     constraint fk_trip_expense_categories_trip
         foreign key (trip_id) references trips(id) on delete cascade
@@ -303,8 +311,9 @@ create table expense_photos (
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
     deleted_at datetime(6) null,
+    active_sort_order int generated always as (case when deleted_at is null then sort_order else null end) stored,
     primary key (id),
-    unique key uk_expense_photos_expense_id_sort_order (expense_id, sort_order),
+    unique key uk_expense_photos_expense_id_active_sort_order (expense_id, active_sort_order),
     key ix_expense_photos_expense_id_deleted_at_sort_order (expense_id, deleted_at, sort_order),
     constraint fk_expense_photos_expense
         foreign key (expense_id) references expenses(id) on delete cascade

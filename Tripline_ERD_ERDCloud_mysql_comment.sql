@@ -8,7 +8,8 @@
 --   - 기준 스키마는 Tripline_ERD_mysql.sql
 --   - 논리명은 Tripline_ERD_ERDCloud_logical_mapping.md 기준으로 수동 입력
 --   - 컬럼 COMMENT에는 설명문 대신 UNIQUE 같은 속성만 최소한으로 표기
---   - expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 soft delete 대상
+--   - trip_days / schedule_items / trip_route_segments / expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 soft delete 대상
+--   - soft delete 활성 UNIQUE 보조 generated column은 ERDCloud 호환을 위해 생략
 --   - 컬럼 COMMENT와 테이블 COMMENT를 MySQL 정석 문법으로 분리
 --   - PK/FK도 모두 테이블 하단 CONSTRAINT 구문으로 작성
 --   - 파일 인코딩은 UTF-8, 테이블 기본 문자는 utf8mb4 기준
@@ -90,6 +91,7 @@ CREATE TABLE trip_days (
     sort_order INT NOT NULL COMMENT '',
     created_at DATETIME NOT NULL COMMENT '',
     updated_at DATETIME NOT NULL COMMENT '',
+    deleted_at DATETIME COMMENT '',
     CONSTRAINT pk_trip_days PRIMARY KEY (id),
     CONSTRAINT fk_trip_days_trip FOREIGN KEY (trip_id) REFERENCES trips(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='여행 일차';
@@ -169,6 +171,7 @@ CREATE TABLE schedule_items (
     sort_order INT NOT NULL COMMENT '',
     created_at DATETIME NOT NULL COMMENT '',
     updated_at DATETIME NOT NULL COMMENT '',
+    deleted_at DATETIME COMMENT '',
     CONSTRAINT pk_schedule_items PRIMARY KEY (id),
     CONSTRAINT fk_schedule_items_trip FOREIGN KEY (trip_id) REFERENCES trips(id),
     CONSTRAINT fk_schedule_items_trip_day FOREIGN KEY (trip_day_id) REFERENCES trip_days(id),
@@ -180,7 +183,7 @@ CREATE TABLE trip_route_segments (
     id CHAR(36) NOT NULL COMMENT '',
     trip_day_id CHAR(36) NOT NULL COMMENT '',
     from_schedule_item_id CHAR(36) NOT NULL COMMENT '',
-    to_schedule_item_id CHAR(36) NOT NULL COMMENT '',
+    to_schedule_item_id CHAR(36) NOT NULL COMMENT 'UNIQUE(trip_day_id, from_schedule_item_id, to_schedule_item_id)',
     sort_order INT NOT NULL COMMENT '',
     distance_meters INT NOT NULL COMMENT '',
     walk_minutes INT COMMENT '',
@@ -188,6 +191,7 @@ CREATE TABLE trip_route_segments (
     polyline TEXT COMMENT '',
     created_at DATETIME NOT NULL COMMENT '',
     updated_at DATETIME NOT NULL COMMENT '',
+    deleted_at DATETIME COMMENT '',
     CONSTRAINT pk_trip_route_segments PRIMARY KEY (id),
     CONSTRAINT fk_trip_route_segments_trip_day FOREIGN KEY (trip_day_id) REFERENCES trip_days(id),
     CONSTRAINT fk_trip_route_segments_from_item FOREIGN KEY (from_schedule_item_id) REFERENCES schedule_items(id),

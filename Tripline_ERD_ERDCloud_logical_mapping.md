@@ -4,7 +4,7 @@
 - 기준 논리명: 이 문서 기준 수동 입력
 - ERDCloud 5열 코멘트: `Tripline_ERD_ERDCloud_mysql_comment.sql`의 컬럼 `COMMENT`
 - 코멘트 정책: 설명문 없이 `UNIQUE` 같은 속성만 최소한으로 표기
-- 삭제 정책: `expenses`, `expense_photos`, `trip_expense_categories`, `checklist_sections`, `checklist_items`는 `deleted_at` 기반 soft delete
+- 삭제 정책: `trip_days`, `schedule_items`, `trip_route_segments`, `expenses`, `expense_photos`, `trip_expense_categories`, `checklist_sections`, `checklist_items`는 `deleted_at` 기반 soft delete
 - 용도: ERDCloud에서 SQL import 후 한글 논리명 수동 입력
 - 표기: `키`는 `PK`, `FK`, `UK`를 조합해서 표시
 
@@ -108,6 +108,7 @@
 | 정렬 순서 | `sort_order` | `INT` | NOT NULL | - |
 | 생성일시 | `created_at` | `DATETIME` | NOT NULL | - |
 | 수정일시 | `updated_at` | `DATETIME` | NOT NULL | - |
+| 삭제일시 | `deleted_at` | `DATETIME` | NULL | - |
 
 ## OCR 가져오기 (`ocr_imports`)
 
@@ -186,6 +187,7 @@
 | 정렬 순서 | `sort_order` | `INT` | NOT NULL | - |
 | 생성일시 | `created_at` | `DATETIME` | NOT NULL | - |
 | 수정일시 | `updated_at` | `DATETIME` | NOT NULL | - |
+| 삭제일시 | `deleted_at` | `DATETIME` | NULL | - |
 
 ## 일정 이동 구간 (`trip_route_segments`)
 
@@ -202,6 +204,7 @@
 | 경로 폴리라인 | `polyline` | `TEXT` | NULL | - |
 | 생성일시 | `created_at` | `DATETIME` | NOT NULL | - |
 | 수정일시 | `updated_at` | `DATETIME` | NOT NULL | - |
+| 삭제일시 | `deleted_at` | `DATETIME` | NULL | - |
 
 ## 상위 지출 카테고리 (`trip_expense_categories`)
 
