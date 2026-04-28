@@ -46,7 +46,9 @@ create table auth_refresh_tokens (
     revoked_at datetime(6) null,
     created_at datetime(6) not null default current_timestamp(6),
     primary key (id),
+    unique key uk_auth_refresh_tokens_refresh_token_hash (refresh_token_hash),
     key ix_auth_refresh_tokens_user_id (user_id),
+    key ix_auth_refresh_tokens_expires_at (expires_at),
     constraint fk_auth_refresh_tokens_user
         foreign key (user_id) references users(id) on delete cascade
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
@@ -297,6 +299,7 @@ create table expense_photos (
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
     primary key (id),
+    unique key uk_expense_photos_expense_id_sort_order (expense_id, sort_order),
     constraint fk_expense_photos_expense
         foreign key (expense_id) references expenses(id) on delete cascade
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
