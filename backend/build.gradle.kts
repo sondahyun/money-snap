@@ -2,6 +2,8 @@ plugins {
     java
     id("org.springframework.boot") version "4.0.6"
     id("io.spring.dependency-management") version "1.1.7"
+    checkstyle
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 group = "com.tripline"
@@ -37,4 +39,32 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+spotless {
+    lineEndings = com.diffplug.spotless.LineEnding.UNIX
+
+    java {
+        eclipse().configFile("config/formatter/eclipse-java-formatter.xml")
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    format("misc") {
+        target("*.gradle", "*.gradle.kts", "*.md", ".gitignore", ".editorconfig")
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
+
+checkstyle {
+    toolVersion = "10.12.5"
+    configFile = file("config/checkstyle/checkstyle.xml")
+    maxWarnings = 0
+    isIgnoreFailures = false
+}
+
+tasks.named("check") {
+    dependsOn("spotlessCheck")
 }

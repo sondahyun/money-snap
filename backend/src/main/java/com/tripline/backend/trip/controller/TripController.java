@@ -14,14 +14,9 @@ public class TripController {
 
     @GetMapping
     public ResponseEntity<ApiResponse<GetTripDetailResponse>> getTripDetail() {
-        GetTripDetailResponse response = new GetTripDetailResponse(
-                "sample-trip-id",
-                "제주도 2박 3일",
-                "2026-05-01",
-                "planned"
-        );
+        GetTripDetailResponse response = new GetTripDetailResponse("sample-trip-id", "제주도 2박 3일", "2026-05-01",
+            "planned");
 
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(ApiResponse.ok(200, "여행 상세 조회 성공", response));
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.ok(200, "여행 상세 조회 성공", response));
     }
 }
