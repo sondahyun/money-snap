@@ -65,6 +65,8 @@ create table trips (
     start_date date not null,
     end_date date not null,
     base_currency_code char(3) not null,
+    companion_type varchar(30) null,
+    travel_style_tags json null,
     one_line_description varchar(255) null,
     status enum('planned', 'active', 'completed') not null default 'planned',
     created_at datetime(6) not null default current_timestamp(6),
@@ -75,7 +77,31 @@ create table trips (
     key ix_trips_user_id_status_start_date (user_id, status, start_date),
     constraint fk_trips_user
         foreign key (user_id) references users(id) on delete cascade,
-    constraint chk_trip_date_range check (start_date <= end_date)
+    constraint chk_trip_date_range check (start_date <= end_date),
+    constraint chk_trip_companion_type check (
+        companion_type is null
+        or companion_type in ('solo', 'friends', 'couple', 'spouse', 'children', 'parents', 'other')
+    )
+) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
+
+create table trip_destinations (
+    id char(36) not null,
+    trip_id char(36) not null,
+    country_code char(2) not null,
+    country_name varchar(100) not null,
+    city_name varchar(100) not null,
+    sub_city_names varchar(255) null,
+    sort_order int not null,
+    created_at datetime(6) not null default current_timestamp(6),
+    updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
+    active_sort_order int generated always as (case when deleted_at is null then sort_order else null end) stored,
+    primary key (id),
+    unique key uk_trip_destinations_trip_id_active_sort_order (trip_id, active_sort_order),
+    key ix_trip_destinations_trip_id_deleted_at_sort_order (trip_id, deleted_at, sort_order),
+    constraint fk_trip_destinations_trip
+        foreign key (trip_id) references trips(id) on delete cascade,
+    constraint chk_trip_destination_sort_order check (sort_order > 0)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
 
 create table user_current_trip_selections (
@@ -191,7 +217,7 @@ create table schedule_items (
     id char(36) not null,
     trip_id char(36) not null,
     trip_day_id char(36) not null,
-    item_type enum('place', 'memo') not null,
+    item_type enum('place', 'memo', 'flight', 'lodging') not null,
     trip_place_snapshot_id char(36) null,
     created_from_ocr_candidate_id char(36) null,
     title varchar(200) null,
@@ -217,6 +243,55 @@ create table schedule_items (
         (item_type = 'place' and trip_place_snapshot_id is not null)
         or
         (item_type = 'memo' and trip_place_snapshot_id is null and memo_content is not null)
+        or
+        (item_type = 'flight' and trip_place_snapshot_id is null and memo_content is null)
+        or
+        (item_type = 'lodging' and trip_place_snapshot_id is not null and memo_content is null)
+    )
+) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
+
+create table schedule_item_flights (
+    schedule_item_id char(36) not null,
+    trip_id char(36) not null,
+    airline_name varchar(100) not null,
+    airline_code varchar(10) null,
+    flight_number varchar(30) not null,
+    departure_airport_code char(3) not null,
+    departure_airport_name varchar(200) not null,
+    departure_airport_city varchar(100) null,
+    departure_datetime datetime(6) not null,
+    arrival_airport_code char(3) not null,
+    arrival_airport_name varchar(200) not null,
+    arrival_airport_city varchar(100) null,
+    arrival_datetime datetime(6) not null,
+    created_at datetime(6) not null default current_timestamp(6),
+    updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    primary key (schedule_item_id),
+    key ix_schedule_item_flights_trip_id_departure_datetime (trip_id, departure_datetime),
+    constraint fk_schedule_item_flights_schedule_item
+        foreign key (schedule_item_id, trip_id) references schedule_items(id, trip_id) on delete cascade,
+    constraint chk_schedule_item_flight_airport_code check (
+        char_length(departure_airport_code) = 3
+        and char_length(arrival_airport_code) = 3
+    ),
+    constraint chk_schedule_item_flight_datetime check (arrival_datetime >= departure_datetime)
+) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
+
+create table schedule_item_lodgings (
+    schedule_item_id char(36) not null,
+    trip_id char(36) not null,
+    check_in_date date not null,
+    check_out_date date not null,
+    stay_date date not null,
+    created_at datetime(6) not null default current_timestamp(6),
+    updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    primary key (schedule_item_id),
+    key ix_schedule_item_lodgings_trip_id_stay_date (trip_id, stay_date),
+    constraint fk_schedule_item_lodgings_schedule_item
+        foreign key (schedule_item_id, trip_id) references schedule_items(id, trip_id) on delete cascade,
+    constraint chk_schedule_item_lodging_date check (
+        check_out_date >= check_in_date
+        and stay_date between check_in_date and check_out_date
     )
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
 
@@ -385,7 +460,9 @@ create table exchange_rates (
 -- 비고
 -- 1. 일정 화면의 장소 번호는 별도 컬럼이 아니라 day 내 sort_order 및 place item 순번으로 계산한다.
 -- 2. 메모는 schedule_items.item_type = 'memo'로 관리하며 숫자 배지를 갖지 않는다.
--- 3. 지출은 amount_local / amount_krw / exchange_rate_to_krw를 동시에 저장해 여행 전용 캘린더와 전역 캘린더에서 바로 활용한다.
--- 4. 상위 카테고리의 기본값 '기타'는 서비스 로직에서 여행 생성 시 자동 생성하는 것을 전제로 한다.
--- 5. 날씨 / 환율은 외부 API 결과를 캐시하는 용도로 테이블을 두었고, 캐시 미사용 시 생략 가능하다.
--- 6. 현재 선택된 여행은 user_current_trip_selections로 관리하며, 여행 삭제 시 함께 제거된다.
+-- 3. 항공편은 schedule_items.item_type = 'flight'와 schedule_item_flights 상세 테이블로 관리한다.
+-- 4. 숙소는 schedule_items.item_type = 'lodging'과 schedule_item_lodgings 상세 테이블로 관리하며, 선택한 숙박 날짜 범위의 각 여행 일차에 표시한다.
+-- 5. 지출은 amount_local / amount_krw / exchange_rate_to_krw를 동시에 저장해 여행 전용 캘린더와 전역 캘린더에서 바로 활용한다.
+-- 5. 상위 카테고리의 기본값 '기타'는 서비스 로직에서 여행 생성 시 자동 생성하는 것을 전제로 한다.
+-- 6. 날씨 / 환율은 외부 API 결과를 캐시하는 용도로 테이블을 두었고, 캐시 미사용 시 생략 가능하다.
+-- 7. 현재 선택된 여행은 user_current_trip_selections로 관리하며, 여행 삭제 시 함께 제거된다.

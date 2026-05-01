@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/TriplineText.NavTitle"
-                        android:text="상하이 여행"
+                        android:text="후쿠오카, 도쿄, 오사카 여행"
                         android:textColor="@color/schedule_minimal_text" />
 
                     <TextView
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         style="@style/TriplineText.Meta"
-                        android:text="2.15 - 2.18 · 3박 4일"
+                        android:text="2026.5.7 - 5.11 · 4박 5일"
                         android:textColor="@color/schedule_minimal_subtle" />
                 </LinearLayout>
 
@@ -99,10 +99,10 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="156dp">
+                        android:layout_height="132dp">
 
                         <View
-                            android:layout_width="240dp"
+                            android:layout_width="200dp"
                             android:layout_height="4dp"
                             android:alpha="0.55"
                             android:background="@color/schedule_minimal_blue"
@@ -281,7 +281,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     style="@style/TriplineText.Body"
-                                    android:text="2.15/일"
+                                    android:text="5.7/목"
                                     android:textColor="@color/schedule_minimal_subtle" />
 
                                 <ImageView
@@ -337,7 +337,7 @@
 
                             <View
                                 android:layout_width="2dp"
-                                android:layout_height="82dp"
+                                android:layout_height="68dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_schedule_timeline_line" />
 
@@ -382,7 +382,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             style="@style/TriplineText.NavTitle"
-                                            android:text="상하이 홍차오 국제공항"
+                                            android:text="후쿠오카 공항"
                                             android:textColor="@color/schedule_minimal_text" />
 
                                         <TextView
@@ -390,7 +390,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="6dp"
                                             style="@style/TriplineText.BodyCompact"
-                                            android:text="관광명소 · 예약가능"
+                                            android:text="교통시설 · 하카타 주변"
                                             android:textColor="@color/schedule_minimal_subtle" />
                                     </LinearLayout>
 
@@ -412,7 +412,7 @@
                                 android:paddingEnd="12dp"
                                 android:paddingBottom="8dp"
                                 style="@style/TriplineText.Meta"
-                                android:text="14.6km · 차량 28분 · 도보 2시간 52분"
+                                android:text="5.1km · 차량 18분 · 지하철 12분"
                                 android:textColor="@color/schedule_minimal_text" />
 
                             <LinearLayout
@@ -447,7 +447,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             style="@style/TriplineText.NavTitle"
-                                            android:text="캄파닐레 호텔 상하이 번드"
+                                            android:text="캐널시티 하카타"
                                             android:textColor="@color/schedule_minimal_text" />
 
                                             <TextView
@@ -455,7 +455,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="6dp"
                                                 style="@style/TriplineText.BodyCompact"
-                                                android:text="3성급 · 인민 광장 주변"
+                                                android:text="쇼핑몰 · 하카타 주변"
                                                 android:textColor="@color/schedule_minimal_subtle" />
                                         </LinearLayout>
 
@@ -523,7 +523,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     style="@style/TriplineText.Body"
-                                    android:text="2.16/월"
+                                    android:text="5.8/금"
                                     android:textColor="@color/schedule_minimal_subtle" />
                             </LinearLayout>
                         </LinearLayout>
@@ -557,7 +557,7 @@
 
                             <View
                                 android:layout_width="2dp"
-                                android:layout_height="82dp"
+                                android:layout_height="68dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_schedule_timeline_line" />
 
@@ -602,7 +602,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             style="@style/TriplineText.NavTitle"
-                                            android:text="와이탄"
+                                            android:text="도쿄역"
                                             android:textColor="@color/schedule_minimal_text" />
 
                                         <TextView
@@ -610,7 +610,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="6dp"
                                             style="@style/TriplineText.BodyCompact"
-                                            android:text="관광명소 · 인민 광장 주변"
+                                                android:text="교통시설 · 마루노우치 주변"
                                             android:textColor="@color/schedule_minimal_subtle" />
                                     </LinearLayout>
 
@@ -637,7 +637,7 @@
                                     android:paddingEnd="10dp"
                                     android:paddingBottom="8dp"
                                     style="@style/TriplineText.Meta"
-                                    android:text="401m"
+                                    android:text="1.2km"
                                     android:textColor="@color/schedule_minimal_text" />
 
                                 <TextView
@@ -686,7 +686,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 style="@style/TriplineText.CardTitle"
-                                                android:text="따후춘 안안루 점"
+                                                android:text="오사카성"
                                                 android:textColor="@color/schedule_minimal_text" />
 
                                             <TextView
@@ -694,7 +694,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginTop="6dp"
                                                 style="@style/TriplineText.BodyCompact"
-                                                android:text="음식점 · 인민 광장 주변"
+                                                android:text="관광명소 · 오사카성 공원"
                                                 android:textColor="@color/schedule_minimal_subtle" />
                                         </LinearLayout>
 

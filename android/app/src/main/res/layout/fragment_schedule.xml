@@ -8,10 +8,12 @@
     tools:ignore="HardcodedText">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scheduleScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:fillViewport="true"
+        android:paddingTop="78dp"
         android:paddingBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <FrameLayout
                     android:id="@+id/buttonBack"
@@ -68,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         style="@style/TriplineText.Meta"
-                        android:text="2.15 - 2.18 · 3박 4일"
+                        android:text="2026.2.15 - 2.18 · 3박 4일"
                         android:textColor="@color/schedule_minimal_subtle" />
                 </LinearLayout>
 
@@ -83,6 +86,21 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_schedule_share"
+                        app:tint="@color/schedule_minimal_text" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/buttonScheduleMapMode"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_schedule_icon_button">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_map"
                         app:tint="@color/schedule_minimal_text" />
                 </FrameLayout>
 
@@ -108,8 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -167,6 +184,119 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:id="@+id/scheduleExpandedMetaSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textScheduleExpandedTitle"
+                            style="@style/TriplineText.ScreenTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="상하이 여행"
+                            android:textColor="@color/schedule_minimal_text" />
+
+                        <TextView
+                            style="@style/TriplineText.ActionLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="편집"
+                            android:textColor="@color/schedule_minimal_subtle" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/TriplineText.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="2026.2.15 - 2.18"
+                        android:textColor="@color/schedule_minimal_subtle" />
+
+                    <TextView
+                        style="@style/TriplineText.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="부모님과  |  유명 관광지는 필수 외 1"
+                        android:textColor="@color/schedule_minimal_subtle" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/buttonHeaderAddFlight"
+                                    style="@style/TriplineText.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="42dp"
+                                    android:text="+ 항공편"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    app:backgroundTint="@color/tripline_background"
+                                    app:cornerRadius="21dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/buttonHeaderAddLodging"
+                                    style="@style/TriplineText.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="42dp"
+                                    android:layout_marginStart="8dp"
+                                    android:text="+ 숙소"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    app:backgroundTint="@color/tripline_background"
+                                    app:cornerRadius="21dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/buttonHeaderOpenChecklist"
+                                    style="@style/TriplineText.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="42dp"
+                                    android:layout_marginStart="8dp"
+                                    android:text="체크리스트"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    app:backgroundTint="@color/tripline_background"
+                                    app:cornerRadius="21dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/buttonHeaderOpenTripLedger"
+                                    style="@style/TriplineText.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="42dp"
+                                    android:layout_marginStart="8dp"
+                                    android:text="가계부"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    app:backgroundTint="@color/tripline_background"
+                                    app:cornerRadius="21dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/mapPreviewContainer"
                 android:layout_width="match_parent"
@@ -186,10 +316,10 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="156dp">
+                        android:layout_height="132dp">
 
                         <View
-                            android:layout_width="240dp"
+                            android:layout_width="200dp"
                             android:layout_height="4dp"
                             android:alpha="0.55"
                             android:background="@color/schedule_minimal_blue"
@@ -295,13 +425,24 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <View
-                android:layout_width="54dp"
-                android:layout_height="5dp"
+            <FrameLayout
+                android:id="@+id/buttonScheduleMapCollapse"
+                android:layout_width="64dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="14dp"
-                android:background="@drawable/bg_tripline_pill"
-                android:backgroundTint="@color/schedule_minimal_line" />
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/imageScheduleMapCollapse"
+                    android:layout_width="42dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:alpha="0.5"
+                    android:src="@drawable/ic_schedule_chevron_down"
+                    app:tint="@color/schedule_minimal_subtle" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -372,6 +513,82 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:layout_width="52dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:background="@drawable/bg_tripline_pill"
+                                android:backgroundTint="@color/schedule_minimal_blue">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_tripline_airplane"
+                                    app:tint="@color/white" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendardbold"
+                                android:text="12:00"
+                                android:textColor="@color/tripline_text_hint"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="@color/schedule_minimal_surface"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="6dp"
+                            app:strokeWidth="0dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingStart="18dp"
+                                android:paddingTop="18dp"
+                                android:paddingEnd="18dp"
+                                android:paddingBottom="18dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendardbold"
+                                    android:text="GMP 12:00 - SHA 13:05"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:fontFamily="@font/pretendardmedium"
+                                    android:text="중국동방항공 · MU512"
+                                    android:textColor="@color/schedule_minimal_subtle"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
                             android:layout_width="28dp"
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
@@ -390,7 +607,7 @@
 
                             <View
                                 android:layout_width="2dp"
-                                android:layout_height="82dp"
+                                android:layout_height="68dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_schedule_timeline_line" />
 
@@ -470,7 +687,7 @@
                                 android:paddingEnd="12dp"
                                 android:paddingBottom="8dp"
                                 style="@style/TriplineText.Meta"
-                                android:text="14.6km · 차량 28분 · 도보 2시간 52분"
+                                        android:text="5.1km · 차량 18분 · 지하철 12분"
                                 android:textColor="@color/schedule_minimal_text" />
 
                             <com.google.android.material.card.MaterialCardView
@@ -526,7 +743,7 @@
                                     android:paddingEnd="16dp"
                                     android:paddingBottom="16dp"
                                     style="@style/TriplineText.CardTitle"
-                                    android:text="해 질 무렵 와이탄 쪽으로 이동하기"
+                                    android:text="저녁에는 나카스 강변 산책하기"
                                     android:textColor="@color/schedule_minimal_text" />
                             </com.google.android.material.card.MaterialCardView>
                         </LinearLayout>
@@ -536,6 +753,75 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonAddFlightDay1"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_weight="1"
+                            style="@style/TriplineText.Button"
+                            android:text="항공편 추가"
+                            android:textAllCaps="false"
+                            android:textColor="@color/schedule_minimal_text"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_tripline_airplane"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            app:iconTint="@color/schedule_minimal_text"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonAddLodgingDay1"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_weight="1"
+                            style="@style/TriplineText.Button"
+                            android:text="숙소 추가"
+                            android:textAllCaps="false"
+                            android:textColor="@color/schedule_minimal_text"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_tripline_hotel"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            app:iconTint="@color/schedule_minimal_text"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonOpenTripLedger"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            style="@style/TriplineText.Button"
+                            android:text="가계부"
+                            android:textAllCaps="false"
+                            android:textColor="@color/schedule_minimal_text"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_money"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            app:iconTint="@color/schedule_minimal_text"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <com.google.android.material.button.MaterialButton
@@ -647,7 +933,7 @@
 
                             <View
                                 android:layout_width="2dp"
-                                android:layout_height="82dp"
+                                android:layout_height="68dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/bg_schedule_timeline_line" />
 
@@ -725,7 +1011,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="6dp"
                                         style="@style/TriplineText.BodyCompact"
-                                        android:text="관광명소 · 인민 광장 주변 · 예약가능"
+                                        android:text="교통시설 · 마루노우치 주변"
                                         android:textColor="@color/schedule_minimal_subtle" />
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
@@ -745,7 +1031,7 @@
                                     android:paddingEnd="10dp"
                                     android:paddingBottom="8dp"
                                     style="@style/TriplineText.Meta"
-                                    android:text="401m"
+                                    android:text="1.2km"
                                     android:textColor="@color/schedule_minimal_text" />
 
                                 <TextView
@@ -796,7 +1082,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="12dp"
                                         style="@style/TriplineText.CardTitle"
-                                        android:text="따후춘 안안루 점"
+                                        android:text="남상만두 예원 점"
                                         android:textColor="@color/schedule_minimal_text" />
 
                                     <TextView
@@ -804,7 +1090,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="6dp"
                                         style="@style/TriplineText.BodyCompact"
-                                        android:text="음식점 · 인민 광장 주변"
+                                        android:text="음식점 · 예원 주변"
                                         android:textColor="@color/schedule_minimal_subtle" />
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
@@ -828,7 +1114,7 @@
                                     android:paddingEnd="16dp"
                                     android:paddingBottom="16dp"
                                     style="@style/TriplineText.CardTitle"
-                                    android:text="비 오면 근처 실내 일정으로 바로 변경"
+                                    android:text="비 오면 박물관이나 쇼핑몰 일정으로 변경"
                                     android:textColor="@color/schedule_minimal_text" />
                             </com.google.android.material.card.MaterialCardView>
                         </LinearLayout>
@@ -875,7 +1161,492 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.DayTitle"
+                        android:text="day 3"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        style="@style/TriplineText.Body"
+                        android:text="2.17/화"
+                        android:textColor="@color/schedule_minimal_subtle" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="28dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_tripline_pill"
+                            android:backgroundTint="@color/tripline_marker_teal"
+                            android:fontFamily="@font/pretendardbold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_schedule_timeline_line" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/schedule_minimal_surface"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/pretendardbold"
+                                    android:maxLines="1"
+                                    android:text="캄파닐레 호텔 상하이 번드"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    style="@style/TriplineText.BodyCompact"
+                                    android:text="3성급 · 인민 광장 주변"
+                                    android:textColor="@color/schedule_minimal_subtle" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.Button"
+                        android:text="장소 추가"
+                        android:textAllCaps="false"
+                        android:textColor="@color/schedule_minimal_text"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="18dp"
+                        app:strokeColor="@color/schedule_minimal_line"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.Button"
+                        android:text="메모 추가"
+                        android:textAllCaps="false"
+                        android:textColor="@color/schedule_minimal_text"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="18dp"
+                        app:icon="@drawable/ic_schedule_note"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp"
+                        app:iconTint="@color/schedule_minimal_text"
+                        app:strokeColor="@color/schedule_minimal_line"
+                        app:strokeWidth="1dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.DayTitle"
+                        android:text="day 4"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        style="@style/TriplineText.Body"
+                        android:text="2.18/수"
+                        android:textColor="@color/schedule_minimal_subtle" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="28dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_tripline_pill"
+                            android:backgroundTint="@color/tripline_marker_teal"
+                            android:fontFamily="@font/pretendardbold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_schedule_timeline_line" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/schedule_minimal_surface"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/pretendardbold"
+                                    android:maxLines="1"
+                                    android:text="캄파닐레 호텔 상하이 번드"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    style="@style/TriplineText.BodyCompact"
+                                    android:text="3성급 · 인민 광장 주변"
+                                    android:textColor="@color/schedule_minimal_subtle" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.Button"
+                        android:text="장소 추가"
+                        android:textAllCaps="false"
+                        android:textColor="@color/schedule_minimal_text"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="18dp"
+                        app:strokeColor="@color/schedule_minimal_line"
+                        app:strokeWidth="1dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        style="@style/TriplineText.Button"
+                        android:text="메모 추가"
+                        android:textAllCaps="false"
+                        android:textColor="@color/schedule_minimal_text"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="18dp"
+                        app:icon="@drawable/ic_schedule_note"
+                        app:iconGravity="textStart"
+                        app:iconPadding="8dp"
+                        app:iconTint="@color/schedule_minimal_text"
+                        app:strokeColor="@color/schedule_minimal_line"
+                        app:strokeWidth="1dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/scheduleDay5Section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TriplineText.DayTitle"
+                        android:text="day 5"
+                        android:textColor="@color/schedule_minimal_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        style="@style/TriplineText.Body"
+                        android:text="2.19/목"
+                        android:textColor="@color/schedule_minimal_subtle" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="28dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_tripline_pill"
+                            android:backgroundTint="@color/tripline_marker_teal"
+                            android:fontFamily="@font/pretendardbold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_schedule_timeline_line" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/schedule_minimal_surface"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp"
+                            app:strokeColor="@color/schedule_minimal_line"
+                            app:strokeWidth="1dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/pretendardbold"
+                                    android:maxLines="1"
+                                    android:text="캄파닐레 호텔 상하이 번드"
+                                    android:textColor="@color/schedule_minimal_text"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    style="@style/TriplineText.BodyCompact"
+                                    android:text="3성급 · 인민 광장 주변"
+                                    android:textColor="@color/schedule_minimal_subtle" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/schedulePinnedHeader"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@color/schedule_minimal_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/buttonSchedulePinnedBack"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/bg_schedule_icon_button">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_schedule_back"
+                app:tint="@color/schedule_minimal_text" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textSchedulePinnedTitle"
+                style="@style/TriplineText.NavTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상하이 여행"
+                android:textColor="@color/schedule_minimal_text" />
+
+            <TextView
+                android:id="@+id/textSchedulePinnedMeta"
+                style="@style/TriplineText.Meta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="2026.2.15 - 2.18"
+                android:textColor="@color/schedule_minimal_subtle" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/buttonSchedulePinnedShare"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/bg_schedule_icon_button">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_schedule_share"
+                app:tint="@color/schedule_minimal_text" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/buttonSchedulePinnedMapMode"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_schedule_icon_button">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_map"
+                app:tint="@color/schedule_minimal_text" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/buttonSchedulePinnedMore"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_schedule_icon_button">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_schedule_more"
+                app:tint="@color/schedule_minimal_text" />
+        </FrameLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

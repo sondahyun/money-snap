@@ -48,7 +48,7 @@
             android:name=".ui.home.AddIncomeActivity"
             android:exported="true" />
         <activity
-            android:name=".PrototypeScreenActivity"
+            android:name=".TriplineScreenActivity"
             android:exported="false" />
 
     </application>

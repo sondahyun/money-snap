@@ -192,7 +192,7 @@ Refresh Token 폐기
     "defaultRouteTransportMode": "mixed",
     "currentTrip": {
       "tripId": "uuid",
-      "title": "상하이 여행",
+      "title": "후쿠오카, 도쿄, 오사카 여행",
       "status": "active"
     }
   },
@@ -216,12 +216,12 @@ Refresh Token 폐기
   "success": true,
   "data": {
     "tripId": "uuid",
-    "title": "상하이 여행",
-    "countryName": "중국",
-    "cityName": "상하이",
+    "title": "후쿠오카, 도쿄, 오사카 여행",
+    "countryName": "일본",
+    "cityName": "후쿠오카",
     "status": "active",
-    "startDate": "2026-02-15",
-    "endDate": "2026-02-18"
+    "startDate": "2026-05-07",
+    "endDate": "2026-05-11"
   },
   "meta": null,
   "error": null
@@ -269,14 +269,14 @@ Refresh Token 폐기
   "data": [
     {
       "tripId": "uuid",
-      "title": "상하이 여행",
-      "countryName": "중국",
-      "cityName": "상하이",
-      "startDate": "2026-02-15",
-      "endDate": "2026-02-18",
+      "title": "후쿠오카, 도쿄, 오사카 여행",
+      "countryName": "일본",
+      "cityName": "후쿠오카",
+      "startDate": "2026-05-07",
+      "endDate": "2026-05-11",
       "status": "active",
-      "baseCurrencyCode": "CNY",
-      "oneLineDescription": "부모님과"
+      "baseCurrencyCode": "JPY",
+      "oneLineDescription": "연인과 · 유명 관광지는 필수"
     }
   ],
   "meta": {
@@ -294,19 +294,45 @@ Refresh Token 폐기
 
 ```json
 {
-  "title": "상하이 여행",
-  "countryCode": "CN",
-  "countryName": "중국",
-  "cityName": "상하이",
-  "startDate": "2026-02-15",
-  "endDate": "2026-02-18",
-  "baseCurrencyCode": "CNY",
-  "oneLineDescription": "부모님과"
+  "destinations": [
+    {
+      "countryCode": "JP",
+      "countryName": "일본",
+      "cityName": "후쿠오카",
+      "subCityNames": ["유후인", "벳푸", "기타큐슈"],
+      "sortOrder": 1
+    },
+    {
+      "countryCode": "JP",
+      "countryName": "일본",
+      "cityName": "도쿄",
+      "subCityNames": ["하코네", "요코하마", "가마쿠라"],
+      "sortOrder": 2
+    },
+    {
+      "countryCode": "JP",
+      "countryName": "일본",
+      "cityName": "오사카",
+      "subCityNames": ["교토", "고베", "나라"],
+      "sortOrder": 3
+    }
+  ],
+  "startDate": "2026-05-07",
+  "endDate": "2026-05-11",
+  "baseCurrencyCode": "JPY",
+  "companionType": "couple",
+  "travelStyleTags": ["famous_spots"]
 }
 ```
 
 규칙:
 
+- 여행 생성은 `도시 선택 -> 순서 확인/변경 -> 기간 선택 -> 스타일 선택` 흐름을 기준으로 한다.
+- `destinations`는 1개 이상이어야 하며, `sortOrder` 오름차순으로 여행 목적지 순서를 저장한다.
+- 첫 번째 목적지는 `trips.city_name` 대표 도시로 저장한다.
+- `title`은 서버가 목적지 기준으로 자동 생성한다.
+  예: `후쿠오카, 도쿄, 오사카 여행`
+- `companionType`, `travelStyleTags`는 선택값이며 비어 있을 수 있다.
 - 여행 생성이 완료되면 생성된 여행은 자동으로 사용자의 `현재 선택된 여행`으로 저장된다.
 
 ### `GET /trips/{tripId}`
@@ -341,17 +367,17 @@ Refresh Token 폐기
     "hasCurrentTrip": true,
     "currentTrip": {
       "tripId": "uuid",
-      "title": "상하이 여행",
+      "title": "후쿠오카, 도쿄, 오사카 여행",
       "status": "active"
     },
     "activeTrip": {
       "tripId": "uuid",
-      "title": "상하이 여행",
+      "title": "후쿠오카, 도쿄, 오사카 여행",
       "dayIndex": 2,
-      "dateLabel": "2026-02-16"
+      "dateLabel": "2026-05-08"
     },
     "nextSchedule": {
-      "title": "와이탄",
+      "title": "도쿄역",
       "time": "14:00",
       "moveHint": "도보 12분"
     },
@@ -367,9 +393,9 @@ Refresh Token 폐기
       "iconCode": "sun"
     },
     "todayFx": {
-      "currencyCode": "CNY",
-      "rateToKrw": 191.23,
-      "changePercent": 0.22
+      "currencyCode": "JPY",
+      "rateToKrw": 9.12,
+      "changePercent": 0.18
     },
     "expenseSummary": {
       "todayKrw": 52300,
@@ -378,8 +404,8 @@ Refresh Token 폐기
     "recentExpenses": [
       {
         "expenseId": "uuid",
-        "title": "난샹만두 예원 점",
-        "amountKrw": 11200,
+        "title": "이치란 라멘 하카타점",
+        "amountKrw": 11674,
         "flowType": "expense",
         "paymentMethod": "card"
       }
@@ -412,15 +438,15 @@ Refresh Token 폐기
   "data": {
     "trip": {
       "tripId": "uuid",
-      "title": "상하이 여행",
-      "startDate": "2026-02-15",
-      "endDate": "2026-02-18"
+      "title": "후쿠오카, 도쿄, 오사카 여행",
+      "startDate": "2026-05-07",
+      "endDate": "2026-05-11"
     },
     "days": [
       {
         "tripDayId": "uuid",
         "dayIndex": 1,
-        "date": "2026-02-15",
+        "date": "2026-05-07",
         "items": [
           {
             "scheduleItemId": "uuid",
@@ -430,11 +456,42 @@ Refresh Token 폐기
             "place": {
               "tripPlaceSnapshotId": "uuid",
               "googlePlaceId": "place-id",
-              "name": "상하이 홍차오 국제공항",
-              "primaryType": "관광명소",
-              "secondaryText": "예약가능",
-              "latitude": 31.1979,
-              "longitude": 121.3363
+              "name": "후쿠오카 공항",
+              "primaryType": "교통시설",
+              "secondaryText": "하카타 주변",
+              "latitude": 33.5859,
+              "longitude": 130.4506
+            }
+          },
+          {
+            "scheduleItemId": "uuid",
+            "itemType": "flight",
+            "sortOrder": 15,
+            "scheduledTime": "00:21",
+            "flight": {
+              "airlineName": "대한항공",
+              "airlineCode": "KE",
+              "flightNumber": "101",
+              "departureAirportCode": "BCN",
+              "departureAirportName": "엘프라트 국제공항",
+              "departureDatetime": "2026-05-07T00:21:00",
+              "arrivalAirportCode": "ATL",
+              "arrivalAirportName": "하츠필드 잭슨 애틀랜타 국제공항",
+              "arrivalDatetime": "2026-05-08T00:22:00"
+            }
+          },
+          {
+            "scheduleItemId": "uuid",
+            "itemType": "lodging",
+            "sortOrder": 18,
+            "lodging": {
+              "tripPlaceSnapshotId": "uuid",
+              "name": "호텔 오리엔탈 익스프레스 후쿠오카 나카스 카와바타",
+              "gradeText": "3성급",
+              "areaText": "하카타",
+              "checkInDate": "2026-05-09",
+              "checkOutDate": "2026-05-11",
+              "stayDate": "2026-05-09"
             }
           },
           {
@@ -443,7 +500,7 @@ Refresh Token 폐기
             "sortOrder": 20,
             "scheduledTime": "17:30",
             "memo": {
-              "content": "해 질 무렵 와이탄 쪽으로 이동하기"
+              "content": "저녁에는 나카스 강변 산책하기"
             }
           }
         ]
@@ -483,14 +540,70 @@ Refresh Token 폐기
 }
 ```
 
+### `POST /trips/{tripId}/schedule/flights`
+
+항공편 일정 추가
+
+요청:
+
+```json
+{
+  "tripDayId": "uuid",
+  "airlineName": "대한항공",
+  "airlineCode": "KE",
+  "flightNumber": "101",
+  "departureAirportCode": "BCN",
+  "departureAirportName": "엘프라트 국제공항",
+  "departureAirportCity": "바르셀로나",
+  "departureDatetime": "2026-05-07T00:21:00",
+  "arrivalAirportCode": "ATL",
+  "arrivalAirportName": "하츠필드 잭슨 애틀랜타 국제공항",
+  "arrivalAirportCity": "애틀랜타",
+  "arrivalDatetime": "2026-05-08T00:22:00",
+  "sortOrder": 15
+}
+```
+
+규칙:
+
+- 출발일은 여행 기간 내 day 중 하나를 선택한다.
+- 항공사는 직접 입력하거나 추천 항공사 목록에서 선택할 수 있다.
+- 항공사를 입력 또는 선택한 뒤 편명을 입력한다. 예: `KE101`이 아니라 항공사 `KE`와 편명 `101`을 분리 저장한다.
+- 출발 공항과 도착 공항은 공항 검색 결과에서 선택한다.
+- 도착일과 도착 시간은 출발 시간 이후여야 한다.
+
+### `POST /trips/{tripId}/schedule/lodgings`
+
+숙소 일정 추가
+
+요청:
+
+```json
+{
+  "googlePlaceId": "google-place-id",
+  "checkInDate": "2026-05-09",
+  "checkOutDate": "2026-05-11",
+  "sortOrder": 10
+}
+```
+
+규칙:
+
+- 숙소는 Google Places 기반 검색 결과 또는 사용자가 직접 등록한 장소를 선택한다.
+- 체크인/체크아웃 날짜는 현재 여행 기간 안에서만 선택한다.
+- 저장 시 선택한 날짜 범위의 각 여행 일차에 `lodging` 일정 아이템을 생성해 일정 타임라인에 표시한다.
+- 숙소 일정은 장소 스냅샷을 참조하되, 일반 장소 아이템과 구분하기 위해 `itemType=lodging`으로 내려준다.
+
 ### `PATCH /trips/{tripId}/schedule/items/{itemId}`
 
-장소/메모 공통 수정
+장소/메모/항공편/숙소 공통 수정
 
 수정 가능 항목:
 
 - `scheduledTime`
 - `content` (메모)
+- 항공편 상세값 (항공사, 편명, 공항, 출발/도착 일시)
+- 숙소 날짜 범위 (체크인/체크아웃)
 - `sortOrder`
 - `tripDayId`
 
@@ -549,6 +662,69 @@ Google Places 자동완성/검색 프록시
 - `type=food|sight|hotel`
 - `lat`, `lng` (옵션)
 
+### `GET /lodgings/search`
+
+숙소 검색 / 인기 숙소 조회
+
+쿼리 파라미터:
+
+- `tripId`
+- `query` (옵션, 없으면 여행 도시 기준 인기 숙소)
+- `cityName`
+
+응답 예시:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "googlePlaceId": "place-id",
+      "name": "호텔 오리엔탈 익스프레스 후쿠오카 나카스 카와바타",
+      "gradeText": "3성급",
+      "areaText": "하카타",
+      "photoUrl": "https://..."
+    }
+  ],
+  "meta": null,
+  "error": null
+}
+```
+
+### `GET /airports/search`
+
+공항 검색
+
+쿼리 파라미터:
+
+- `q=공항명 또는 도시명 또는 IATA 코드`
+
+응답 예시:
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "airportCode": "ATL",
+      "airportName": "하츠필드 잭슨 애틀랜타 국제공항",
+      "englishName": "Hartsfield-Jackson Atlanta International Airport",
+      "cityName": "애틀랜타",
+      "countryCode": "US"
+    },
+    {
+      "airportCode": "BCN",
+      "airportName": "엘프라트 국제공항",
+      "englishName": "Barcelona El Prat Airport",
+      "cityName": "바르셀로나",
+      "countryCode": "ES"
+    }
+  ],
+  "meta": null,
+  "error": null
+}
+```
+
 ### `GET /places/{googlePlaceId}`
 
 장소 상세 조회
@@ -560,21 +736,21 @@ Google Places 자동완성/검색 프록시
   "success": true,
   "data": {
     "googlePlaceId": "place-id",
-    "name": "남상만두 예원 점",
-    "localizedName": "南翔馒头店 豫园店",
+    "name": "이치란 라멘 하카타점",
+    "localizedName": "一蘭 博多店",
     "rating": 4.1,
     "reviewCount": 110,
     "savedCount": 8518,
-    "address": "인민 광장 주변",
+    "address": "하카타 주변",
     "isReservable": true,
     "openingHoursText": "08:30 - 21:00",
-    "description": "100년이 넘는 전통을 간직한 만두 전문점",
+    "description": "하카타 여행 중 들르기 좋은 라멘 전문점",
     "photoUrls": [
       "https://..."
     ],
     "menuHighlights": [
-      "샤오롱바오",
-      "새우 만두"
+      "돈코츠 라멘",
+      "반숙 계란"
     ],
     "googleMapsUrl": "https://maps.google.com/..."
   },
@@ -594,13 +770,13 @@ Google Places 자동완성/검색 프록시
 ```json
 {
   "flowType": "expense",
-  "title": "남상만두 예원 점",
-  "expenseDate": "2026-02-16",
+  "title": "이치란 라멘 하카타점",
+  "expenseDate": "2026-05-08",
   "expenseTime": "13:20",
-  "localCurrencyCode": "CNY",
-  "amountLocal": 58.00,
-  "amountKrw": 11122.34,
-  "exchangeRateToKrw": 191.7645,
+  "localCurrencyCode": "JPY",
+  "amountLocal": 1280.00,
+  "amountKrw": 11673.60,
+  "exchangeRateToKrw": 9.12,
   "paymentMethod": "cash",
   "topCategoryId": "uuid",
   "tripPlaceSnapshotId": "uuid",
@@ -813,14 +989,14 @@ OCR 후보 수정 / 승인 / 거절
 {
   "success": true,
   "data": {
-    "countryName": "중국",
-    "representativeCityName": "상하이",
-    "timeZone": "Asia/Shanghai",
-    "utcOffsetMinutes": 480,
-    "localTime": "2026-02-16T13:30:00+08:00",
+    "countryName": "일본",
+    "representativeCityName": "후쿠오카",
+    "timeZone": "Asia/Tokyo",
+    "utcOffsetMinutes": 540,
+    "localTime": "2026-05-08T13:30:00+09:00",
     "days": [
       {
-        "date": "2026-02-15",
+        "date": "2026-05-07",
         "summary": "맑음",
         "iconCode": "sun",
         "minTemp": 6,
@@ -847,11 +1023,11 @@ OCR 후보 수정 / 승인 / 거절
 {
   "success": true,
   "data": {
-    "currencyCode": "CNY",
-    "rateToKrw": 191.23,
-    "previousBusinessDate": "2026-02-15",
-    "changeAmount": 0.42,
-    "changePercent": 0.22
+    "currencyCode": "JPY",
+    "rateToKrw": 9.12,
+    "previousBusinessDate": "2026-05-07",
+    "changeAmount": 0.02,
+    "changePercent": 0.18
   },
   "meta": null,
   "error": null

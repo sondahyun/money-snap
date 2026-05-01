@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/tripLedgerHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/buttonTripLedgerBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="뒤로가기"
+            android:padding="6dp"
+            android:src="@drawable/ic_schedule_back"
+            app:tint="@color/schedule_minimal_text" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardbold"
+                android:text="가계부"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/pretendardmedium"
+                android:text="후쿠오카, 도쿄, 오사카 여행"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_money"
+            app:tint="@color/schedule_minimal_text" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:padding="6dp"
+            android:src="@drawable/ic_tripline_more_horizontal"
+            app:tint="@color/schedule_minimal_text" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="112dp"
+        app:layout_constraintBottom_toTopOf="@id/tripLedgerBottomSummary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tripLedgerHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="28dp"
+            android:paddingTop="22dp"
+            android:paddingEnd="28dp">
+
+            <TextView
+                android:id="@+id/buttonTripLedgerPeriod"
+                android:layout_width="82dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_tripline_selection_action"
+                android:fontFamily="@font/pretendardbold"
+                android:gravity="center"
+                android:text="기간전체⌄"
+                android:textColor="@color/schedule_minimal_blue"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="여행준비"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/buttonLedgerAddPreparation"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_tripline_secondary_action_neutral"
+                android:fontFamily="@font/pretendardbold"
+                android:gravity="center"
+                android:text="비용 추가"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="day 1 5.7/목"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/buttonLedgerAddDay1"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_tripline_secondary_action_neutral"
+                android:fontFamily="@font/pretendardbold"
+                android:gravity="center"
+                android:text="비용 추가"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="day 2 5.8/금"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/buttonLedgerAddDay2"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_tripline_secondary_action_neutral"
+                android:fontFamily="@font/pretendardbold"
+                android:gravity="center"
+                android:text="비용 추가"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="day 3 5.9/토"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/buttonLedgerAddDay3"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_tripline_secondary_action_neutral"
+                android:fontFamily="@font/pretendardbold"
+                android:gravity="center"
+                android:text="비용 추가"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/tripLedgerBottomSummary"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/tripLedgerBottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardbold"
+            android:text="0원 지출"
+            android:textColor="@color/schedule_minimal_text"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tripLedgerBottomNav"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="여행 홈" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="배낭톡" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="일정" android:textColor="@color/schedule_minimal_text" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="저장" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="여행 도구" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

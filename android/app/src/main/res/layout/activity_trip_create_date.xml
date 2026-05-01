@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/buttonTripDateDone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="32dp">
+
+            <ImageView
+                android:id="@+id/buttonTripDateBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="닫기"
+                android:padding="6dp"
+                android:src="@drawable/ic_tripline_close"
+                app:tint="@color/schedule_minimal_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="여행일정 등록"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/pretendardmedium"
+                android:text="일정에 따른 날씨예보, 여행 정보를 알려드립니다."
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="26"
+                    android:textColor="@color/tripline_market_up"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="27"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="28"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="29"
+                    android:textColor="@color/schedule_minimal_text"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="30\n오늘"
+                    android:textColor="@color/schedule_minimal_blue"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="2026년 5월"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="18sp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:columnCount="7"
+                android:rowCount="6">
+
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="일" android:textColor="@color/tripline_text_hint" />
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="월" android:textColor="@color/tripline_text_hint" />
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="화" android:textColor="@color/tripline_text_hint" />
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="수" android:textColor="@color/tripline_text_hint" />
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="목" android:textColor="@color/tripline_text_hint" />
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="금" android:textColor="@color/tripline_text_hint" />
+                <TextView style="@style/TriplineText.Meta" android:layout_width="0dp" android:layout_height="34dp" android:layout_columnWeight="1" android:gravity="center" android:text="토" android:textColor="@color/tripline_text_hint" />
+
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="1" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="2" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="3" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="4" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="5" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="6" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="7" android:textColor="@color/white" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="8" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="9" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="10" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="11" android:textColor="@color/white" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="12" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="13" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="14" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="15" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="16" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/buttonTripDateDone"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/bg_tripline_action"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="center"
+        android:text="2026.5.7 - 5.11 / 등록 완료"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

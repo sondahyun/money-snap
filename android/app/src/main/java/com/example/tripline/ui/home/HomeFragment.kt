@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tripline.MainActivity
-import com.example.tripline.PrototypeScreenActivity
+import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.R
 import com.example.tripline.TriplineApplication
 import com.example.tripline.databinding.FragmentHomeBinding
@@ -53,9 +53,9 @@ class HomeFragment : Fragment() {
 
         binding.addButton.setOnClickListener {
             startActivity(
-                PrototypeScreenActivity.intent(
+                TriplineScreenActivity.intent(
                     requireContext(),
-                    PrototypeScreenActivity.Screen.EXPENSE_ENTRY
+                    TriplineScreenActivity.Screen.EXPENSE_ENTRY
                 )
             )
         }
@@ -66,18 +66,9 @@ class HomeFragment : Fragment() {
 
         binding.buttonCreateTripEmpty.setOnClickListener {
             startActivity(
-                PrototypeScreenActivity.intent(
+                TriplineScreenActivity.intent(
                     requireContext(),
-                    PrototypeScreenActivity.Screen.TRIP_CREATE
-                )
-            )
-        }
-
-        binding.buttonImportOcrEmpty.setOnClickListener {
-            startActivity(
-                PrototypeScreenActivity.intent(
-                    requireContext(),
-                    PrototypeScreenActivity.Screen.OCR_IMPORT
+                    TriplineScreenActivity.Screen.TRIP_CREATE
                 )
             )
         }
@@ -92,9 +83,9 @@ class HomeFragment : Fragment() {
 
         binding.todayWeatherSection.setOnClickListener {
             startActivity(
-                PrototypeScreenActivity.intent(
+                TriplineScreenActivity.intent(
                     requireContext(),
-                    PrototypeScreenActivity.Screen.WEATHER
+                    TriplineScreenActivity.Screen.WEATHER
                 )
             )
         }

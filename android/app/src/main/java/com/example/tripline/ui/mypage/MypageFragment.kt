@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.tripline.PrototypeScreenActivity
+import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.databinding.FragmentMypageBinding
 
 class MypageFragment : Fragment() {
@@ -30,9 +30,9 @@ class MypageFragment : Fragment() {
 
         val openSettings = {
             startActivity(
-                PrototypeScreenActivity.intent(
+                TriplineScreenActivity.intent(
                     requireContext(),
-                    PrototypeScreenActivity.Screen.SETTINGS
+                    TriplineScreenActivity.Screen.SETTINGS
                 )
             )
         }

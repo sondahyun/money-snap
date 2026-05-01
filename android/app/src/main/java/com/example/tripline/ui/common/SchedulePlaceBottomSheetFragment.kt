@@ -8,8 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import com.example.tripline.PrototypeScreenActivity
+import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -38,14 +37,13 @@ class SchedulePlaceBottomSheetFragment : BottomSheetDialogFragment() {
             openPlaceDetail()
         }
         view.findViewById<View>(R.id.buttonPlaceDetailBottom)?.setOnClickListener {
-            Toast.makeText(requireContext(), "리뷰쓰기는 다음 단계에서 연결할게요.", Toast.LENGTH_SHORT)
-                .show()
+            openPlaceDetail()
         }
         view.findViewById<View>(R.id.buttonPlaceExpenseAdd)?.setOnClickListener {
             startActivity(
-                PrototypeScreenActivity.intent(
+                TriplineScreenActivity.intent(
                     requireContext(),
-                    PrototypeScreenActivity.Screen.EXPENSE_ENTRY
+                    TriplineScreenActivity.Screen.EXPENSE_ENTRY
                 )
             )
             dismiss()
@@ -72,9 +70,9 @@ class SchedulePlaceBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun openPlaceDetail() {
         startActivity(
-            PrototypeScreenActivity.intent(
+            TriplineScreenActivity.intent(
                 requireContext(),
-                PrototypeScreenActivity.Screen.PLACE_DETAIL
+                TriplineScreenActivity.Screen.PLACE_DETAIL
             )
         )
         dismiss()

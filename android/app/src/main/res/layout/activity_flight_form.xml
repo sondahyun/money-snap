@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/flightFormHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/buttonFlightFormBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="뒤로가기"
+            android:padding="6dp"
+            android:src="@drawable/ic_schedule_back"
+            app:tint="@color/schedule_minimal_text" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/pretendardbold"
+            android:text="항공편 추가"
+            android:textColor="@color/schedule_minimal_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/buttonFlightFormDone"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:fontFamily="@font/pretendardbold"
+            android:gravity="center"
+            android:text="완료"
+            android:textColor="@color/schedule_minimal_blue"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flightFormHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="28dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="28dp"
+            android:paddingBottom="44dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardbold"
+                android:text="출발일"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightDepartureDate"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="2026.5.7"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="항공편명"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="대한항공(KE)101"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="17sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="출발 공항"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightDepartureAirport"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="공항을 검색해주세요."
+                android:textColor="@color/tripline_text_hint"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="출발 시간"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightDepartureTime"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="시간을 선택해주세요."
+                android:textColor="@color/tripline_text_hint"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="도착 공항"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightArrivalAirport"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="공항을 검색해주세요."
+                android:textColor="@color/tripline_text_hint"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="도착일"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightArrivalDate"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="출발일을 선택해주세요."
+                android:textColor="@color/tripline_text_hint"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="도착 시간"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textFlightArrivalTime"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/pretendardbold"
+                android:text="시간을 선택해주세요."
+                android:textColor="@color/tripline_text_hint"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/pretendardmedium"
+                android:text="*최종 운항 스케줄은 해당 항공사를 통해 확인해 주세요."
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

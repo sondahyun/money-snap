@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="92dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonLodgingDateDone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="36dp">
+
+            <ImageView
+                android:id="@+id/buttonLodgingDateBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="뒤로가기"
+                android:padding="6dp"
+                android:src="@drawable/ic_schedule_back"
+                app:tint="@color/schedule_minimal_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="날짜 선택"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/pretendardmedium"
+                android:lineSpacingExtra="3dp"
+                android:text="호텔 오리엔탈 익스프레스 후쿠오카 나카스 카와바타의\n체크인-체크아웃 날짜를 선택해주세요."
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/pretendardmedium"
+                android:text="여행 일정 내에서만 선택 가능"
+                android:textColor="@color/tripline_text_hint"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="-22dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="-22dp"
+                android:background="@color/schedule_minimal_line" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:columnCount="7"
+                android:rowCount="5">
+
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="3" android:textColor="#55E05A6D" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="4" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="5" android:textColor="#55E05A6D" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="6" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="7" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="8" android:textColor="@color/schedule_minimal_text" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="9" android:textColor="@color/white" android:textSize="16sp" />
+
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="10" android:textColor="@color/tripline_market_up" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:background="@color/schedule_minimal_blue_soft" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="11" android:textColor="@color/white" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="12" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="13" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="14" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="15" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="16" android:textColor="#55E05A6D" android:textSize="16sp" />
+
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="17" android:textColor="#33E05A6D" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="18" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="19" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="20" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="21" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="22" android:textColor="@color/tripline_text_hint" android:textSize="16sp" />
+                <TextView android:layout_width="0dp" android:layout_height="46dp" android:layout_columnWeight="1" android:fontFamily="@font/pretendardbold" android:gravity="center" android:text="23" android:textColor="#33E05A6D" android:textSize="16sp" />
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/pretendardbold"
+                android:text="2026년 6월"
+                android:textColor="@color/schedule_minimal_text"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/buttonLodgingDateDone"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_tripline_action"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="center"
+        android:text="2026.5.9 - 5.11 / 등록 완료"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/schedule_minimal_bg"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/flightAirlineHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/buttonFlightAirlineBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="뒤로가기"
+            android:padding="6dp"
+            android:src="@drawable/ic_schedule_back"
+            app:tint="@color/schedule_minimal_text" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/pretendardbold"
+            android:text="항공편명 등록"
+            android:textColor="@color/schedule_minimal_text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/buttonFlightAirlineDone"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:fontFamily="@font/pretendardbold"
+            android:gravity="center"
+            android:text="완료"
+            android:textColor="@color/schedule_minimal_blue"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flightAirlineHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="28dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="28dp"
+            android:paddingBottom="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardbold"
+                android:text="항공사"
+                android:textColor="@color/schedule_minimal_subtle"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/inputFlightAirline"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/schedule_minimal_blue"
+                android:fontFamily="@font/pretendardbold"
+                android:hint="항공사명 또는 코드를 입력해주세요 예) KE"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/schedule_minimal_text"
+                android:textColorHint="@color/tripline_text_hint"
+                android:textSize="17sp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:columnCount="2"
+                android:rowCount="4">
+
+                <TextView
+                    android:id="@+id/buttonAirlineKorean"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="대한항공(KE)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineAsiana"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="아시아나항공(OZ)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineJeju"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="제주항공(7C)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineJin"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="진에어(LJ)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineTway"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="티웨이항공(TW)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineAirSeoul"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="에어서울(RS)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineAirBusan"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="에어부산(BX)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/buttonAirlineEastar"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_tripline_secondary_action_neutral"
+                    android:fontFamily="@font/pretendardbold"
+                    android:gravity="center"
+                    android:text="이스타항공(ZE)"
+                    android:textColor="@color/schedule_minimal_subtle"
+                    android:textSize="13sp" />
+            </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

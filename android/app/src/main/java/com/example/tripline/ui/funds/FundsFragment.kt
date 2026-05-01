@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.tripline.PrototypeScreenActivity
+import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.R
 import com.example.tripline.databinding.FragmentFundsBinding
 
@@ -24,13 +24,13 @@ class FundsFragment : Fragment() {
         _binding = FragmentFundsBinding.inflate(inflater, container, false)
 
         binding.buttonFundsAddExpense.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.EXPENSE_ENTRY)
+            openScreen(TriplineScreenActivity.Screen.EXPENSE_ENTRY)
         }
         binding.rowFundsPlaceWaitan.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.EXPENSE_DETAIL)
+            openScreen(TriplineScreenActivity.Screen.EXPENSE_DETAIL)
         }
         binding.rowFundsPlaceExchange.setOnClickListener {
-            openScreen(PrototypeScreenActivity.Screen.EXPENSE_DETAIL)
+            openScreen(TriplineScreenActivity.Screen.EXPENSE_DETAIL)
         }
         binding.buttonFundsPlaceTab.setOnClickListener { showPlaceMode() }
         binding.buttonFundsCategoryTab.setOnClickListener { showCategoryMode() }
@@ -84,8 +84,8 @@ class FundsFragment : Fragment() {
         binding.buttonFundsCategoryTab.setTextColor(if (isPlaceSelected) textSecondary else white)
     }
 
-    private fun openScreen(screen: PrototypeScreenActivity.Screen) {
-        startActivity(PrototypeScreenActivity.intent(requireContext(), screen))
+    private fun openScreen(screen: TriplineScreenActivity.Screen) {
+        startActivity(TriplineScreenActivity.intent(requireContext(), screen))
     }
 
     override fun onDestroyView() {

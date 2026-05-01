@@ -167,6 +167,7 @@
                 android:paddingBottom="14dp">
 
                 <LinearLayout
+                    android:id="@+id/tripContentShanghai"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -205,19 +206,44 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/tripActionPanelShanghai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_tripline_pill"
-                    android:backgroundTint="@color/schedule_minimal_blue_soft"
-                    android:fontFamily="@font/pretendardmedium"
-                    android:paddingStart="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="day 4"
-                    android:textColor="@color/schedule_minimal_blue"
-                    android:textSize="12sp" />
+                    android:alpha="0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:translationX="32dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/buttonTripEditShanghai"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="여행 수정"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_schedule_edit"
+                        app:tint="@color/schedule_minimal_text" />
+
+                    <ImageView
+                        android:id="@+id/buttonTripDeleteShanghai"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="6dp"
+                        android:contentDescription="여행 삭제"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_tripline_trash"
+                        app:tint="@color/schedule_minimal_text" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/buttonTripMoreShanghai"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="여행 메뉴"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tripline_more_horizontal"
+                    app:tint="@color/schedule_minimal_text" />
             </LinearLayout>
 
             <View
@@ -235,6 +261,7 @@
                 android:paddingBottom="14dp">
 
                 <LinearLayout
+                    android:id="@+id/tripContentKyoto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -272,6 +299,45 @@
                         android:textColor="@color/schedule_minimal_subtle"
                         android:textSize="13sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tripActionPanelKyoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:translationX="32dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/buttonTripEditKyoto"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="여행 수정"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_schedule_edit"
+                        app:tint="@color/schedule_minimal_text" />
+
+                    <ImageView
+                        android:id="@+id/buttonTripDeleteKyoto"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="6dp"
+                        android:contentDescription="여행 삭제"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_tripline_trash"
+                        app:tint="@color/schedule_minimal_text" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/buttonTripMoreKyoto"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="여행 메뉴"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tripline_more_horizontal"
+                    app:tint="@color/schedule_minimal_text" />
             </LinearLayout>
 
             <View
@@ -289,6 +355,7 @@
                 android:paddingBottom="4dp">
 
                 <LinearLayout
+                    android:id="@+id/tripContentTokyo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -325,6 +392,45 @@
                         android:textColor="@color/schedule_minimal_subtle"
                         android:textSize="13sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tripActionPanelTokyo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:translationX="32dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/buttonTripEditTokyo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="여행 수정"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_schedule_edit"
+                        app:tint="@color/schedule_minimal_text" />
+
+                    <ImageView
+                        android:id="@+id/buttonTripDeleteTokyo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="6dp"
+                        android:contentDescription="여행 삭제"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_tripline_trash"
+                        app:tint="@color/schedule_minimal_text" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/buttonTripMoreTokyo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="여행 메뉴"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tripline_more_horizontal"
+                    app:tint="@color/schedule_minimal_text" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

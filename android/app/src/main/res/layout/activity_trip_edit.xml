@@ -317,6 +317,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/buttonTripEditDelete"
                             android:layout_width="0dp"
                             android:layout_height="42dp"
                             android:layout_marginStart="10dp"

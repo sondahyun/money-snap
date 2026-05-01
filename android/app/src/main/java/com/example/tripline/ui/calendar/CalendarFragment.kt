@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tripline.PrototypeScreenActivity
+import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.TriplineApplication
 import com.example.tripline.databinding.FragmentCalendarBinding
 import com.example.tripline.ui.expense.ExpenseViewModel
@@ -105,9 +105,9 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
         binding.buttonCalendarAddExpense.setOnClickListener {
             startActivity(
-                PrototypeScreenActivity.intent(
+                TriplineScreenActivity.intent(
                     requireContext(),
-                    PrototypeScreenActivity.Screen.EXPENSE_ENTRY
+                    TriplineScreenActivity.Screen.EXPENSE_ENTRY
                 )
             )
         }
