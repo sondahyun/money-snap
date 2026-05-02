@@ -8,9 +8,10 @@ import com.example.tripline.data.entity.Expense
 import kotlinx.coroutines.flow.Flow
 
 @Dao
+@JvmSuppressWildcards
 interface ExpenseDao {
     @Insert
-    suspend fun insertExpense(expense: Expense)
+    suspend fun insertExpense(expense: Expense): Long
 
     // 해당 하는 날의 모든 지출
     @Query("SELECT * FROM expenses WHERE date = :date")
@@ -28,14 +29,14 @@ interface ExpenseDao {
 
     // 해당 하는 _id 의 지출 삭제
     @Query("DELETE FROM expenses WHERE _id = :id")
-    suspend fun deleteExpenseById(id: Int)
+    suspend fun deleteExpenseById(id: Int): Int
 
     // 해당 하는 date 의 모든 지출 삭제
     @Query("DELETE FROM expenses WHERE date = :date")
-    suspend fun deleteExpensesByDate(date: String)
+    suspend fun deleteExpensesByDate(date: String): Int
 
     // Delete an entire expense object
     @Delete
-    suspend fun deleteExpense(expense: Expense)
+    suspend fun deleteExpense(expense: Expense): Int
 
 }

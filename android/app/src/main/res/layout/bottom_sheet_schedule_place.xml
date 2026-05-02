@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 style="@style/TriplineText.Body"
-                android:text="음식점 · 인민 광장 주변 · 예약가능"
+                android:text="음식점 · 인민 광장 주변"
                 android:textColor="@color/schedule_minimal_subtle" />
 
             <TextView
@@ -147,7 +147,7 @@
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             style="@style/TriplineText.Button"
-            android:text="리뷰쓰기"
+            android:text="상세 보기"
             android:textAllCaps="false"
             android:textColor="@color/schedule_minimal_text"
             app:backgroundTint="@color/white"

@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TriplineText.ScreenTitle"
-                    android:text="먼저 여행을 만들어 주세요"
+                    android:text="아직 등록된 일정이 없어요"
                     android:textColor="@color/schedule_minimal_text" />
 
                 <TextView
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     style="@style/TriplineText.Body"
-                    android:text="여행을 만든 뒤 해당 여행 안에서 장소를 추가하고 day별 일정을 짤 수 있어요."
+                    android:text="이 여행 안에서 장소를 추가하거나 OCR로 일정을 불러와 day별 일정을 채울 수 있어요."
                     android:textColor="@color/schedule_minimal_subtle" />
 
                 <LinearLayout
@@ -155,7 +155,7 @@
                         android:layout_height="42dp"
                         android:layout_weight="1"
                         style="@style/TriplineText.Button"
-                        android:text="새 여행 만들기"
+                        android:text="장소 추가"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         app:backgroundTint="@color/schedule_minimal_blue"
@@ -168,7 +168,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         style="@style/TriplineText.Button"
-                        android:text="보관함 보기"
+                        android:text="OCR 불러오기"
                         android:textAllCaps="false"
                         android:textColor="@color/schedule_minimal_text"
                         app:backgroundTint="@color/white"
@@ -672,7 +672,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="6dp"
                                         style="@style/TriplineText.BodyCompact"
-                                        android:text="관광명소 · 예약가능"
+                                        android:text="관광명소 · 인민 광장 주변"
                                         android:textColor="@color/schedule_minimal_subtle" />
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>

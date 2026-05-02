@@ -118,6 +118,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/rowDefaultCurrency"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
@@ -153,6 +154,7 @@
                     android:background="@color/tripline_stroke_neutral" />
 
                 <LinearLayout
+                    android:id="@+id/rowDefaultPdfScope"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
@@ -188,6 +190,7 @@
                     android:background="@color/tripline_stroke_neutral" />
 
                 <LinearLayout
+                    android:id="@+id/rowDefaultRouteMode"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"

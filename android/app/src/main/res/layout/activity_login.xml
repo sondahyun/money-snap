@@ -26,6 +26,7 @@
             android:paddingBottom="28dp">
 
             <ImageView
+                android:id="@+id/buttonLoginBack"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:contentDescription="뒤로가기"
@@ -107,6 +108,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/buttonLoginSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginTop="38dp"
@@ -133,6 +135,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/buttonLoginSignup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TriplineText.BodyCompact"
@@ -149,6 +152,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/buttonLoginGuest"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_marginTop="10dp"

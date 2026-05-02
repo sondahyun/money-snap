@@ -26,6 +26,9 @@ import java.util.Locale
 class TriplineScreenActivity : AppCompatActivity() {
 
     enum class Screen(@LayoutRes val layoutRes: Int) {
+        LOGIN(R.layout.activity_login),
+        SIGNUP(R.layout.activity_signup),
+        EXCHANGE(R.layout.fragment_money),
         TRIP_CREATE(R.layout.activity_trip_create),
         TRIP_CREATE_DATE(R.layout.activity_trip_create_date),
         TRIP_CREATE_STYLE(R.layout.activity_trip_create_style),
@@ -103,6 +106,23 @@ class TriplineScreenActivity : AppCompatActivity() {
 
     private fun bindScreen() {
         when (screen) {
+            Screen.LOGIN -> {
+                finishOnClick(R.id.buttonLoginBack)
+                openScreenOnClick(R.id.buttonLoginSignup, Screen.SIGNUP)
+                openTabOnClick(R.id.buttonLoginSubmit, R.id.fragment_home)
+                openTabOnClick(R.id.buttonLoginGuest, R.id.fragment_home)
+            }
+
+            Screen.SIGNUP -> {
+                finishOnClick(R.id.buttonSignupBack)
+                openTabOnClick(R.id.buttonSignupSubmit, R.id.fragment_home)
+                openScreenOnClick(R.id.buttonSignupLogin, Screen.LOGIN)
+            }
+
+            Screen.EXCHANGE -> {
+                finishOnClick(R.id.buttonExchangeBack)
+            }
+
             Screen.TRIP_CREATE -> {
                 bindTripCreateCityRows()
                 finishOnClick(R.id.buttonTripCreateBack)
@@ -141,11 +161,17 @@ class TriplineScreenActivity : AppCompatActivity() {
             Screen.CHECKLIST_EDIT -> {
                 finishOnClick(R.id.buttonChecklistEditBack, R.id.buttonChecklistEditDone)
                 openScreenOnClick(R.id.buttonChecklistItemAdd, Screen.CHECKLIST_ITEM_ADD)
-                openScreenOnClick(R.id.buttonChecklistCategoryAdd, Screen.CATEGORY_MANAGE)
-                showChecklistActionsOnClick(
-                    R.id.buttonChecklistCategoryMenu,
-                    R.id.buttonChecklistItemMenu1
+                showOptionSheetOnClick(
+                    R.id.buttonChecklistCategoryAdd,
+                    "새 준비물 카테고리",
+                    listOf("섹션명 직접 입력", "여행 필수", "의류", "전자기기", "서류")
                 )
+                showOptionSheetOnClick(
+                    R.id.buttonChecklistCategoryMenu,
+                    "준비물 카테고리",
+                    listOf("카테고리명 수정", "카테고리 삭제")
+                )
+                showChecklistActionsOnClick(R.id.buttonChecklistItemMenu1)
             }
 
             Screen.CHECKLIST_ITEM_ADD -> {
@@ -214,7 +240,27 @@ class TriplineScreenActivity : AppCompatActivity() {
                 showOptionSheetOnClick(
                     R.id.buttonAddTopCategory,
                     "새 카테고리 추가",
-                    listOf("숙소", "항공", "교통", "관광", "식비", "쇼핑", "기타")
+                    listOf("카테고리명 직접 입력", "여행준비", "부모님 선물", "입장권", "통신비")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonEditDefaultCategory,
+                    "기본 카테고리",
+                    listOf("기본 분류라 삭제할 수 없어요")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonEditExchangeCategory,
+                    "환전 카테고리",
+                    listOf("이름 수정", "카테고리 삭제")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonEditEsimCategory,
+                    "유심/eSIM 카테고리",
+                    listOf("이름 수정", "카테고리 삭제")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonEditSnackCategory,
+                    "부모님 간식 카테고리",
+                    listOf("이름 수정", "카테고리 삭제")
                 )
             }
 
@@ -346,6 +392,21 @@ class TriplineScreenActivity : AppCompatActivity() {
             Screen.SETTINGS -> {
                 finishOnClick(R.id.buttonSettingsBack)
                 openScreenOnClick(R.id.rowProfileEdit, Screen.PROFILE_EDIT)
+                showOptionSheetOnClick(
+                    R.id.rowDefaultCurrency,
+                    "기본 통화",
+                    listOf("KRW", "JPY", "USD", "EUR")
+                )
+                showOptionSheetOnClick(
+                    R.id.rowDefaultPdfScope,
+                    "PDF 기본 범위",
+                    listOf("전체 일정", "현재 선택한 day", "가계부 포함", "가계부 제외")
+                )
+                showOptionSheetOnClick(
+                    R.id.rowDefaultRouteMode,
+                    "동선 기준 이동수단",
+                    listOf("도보 + 차량", "대중교통 우선", "도보 우선", "차량 우선")
+                )
                 openTabOnClick(R.id.buttonLogout, R.id.fragment_home)
             }
 

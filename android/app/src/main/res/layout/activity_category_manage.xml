@@ -124,6 +124,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonEditDefaultCategory"
                         style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -175,6 +176,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonEditExchangeCategory"
                         style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -226,6 +228,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonEditEsimCategory"
                         style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -277,6 +280,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/buttonEditSnackCategory"
                         style="@style/TriplineText.ActionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

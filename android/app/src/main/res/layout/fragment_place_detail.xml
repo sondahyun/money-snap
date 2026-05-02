@@ -123,7 +123,7 @@
             android:minWidth="108dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="예약하기"
+            android:text="일정에 추가"
             android:textColor="@color/white" />
 
         <FrameLayout
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="리뷰쓰기"
+                android:text="상세정보"
                 android:textColor="@color/schedule_minimal_subtle" />
 
             <TextView

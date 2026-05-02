@@ -19,6 +19,9 @@ class ChecklistItemActionsBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.findViewById<View>(R.id.buttonEditChecklistItem)?.setOnClickListener {
+            dismiss()
+        }
         view.findViewById<View>(R.id.buttonDeleteChecklistItem)?.setOnClickListener {
             dismiss()
         }

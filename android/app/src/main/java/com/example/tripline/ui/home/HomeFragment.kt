@@ -90,6 +90,15 @@ class HomeFragment : Fragment() {
             )
         }
 
+        binding.todayFxSection.setOnClickListener {
+            startActivity(
+                TriplineScreenActivity.intent(
+                    requireContext(),
+                    TriplineScreenActivity.Screen.EXCHANGE
+                )
+            )
+        }
+
         return binding.root
     }
 

@@ -401,7 +401,7 @@
                                 android:paddingTop="4dp"
                                 android:paddingEnd="8dp"
                                 android:paddingBottom="4dp"
-                                android:text="예약가능"
+                                android:text="장소정보"
                                 android:textColor="@color/white" />
                         </LinearLayout>
 

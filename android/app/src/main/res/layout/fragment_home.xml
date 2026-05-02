@@ -638,7 +638,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     style="@style/TriplineText.BodyCompact"
-                    android:text="현재 날짜 기준 지출 기록을 빠르게 훑어보고, 다음 단계에서 장소별 경비 흐름으로 이어갈 수 있습니다."
+                    android:text="현재 날짜 기준 지출 기록을 빠르게 훑어보고, 장소별 경비 흐름으로 이어갈 수 있습니다."
                     android:textColor="@color/tripline_text_secondary" />
 
                 <androidx.recyclerview.widget.RecyclerView

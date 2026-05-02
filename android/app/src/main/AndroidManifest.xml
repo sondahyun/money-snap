@@ -27,15 +27,19 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCas_1Rp1eo-ULgmFYyovzUJlBdn0iN0qI" />
 
-        <!-- MainActivity 등록 -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity 등록 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
 
         <!-- AddTransactionActivity 등록 -->
         <activity

@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:gravity="center"
-            android:text="마지막 여행을\n불러오는 중"
+            android:text="Tripline에서\n여행을 시작해요"
             android:textColor="@color/schedule_minimal_text" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="로그인 상태를 확인하고, 마지막으로 보던 여행의 일정과 지출 흐름을 다시 준비하고 있어요."
+            android:text="로그인하거나 보관함, 일정 화면으로 바로 이동해 여행 계획을 이어갈 수 있어요."
             android:textColor="@color/schedule_minimal_subtle" />
 
         <LinearLayout
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="마지막 여행 상태를 확인하고 있어요"
+                android:text="원하는 진입 방식을 선택해주세요"
                 android:textColor="@color/schedule_minimal_text" />
         </LinearLayout>
 
@@ -81,6 +81,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/buttonSplashLogin"
                 style="@style/TriplineText.Badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,6 +94,7 @@
                 android:textColor="@color/schedule_minimal_blue" />
 
             <TextView
+                android:id="@+id/buttonSplashLocker"
                 style="@style/TriplineText.Badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,6 +108,7 @@
                 android:textColor="@color/tripline_teal" />
 
             <TextView
+                android:id="@+id/buttonSplashSchedule"
                 style="@style/TriplineText.Badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

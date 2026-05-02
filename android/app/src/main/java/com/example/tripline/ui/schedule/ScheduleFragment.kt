@@ -66,7 +66,7 @@ class ScheduleFragment : Fragment() {
         binding.cardPlaceAirport.setOnClickListener {
             openPlaceSheet(
                 placeName = "상하이 홍차오 국제공항",
-                placeMeta = "관광명소 · 예약가능",
+                placeMeta = "관광명소 · 인민 광장 주변",
                 placeHours = "운영시간 00:00 - 24:00"
             )
         }
@@ -83,14 +83,14 @@ class ScheduleFragment : Fragment() {
         binding.cardPlaceWaitan.setOnClickListener {
             openPlaceSheet(
                 placeName = "와이탄",
-                placeMeta = "관광명소 · 인민 광장 주변 · 예약가능",
+                placeMeta = "관광명소 · 인민 광장 주변",
                 placeHours = "영업시간 09:00 - 22:00"
             )
         }
         binding.cardPlaceRestaurant.setOnClickListener {
             openPlaceSheet(
                 placeName = "남상만두 예원 점",
-                placeMeta = "음식점 · 예원 주변 · 예약가능",
+                placeMeta = "음식점 · 예원 주변",
                 placeHours = "영업시간 08:30 - 21:00"
             )
         }
@@ -131,10 +131,10 @@ class ScheduleFragment : Fragment() {
             openMemoSheet("메모 입력", "")
         }
         binding.buttonScheduleEmptyCreateTrip.setOnClickListener {
-            openScreen(TriplineScreenActivity.Screen.TRIP_CREATE)
+            openScreen(TriplineScreenActivity.Screen.PLACE_SEARCH)
         }
         binding.buttonScheduleEmptyOpenLocker.setOnClickListener {
-            (activity as? MainActivity)?.navigateToTab(R.id.fragment_locker)
+            openScreen(TriplineScreenActivity.Screen.OCR_IMPORT)
         }
 
         binding.scheduleScrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->

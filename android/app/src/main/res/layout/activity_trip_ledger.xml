@@ -194,7 +194,7 @@
         android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/tripLedgerBottomNav"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -213,6 +213,7 @@
         android:layout_height="62dp"
         android:background="@color/white"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="horizontal"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
@@ -221,9 +222,9 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="여행 홈" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="배낭톡" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="보관함" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
         <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="일정" android:textColor="@color/schedule_minimal_text" android:textSize="12sp" />
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="저장" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="여행 도구" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="가계부" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="마이" android:textColor="@color/schedule_minimal_subtle" android:textSize="12sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
