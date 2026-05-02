@@ -137,8 +137,12 @@ class TriplineScreenActivity : AppCompatActivity() {
 
             Screen.TRIP_CREATE_STYLE -> {
                 finishOnClick(R.id.buttonTripStyleBack)
-                openTabOnClick(R.id.buttonTripStyleDone, R.id.fragment_schedule)
-                openTabOnClick(R.id.buttonTripStyleSkip, R.id.fragment_schedule)
+                openTabOnClick(R.id.buttonTripStyleDone, R.id.fragment_schedule) {
+                    TriplineUiStateStore.createTrip(this)
+                }
+                openTabOnClick(R.id.buttonTripStyleSkip, R.id.fragment_schedule) {
+                    TriplineUiStateStore.createTrip(this)
+                }
             }
 
             Screen.TRIP_EDIT -> {
@@ -148,9 +152,15 @@ class TriplineScreenActivity : AppCompatActivity() {
 
             Screen.TRIP_SEARCH -> {
                 finishOnClick(R.id.buttonTripSearchBack)
-                openTabOnClick(R.id.tripSearchResultShanghai, R.id.fragment_schedule)
-                openTabOnClick(R.id.tripSearchResultKyoto, R.id.fragment_schedule)
-                openTabOnClick(R.id.tripSearchResultTokyo, R.id.fragment_schedule)
+                openTabOnClick(R.id.tripSearchResultShanghai, R.id.fragment_schedule) {
+                    TriplineUiStateStore.selectExistingTrip(this)
+                }
+                openTabOnClick(R.id.tripSearchResultKyoto, R.id.fragment_schedule) {
+                    TriplineUiStateStore.selectExistingTrip(this)
+                }
+                openTabOnClick(R.id.tripSearchResultTokyo, R.id.fragment_schedule) {
+                    TriplineUiStateStore.selectExistingTrip(this)
+                }
             }
 
             Screen.CHECKLIST -> {
@@ -280,7 +290,37 @@ class TriplineScreenActivity : AppCompatActivity() {
 
             Screen.OCR_REVIEW -> {
                 finishOnClick(R.id.buttonOcrReviewBack)
-                openScreenOnClick(R.id.buttonOcrReviewConfirm, Screen.SCHEDULE_EDIT)
+                showOptionSheetOnClick(
+                    R.id.buttonOcrCandidateFlightEdit,
+                    "항공편 후보 수정",
+                    listOf("출발/도착 시간 수정", "항공사/편명 수정", "후보 제외")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonOcrCandidateFlightApprove,
+                    "항공편 후보",
+                    listOf("승인 유지", "거절로 변경")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonOcrCandidateLodgingEdit,
+                    "숙소 후보 수정",
+                    listOf("체크인/체크아웃 날짜 수정", "숙소명 수정", "후보 제외")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonOcrCandidateLodgingApprove,
+                    "숙소 후보",
+                    listOf("승인 유지", "거절로 변경")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonOcrCandidatePlaceEdit,
+                    "장소 후보 수정",
+                    listOf("날짜/시간 지정", "장소명 수정", "후보 승인")
+                )
+                showOptionSheetOnClick(
+                    R.id.buttonOcrCandidatePlaceReject,
+                    "장소 후보",
+                    listOf("거절 유지", "승인으로 변경")
+                )
+                markScheduleReadyAndOpenScreenOnClick(R.id.buttonOcrReviewConfirm, Screen.SCHEDULE_EDIT)
             }
 
             Screen.WEATHER -> {
@@ -290,6 +330,7 @@ class TriplineScreenActivity : AppCompatActivity() {
             Screen.TRIP_CALENDAR -> {
                 finishOnClick(R.id.buttonTripCalendarBack)
                 openScreenOnClick(R.id.buttonTripCalendarAddExpense, Screen.EXPENSE_ENTRY)
+                bindTripCalendarMode()
                 bindBottomSheet(R.id.tripCalendarBottomSheet)
             }
 
@@ -326,7 +367,9 @@ class TriplineScreenActivity : AppCompatActivity() {
                 showTimePickerOnClick(R.id.textFlightArrivalTime, 0, 22)
                 openScreenOnClick(R.id.textFlightDepartureAirport, Screen.AIRPORT_SEARCH)
                 openScreenOnClick(R.id.textFlightArrivalAirport, Screen.AIRPORT_SEARCH)
-                openTabOnClick(R.id.buttonFlightFormDone, R.id.fragment_schedule)
+                openTabOnClick(R.id.buttonFlightFormDone, R.id.fragment_schedule) {
+                    TriplineUiStateStore.markScheduleReady(this)
+                }
 
                 if (intent.getBooleanExtra(EXTRA_FLIGHT_FORM_READY, false)) {
                     markFlightFormReady()
@@ -357,7 +400,9 @@ class TriplineScreenActivity : AppCompatActivity() {
 
             Screen.LODGING_DATE -> {
                 finishOnClick(R.id.buttonLodgingDateBack)
-                openTabOnClick(R.id.buttonLodgingDateDone, R.id.fragment_schedule)
+                openTabOnClick(R.id.buttonLodgingDateDone, R.id.fragment_schedule) {
+                    TriplineUiStateStore.markScheduleReady(this)
+                }
             }
 
             Screen.TRIP_LEDGER -> {
@@ -376,16 +421,23 @@ class TriplineScreenActivity : AppCompatActivity() {
             }
 
             Screen.PLACE_SEARCH -> {
-                finishOnClick(
-                    R.id.buttonPlaceSearchBack,
-                    R.id.buttonPlaceSelect1,
-                    R.id.buttonPlaceSelect2,
-                    R.id.buttonPlaceSelect3
-                )
+                finishOnClick(R.id.buttonPlaceSearchBack)
+                openTabOnClick(R.id.buttonPlaceSelect1, R.id.fragment_schedule) {
+                    TriplineUiStateStore.markScheduleReady(this)
+                }
+                openTabOnClick(R.id.buttonPlaceSelect2, R.id.fragment_schedule) {
+                    TriplineUiStateStore.markScheduleReady(this)
+                }
+                openTabOnClick(R.id.buttonPlaceSelect3, R.id.fragment_schedule) {
+                    TriplineUiStateStore.markScheduleReady(this)
+                }
             }
 
             Screen.SCHEDULE_EDIT -> {
-                finishOnClick(R.id.buttonEditBack, R.id.buttonEditDone)
+                finishOnClick(R.id.buttonEditBack)
+                openTabOnClick(R.id.buttonEditDone, R.id.fragment_schedule) {
+                    TriplineUiStateStore.markScheduleReady(this)
+                }
                 openScreenOnClick(R.id.buttonImportOcr, Screen.OCR_IMPORT)
             }
 
@@ -425,6 +477,57 @@ class TriplineScreenActivity : AppCompatActivity() {
         }
     }
 
+    private fun bindTripCalendarMode() {
+        setTripCalendarMode(isPlaceMode = true)
+        findViewById<TextView?>(R.id.buttonTripCalendarPlaceTab)?.setOnClickListener {
+            setTripCalendarMode(isPlaceMode = true)
+        }
+        findViewById<TextView?>(R.id.buttonTripCalendarCategoryTab)?.setOnClickListener {
+            setTripCalendarMode(isPlaceMode = false)
+        }
+    }
+
+    private fun setTripCalendarMode(isPlaceMode: Boolean) {
+        styleTripCalendarTab(findViewById(R.id.buttonTripCalendarPlaceTab), isPlaceMode)
+        styleTripCalendarTab(findViewById(R.id.buttonTripCalendarCategoryTab), !isPlaceMode)
+
+        if (isPlaceMode) {
+            setText(R.id.textTripCalendarListTitle, "장소별 지출")
+            setText(R.id.textTripCalendarRow1Title, "와이탄 카페")
+            setText(R.id.textTripCalendarRow1Meta, "식비 · CNY 28")
+            setText(R.id.textTripCalendarRow2Title, "난징동루 기념품")
+            setText(R.id.textTripCalendarRow2Meta, "쇼핑 · CNY 120")
+            setText(R.id.textTripCalendarRow3Title, "상하이 환전소")
+            setText(R.id.textTripCalendarRow3Meta, "환전 · CNY 1,000")
+            return
+        }
+
+        setText(R.id.textTripCalendarListTitle, "상위 카테고리별 지출")
+        setText(R.id.textTripCalendarRow1Title, "식비")
+        setText(R.id.textTripCalendarRow1Meta, "와이탄 카페 포함 1건")
+        setText(R.id.textTripCalendarRow2Title, "쇼핑")
+        setText(R.id.textTripCalendarRow2Meta, "난징동루 기념품 포함 1건")
+        setText(R.id.textTripCalendarRow3Title, "환전")
+        setText(R.id.textTripCalendarRow3Meta, "상위 카테고리 · CNY 1,000")
+    }
+
+    private fun styleTripCalendarTab(tab: TextView?, selected: Boolean) {
+        tab ?: return
+        tab.setBackgroundResource(
+            if (selected) R.drawable.bg_tripline_pill else R.drawable.bg_tripline_secondary_action_neutral
+        )
+        tab.backgroundTintList = if (selected) {
+            ColorStateList.valueOf(getColor(R.color.schedule_minimal_blue))
+        } else {
+            null
+        }
+        tab.setTextColor(getColor(if (selected) R.color.white else R.color.tripline_text_secondary))
+    }
+
+    private fun setText(@IdRes id: Int, text: String) {
+        findViewById<TextView?>(id)?.text = text
+    }
+
     private fun finishOnClick(@IdRes vararg ids: Int) {
         ids.forEach { id ->
             findViewById<View?>(id)?.setOnClickListener { finish() }
@@ -455,8 +558,16 @@ class TriplineScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun openTabOnClick(@IdRes id: Int, @IdRes itemId: Int) {
+    private fun markScheduleReadyAndOpenScreenOnClick(@IdRes id: Int, screen: Screen) {
         findViewById<View?>(id)?.setOnClickListener {
+            TriplineUiStateStore.markScheduleReady(this)
+            startActivity(intent(this, screen))
+        }
+    }
+
+    private fun openTabOnClick(@IdRes id: Int, @IdRes itemId: Int, beforeOpen: (() -> Unit)? = null) {
+        findViewById<View?>(id)?.setOnClickListener {
+            beforeOpen?.invoke()
             startActivity(MainActivity.intentForTab(this, itemId))
             finish()
         }

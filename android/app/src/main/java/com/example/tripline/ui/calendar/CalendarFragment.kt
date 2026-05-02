@@ -18,8 +18,6 @@ import com.example.tripline.ui.expense.ExpenseViewModel
 import com.example.tripline.ui.expense.ExpenseViewModelFactory
 import com.example.tripline.ui.home.TransactionAdapter
 import com.example.tripline.ui.home.TransactionItem
-import com.example.tripline.ui.income.IncomeViewModel
-import com.example.tripline.ui.income.IncomeViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import java.time.LocalDate
 import java.time.YearMonth
@@ -45,10 +43,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         binding.tvMonthTotal.text = "₩${NumberFormat.getNumberInstance().format(total)}"
         binding.tvMonthTopCategory.text =
             if (expenses.isEmpty()) "아직 지출 없음" else "최다 소비 $topCategory"
-    }
-
-    private val incomeViewModel: IncomeViewModel by viewModels {
-        IncomeViewModelFactory((requireActivity().application as TriplineApplication).incomeRepository)
     }
 
     private val expenseViewModel: ExpenseViewModel by viewModels {
@@ -122,7 +116,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
         val calendarAdapter = CalendarAdapter(
             daysInMonth,
-            incomeViewModel,
             expenseViewModel,
             viewLifecycleOwner,
             selectedDate,
@@ -138,7 +131,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
         val weekDays = generateDaysInWeekArray(selectedDate)
         val weekAdapter = CalendarAdapter(
             weekDays,
-            incomeViewModel,
             expenseViewModel,
             viewLifecycleOwner,
             selectedDate,
@@ -216,19 +208,16 @@ class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
     }
 
     private fun loadTransactionsForDate(date: String) {
-        incomeViewModel.getIncomesByDate(date).observe(viewLifecycleOwner) { incomes ->
-            expenseViewModel.getExpensesByDate(date).observe(viewLifecycleOwner) { expenses ->
-                val transactionItems = (incomes.map { TransactionItem.IncomeItem(it) } +
-                        expenses.map { TransactionItem.ExpenseItem(it) })
-                    .sortedByDescending { it.date }
+        expenseViewModel.getExpensesByDate(date).observe(viewLifecycleOwner) { expenses ->
+            val transactionItems = expenses.map { TransactionItem.ExpenseItem(it) }
+                .sortedByDescending { it.date }
 
-                transactionAdapter = TransactionAdapter(transactionItems)
-                binding.selectedRecyclerView.adapter = transactionAdapter
-                binding.tvCalendarDetailMeta.text =
-                    "${transactionItems.size}건 · ${
-                        NumberFormat.getNumberInstance().format(expenses.sumOf { it.amount })
-                    }원"
-            }
+            transactionAdapter = TransactionAdapter(transactionItems)
+            binding.selectedRecyclerView.adapter = transactionAdapter
+            binding.tvCalendarDetailMeta.text =
+                "${transactionItems.size}건 · ${
+                    NumberFormat.getNumberInstance().format(expenses.sumOf { it.amount })
+                }원"
         }
     }
 }

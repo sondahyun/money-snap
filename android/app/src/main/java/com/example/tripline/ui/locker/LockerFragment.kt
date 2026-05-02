@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
 import com.example.tripline.MainActivity
-import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.R
+import com.example.tripline.TriplineScreenActivity
+import com.example.tripline.TriplineUiStateStore
 import com.example.tripline.databinding.FragmentLockerBinding
 import com.example.tripline.ui.common.TripDeleteConfirmBottomSheetFragment
 
@@ -44,6 +45,7 @@ class LockerFragment : Fragment() {
         }
 
         val openSchedule = {
+            TriplineUiStateStore.selectExistingTrip(requireContext())
             (activity as? MainActivity)?.navigateToTab(R.id.fragment_schedule)
             Unit
         }

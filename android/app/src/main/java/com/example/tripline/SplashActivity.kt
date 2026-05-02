@@ -20,6 +20,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         findViewById<View?>(R.id.buttonSplashSchedule)?.setOnClickListener {
+            TriplineUiStateStore.selectExistingTrip(this)
             startActivity(MainActivity.intentForTab(this, R.id.fragment_schedule))
             finish()
         }

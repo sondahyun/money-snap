@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.example.tripline.MainActivity
 import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.R
+import com.example.tripline.TriplineUiStateStore
 import com.example.tripline.databinding.FragmentScheduleBinding
 import com.example.tripline.ui.common.PdfShareBottomSheetFragment
 import com.example.tripline.ui.common.ScheduleMemoBottomSheetFragment
@@ -23,7 +24,6 @@ class ScheduleFragment : Fragment() {
 
     private var _binding: FragmentScheduleBinding? = null
     private val binding get() = _binding!!
-    private val hasScheduleMock = true
     private var isMapPreviewCollapsed = false
 
     override fun onCreateView(
@@ -141,9 +141,16 @@ class ScheduleFragment : Fragment() {
             updateExpandedMeta(scrollY)
         }
         updateExpandedMeta(0)
-        renderScheduleState(hasScheduleMock)
+        renderScheduleState(TriplineUiStateStore.hasSchedule(requireContext()))
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        _binding?.let {
+            renderScheduleState(TriplineUiStateStore.hasSchedule(requireContext()))
+        }
     }
 
     private fun renderScheduleState(hasSchedule: Boolean) {

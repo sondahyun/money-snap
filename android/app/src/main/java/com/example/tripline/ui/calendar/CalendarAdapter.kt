@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tripline.R
 import com.example.tripline.databinding.CalendarDayItemBinding
 import com.example.tripline.ui.expense.ExpenseViewModel
-import com.example.tripline.ui.income.IncomeViewModel
 import java.time.LocalDate
 
 class CalendarAdapter(
     private val days: List<LocalDate?>,
-    private val incomeViewModel: IncomeViewModel,
     private val expenseViewModel: ExpenseViewModel,
     private val lifecycleOwner: LifecycleOwner,
     initialSelectedDate: LocalDate,
@@ -62,27 +60,15 @@ class CalendarAdapter(
             }
 
             binding.tvCellDay.text = date.dayOfMonth.toString()
-            binding.tvDayPlus.visibility = View.VISIBLE
-            binding.tvDayMinus.visibility = View.VISIBLE
+            binding.tvDayPlus.text = ""
+            binding.tvDayPlus.visibility = View.GONE
+            binding.tvDayMinus.visibility = View.GONE
 
             binding.root.setBackgroundResource(if (isSelected) R.drawable.bg_selected_date else R.drawable.bg_tripline_day)
             val dayTextColor = if (isSelected) R.color.white else R.color.tripline_text_primary
-            val plusTextColor = if (isSelected) R.color.white else R.color.tripline_teal
             val minusTextColor = if (isSelected) R.color.white else R.color.tripline_coral
             binding.tvCellDay.setTextColor(ContextCompat.getColor(binding.root.context, dayTextColor))
-            binding.tvDayPlus.setTextColor(ContextCompat.getColor(binding.root.context, plusTextColor))
             binding.tvDayMinus.setTextColor(ContextCompat.getColor(binding.root.context, minusTextColor))
-
-            incomeViewModel.getTotalIncomeByDate(date.toString())
-                .observe(lifecycleOwner) { totalIncome ->
-                    if (totalIncome != null && totalIncome > 0) {
-                        binding.tvDayPlus.visibility = View.VISIBLE
-                        binding.tvDayPlus.text = "+${formatCurrency(totalIncome)}"
-                    } else {
-                        binding.tvDayPlus.text = ""
-                        binding.tvDayPlus.visibility = View.GONE
-                    }
-                }
 
             expenseViewModel.getTotalExpenseByDate(date.toString())
                 .observe(lifecycleOwner) { totalExpense ->

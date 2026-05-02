@@ -12,6 +12,7 @@ import com.example.tripline.MainActivity
 import com.example.tripline.TriplineScreenActivity
 import com.example.tripline.R
 import com.example.tripline.TriplineApplication
+import com.example.tripline.TriplineUiStateStore
 import com.example.tripline.databinding.FragmentHomeBinding
 import com.example.tripline.ui.expense.ExpenseViewModel
 import com.example.tripline.ui.expense.ExpenseViewModelFactory
@@ -21,7 +22,6 @@ import java.util.*
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: TransactionAdapter
-    private val hasCurrentTripMock = true
 
     private val expenseViewModel: ExpenseViewModel by viewModels {
         ExpenseViewModelFactory((requireActivity().application as TriplineApplication).expenseRepository)
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
 
         // 오늘의 거래 데이터 로드 및 정렬
         loadTransactions(todayDate)
-        renderHomeState(hasCurrentTripMock)
+        renderHomeState(TriplineUiStateStore.hasCurrentTrip(requireContext()))
 
         binding.addButton.setOnClickListener {
             startActivity(
@@ -100,6 +100,13 @@ class HomeFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (::binding.isInitialized) {
+            renderHomeState(TriplineUiStateStore.hasCurrentTrip(requireContext()))
+        }
     }
 
     private fun renderHomeState(hasCurrentTrip: Boolean) {
