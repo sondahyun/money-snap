@@ -215,6 +215,7 @@ class TriplineScreenActivity : AppCompatActivity() {
                     "카테고리 선택",
                     listOf("숙소", "항공", "교통", "관광", "식비", "쇼핑", "기타")
                 )
+                openScreenOnClick(R.id.buttonExpenseCategoryManage, Screen.CATEGORY_MANAGE)
                 showOptionSheetOnClick(
                     R.id.buttonExpensePlaceSelect,
                     "장소 연결",
@@ -452,7 +453,7 @@ class TriplineScreenActivity : AppCompatActivity() {
                 showOptionSheetOnClick(
                     R.id.rowDefaultPdfScope,
                     "PDF 기본 범위",
-                    listOf("전체 일정", "현재 선택한 day", "가계부 포함", "가계부 제외")
+                    listOf("전체 일정", "현재 선택한 day", "오늘 일정")
                 )
                 showOptionSheetOnClick(
                     R.id.rowDefaultRouteMode,

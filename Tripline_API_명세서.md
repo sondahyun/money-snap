@@ -65,10 +65,9 @@ X-Timezone: Asia/Seoul
 
 ```json
 {
-  "success": true,
-  "data": {},
-  "meta": null,
-  "error": null
+  "httpStatusCode": 200,
+  "responseMessage": "요청이 성공적으로 처리되었습니다.",
+  "data": {}
 }
 ```
 
@@ -76,17 +75,17 @@ X-Timezone: Asia/Seoul
 
 ```json
 {
-  "success": false,
-  "data": null,
-  "meta": null,
-  "error": {
-    "code": "TRIP_NOT_FOUND",
-    "message": "여행을 찾을 수 없습니다."
-  }
+  "httpStatusCode": 404,
+  "errorMessage": "여행을 찾을 수 없습니다."
 }
 ```
 
+- 성공 응답은 `errorMessage`를 내려주지 않는다.
+- 실패 응답은 `responseMessage`와 `data`를 내려주지 않는다.
+
 ### 2-6. 주요 에러 코드
+
+현재 백엔드 공통 응답 포맷은 `errorMessage`만 내려준다. 아래 코드는 서버 내부 분기, 로그, 추후 확장 기준으로 사용한다.
 
 | 코드 | 의미 |
 | --- | --- |
@@ -109,7 +108,7 @@ X-Timezone: Asia/Seoul
 - soft delete된 데이터는 목록/상세/캘린더/체크리스트/일정 응답에서 기본적으로 제외한다.
 - `expenses` 삭제 시 연결된 `expense_photos`도 함께 soft delete한다.
 - `checklist_sections` 삭제 시 하위 `checklist_items`도 함께 soft delete한다.
-- `trip_days`, `schedule_items`, `trip_route_segments`는 일정 편집 과정에서 soft delete될 수 있으며, 삭제된 데이터는 일정/지도 응답에서 제외한다.
+- `trip_days`, `schedule_items`, `trip_lodging_groups`, `trip_route_segments`는 일정 편집 과정에서 soft delete될 수 있으며, 삭제된 데이터는 일정/지도 응답에서 제외한다.
 - `ocr_candidates`는 삭제 API를 두지 않고 `pending/accepted/rejected/edited` 상태 전이로 관리한다.
 
 ## 3. 인증 / 사용자
@@ -132,14 +131,13 @@ X-Timezone: Asia/Seoul
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 201,
+  "responseMessage": "회원가입 성공",
   "data": {
     "userId": "uuid",
     "email": "user@example.com",
     "nickname": "소녀아임"
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -151,7 +149,8 @@ X-Timezone: Asia/Seoul
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "로그인 성공",
   "data": {
     "accessToken": "jwt-access-token",
     "refreshToken": "jwt-refresh-token",
@@ -159,9 +158,7 @@ X-Timezone: Asia/Seoul
       "userId": "uuid",
       "nickname": "소녀아임"
     }
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -185,7 +182,8 @@ Refresh Token 폐기
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "사용자 설정 조회 성공",
   "data": {
     "baseCurrencyCode": "KRW",
     "defaultPdfScope": "trip_all",
@@ -195,9 +193,7 @@ Refresh Token 폐기
       "title": "후쿠오카, 도쿄, 오사카 여행",
       "status": "active"
     }
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -213,7 +209,8 @@ Refresh Token 폐기
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "현재 선택 여행 조회 성공",
   "data": {
     "tripId": "uuid",
     "title": "후쿠오카, 도쿄, 오사카 여행",
@@ -222,9 +219,7 @@ Refresh Token 폐기
     "status": "active",
     "startDate": "2026-05-07",
     "endDate": "2026-05-11"
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -265,24 +260,26 @@ Refresh Token 폐기
 
 ```json
 {
-  "success": true,
-  "data": [
-    {
-      "tripId": "uuid",
-      "title": "후쿠오카, 도쿄, 오사카 여행",
-      "countryName": "일본",
-      "cityName": "후쿠오카",
-      "startDate": "2026-05-07",
-      "endDate": "2026-05-11",
-      "status": "active",
-      "baseCurrencyCode": "JPY",
-      "oneLineDescription": "연인과 · 유명 관광지는 필수"
+  "httpStatusCode": 200,
+  "responseMessage": "여행 목록 조회 성공",
+  "data": {
+    "trips": [
+      {
+        "tripId": "uuid",
+        "title": "후쿠오카, 도쿄, 오사카 여행",
+        "countryName": "일본",
+        "cityName": "후쿠오카",
+        "startDate": "2026-05-07",
+        "endDate": "2026-05-11",
+        "status": "active",
+        "baseCurrencyCode": "JPY",
+        "oneLineDescription": "연인과 · 유명 관광지는 필수"
+      }
+    ],
+    "pagination": {
+      "total": 1
     }
-  ],
-  "meta": {
-    "total": 1
-  },
-  "error": null
+  }
 }
 ```
 
@@ -347,6 +344,11 @@ Refresh Token 폐기
 
 여행 삭제(soft delete)
 
+규칙:
+
+- 삭제 대상 여행이 사용자의 현재 선택된 여행이면 `user_current_trip_selections`를 함께 비운다.
+- 현재 선택된 여행이 비워진 뒤 `GET /me/current-trip`은 `data` 없이 성공 응답을 내려준다.
+
 ## 5. 홈 대시보드
 
 ### `GET /home/dashboard`
@@ -361,7 +363,8 @@ Refresh Token 폐기
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "홈 대시보드 조회 성공",
   "data": {
     "hasActiveTrip": true,
     "hasCurrentTrip": true,
@@ -410,9 +413,7 @@ Refresh Token 폐기
         "paymentMethod": "card"
       }
     ]
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -434,7 +435,8 @@ Refresh Token 폐기
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "일정 조회 성공",
   "data": {
     "trip": {
       "tripId": "uuid",
@@ -506,9 +508,7 @@ Refresh Token 폐기
         ]
       }
     ]
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -591,8 +591,32 @@ Refresh Token 폐기
 
 - 숙소는 Google Places 기반 검색 결과 또는 사용자가 직접 등록한 장소를 선택한다.
 - 체크인/체크아웃 날짜는 현재 여행 기간 안에서만 선택한다.
-- 저장 시 선택한 날짜 범위의 각 여행 일차에 `lodging` 일정 아이템을 생성해 일정 타임라인에 표시한다.
+- 저장 시 하나의 `lodgingGroupId`를 만들고, 체크인일부터 체크아웃 전날까지 각 여행 일차에 `lodging` 일정 아이템을 생성해 일정 타임라인에 표시한다.
 - 숙소 일정은 장소 스냅샷을 참조하되, 일반 장소 아이템과 구분하기 위해 `itemType=lodging`으로 내려준다.
+
+응답 예시:
+
+```json
+{
+  "httpStatusCode": 201,
+  "responseMessage": "숙소 일정 추가 성공",
+  "data": {
+    "lodgingGroupId": "uuid",
+    "createdItems": [
+      {
+        "scheduleItemId": "uuid",
+        "tripDayId": "uuid",
+        "stayDate": "2026-05-09"
+      },
+      {
+        "scheduleItemId": "uuid",
+        "tripDayId": "uuid",
+        "stayDate": "2026-05-10"
+      }
+    ]
+  }
+}
+```
 
 ### `PATCH /trips/{tripId}/schedule/items/{itemId}`
 
@@ -606,6 +630,11 @@ Refresh Token 폐기
 - 숙소 날짜 범위 (체크인/체크아웃)
 - `sortOrder`
 - `tripDayId`
+
+숙소 수정 규칙:
+
+- 숙소 날짜 범위를 수정하면 같은 `lodgingGroupId`에 속한 day별 숙소 아이템을 재생성한다.
+- 기존 범위에서 빠진 숙소 아이템은 hard delete가 아니라 soft delete로 숨긴다.
 
 ### `PATCH /trips/{tripId}/schedule/items/reorder`
 
@@ -676,7 +705,8 @@ Google Places 자동완성/검색 프록시
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "숙소 검색 성공",
   "data": [
     {
       "googlePlaceId": "place-id",
@@ -685,9 +715,7 @@ Google Places 자동완성/검색 프록시
       "areaText": "하카타",
       "photoUrl": "https://..."
     }
-  ],
-  "meta": null,
-  "error": null
+  ]
 }
 ```
 
@@ -703,7 +731,8 @@ Google Places 자동완성/검색 프록시
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "공항 검색 성공",
   "data": [
     {
       "airportCode": "ATL",
@@ -719,9 +748,7 @@ Google Places 자동완성/검색 프록시
       "cityName": "바르셀로나",
       "countryCode": "ES"
     }
-  ],
-  "meta": null,
-  "error": null
+  ]
 }
 ```
 
@@ -733,7 +760,8 @@ Google Places 자동완성/검색 프록시
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "장소 상세 조회 성공",
   "data": {
     "googlePlaceId": "place-id",
     "name": "이치란 라멘 하카타점",
@@ -753,9 +781,7 @@ Google Places 자동완성/검색 프록시
       "반숙 계란"
     ],
     "googleMapsUrl": "https://maps.google.com/..."
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -846,7 +872,8 @@ Google Places 자동완성/검색 프록시
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "캘린더 월 요약 조회 성공",
   "data": {
     "month": "2026-04",
     "totalExpenseKrw": 877082,
@@ -859,9 +886,7 @@ Google Places 자동완성/검색 프록시
         "refundKrw": 0
       }
     ]
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -953,13 +978,12 @@ OCR 업로드 생성
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 201,
+  "responseMessage": "OCR 업로드 생성 성공",
   "data": {
     "ocrImportId": "uuid",
     "status": "reviewing"
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -967,15 +991,87 @@ OCR 업로드 생성
 
 OCR 추출 결과 조회
 
+응답 예시:
+
+```json
+{
+  "httpStatusCode": 200,
+  "responseMessage": "OCR 추출 결과 조회 성공",
+  "data": {
+    "ocrImportId": "uuid",
+    "status": "reviewing",
+    "candidates": [
+      {
+        "candidateId": "uuid",
+        "candidateType": "flight",
+        "status": "pending",
+        "targetDate": "2026-05-07",
+        "targetTime": "09:20",
+        "candidatePayload": {
+          "airlineName": "대한항공",
+          "airlineCode": "KE",
+          "flightNumber": "101",
+          "departureAirportCode": "ICN",
+          "arrivalAirportCode": "FUK"
+        },
+        "editedPayload": null,
+        "sourceText": "KE101 ICN-FUK 09:20"
+      }
+    ]
+  }
+}
+```
+
 ### `PATCH /trips/{tripId}/ocr/imports/{ocrImportId}/candidates/{candidateId}`
 
 OCR 후보 수정 / 승인 / 거절
 
 - OCR 후보는 별도 삭제 API 없이 상태 변경으로 관리한다.
+- `status=accepted|rejected|edited` 중 하나로 변경한다.
+- `status=edited`일 때만 `editedPayload`를 필수로 받는다.
+
+요청 예시:
+
+```json
+{
+  "status": "edited",
+  "targetDate": "2026-05-07",
+  "targetTime": "09:30",
+  "editedPayload": {
+    "candidateType": "flight",
+    "airlineName": "대한항공",
+    "airlineCode": "KE",
+    "flightNumber": "101",
+    "departureAirportCode": "ICN",
+    "arrivalAirportCode": "FUK"
+  }
+}
+```
 
 ### `POST /trips/{tripId}/ocr/imports/{ocrImportId}/confirm`
 
 검수 결과를 일정으로 반영
+
+요청 예시:
+
+```json
+{
+  "acceptedCandidateIds": ["uuid-1", "uuid-2"]
+}
+```
+
+응답 예시:
+
+```json
+{
+  "httpStatusCode": 201,
+  "responseMessage": "OCR 일정 반영 성공",
+  "data": {
+    "createdScheduleItemIds": ["uuid-1", "uuid-2"],
+    "skippedCandidateIds": []
+  }
+}
+```
 
 ## 12. 날씨 / 환율
 
@@ -987,7 +1083,8 @@ OCR 후보 수정 / 승인 / 거절
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "날씨 조회 성공",
   "data": {
     "countryName": "일본",
     "representativeCityName": "후쿠오카",
@@ -1003,9 +1100,7 @@ OCR 후보 수정 / 승인 / 거절
         "maxTemp": 20
       }
     ]
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -1021,16 +1116,15 @@ OCR 후보 수정 / 승인 / 거절
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 200,
+  "responseMessage": "환율 조회 성공",
   "data": {
     "currencyCode": "JPY",
     "rateToKrw": 9.12,
     "previousBusinessDate": "2026-05-07",
     "changeAmount": 0.02,
     "changePercent": 0.18
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 
@@ -1049,16 +1143,21 @@ OCR 후보 수정 / 승인 / 거절
 }
 ```
 
+규칙:
+
+- `scope`는 `trip_all | selected_day | today` 중 하나를 사용한다.
+- `scope=selected_day`이면 `tripDayId`가 필수다.
+- PDF는 일정 공유용이며 지출 상세 내역은 기본 범위에서 제외한다.
+
 응답:
 
 ```json
 {
-  "success": true,
+  "httpStatusCode": 201,
+  "responseMessage": "PDF 생성 성공",
   "data": {
     "downloadUrl": "https://..."
-  },
-  "meta": null,
-  "error": null
+  }
 }
 ```
 

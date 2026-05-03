@@ -36,9 +36,17 @@ class MypageFragment : Fragment() {
                 )
             )
         }
+        val openProfileEdit = {
+            startActivity(
+                TriplineScreenActivity.intent(
+                    requireContext(),
+                    TriplineScreenActivity.Screen.PROFILE_EDIT
+                )
+            )
+        }
 
         binding.buttonSettingsTop.setOnClickListener { openSettings() }
-        binding.rowProfileEdit.setOnClickListener { openSettings() }
+        binding.rowProfileEdit.setOnClickListener { openProfileEdit() }
         binding.rowAppSettings.setOnClickListener { openSettings() }
 
         return binding.root

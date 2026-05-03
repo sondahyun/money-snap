@@ -121,6 +121,64 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/scheduleNoTripSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TriplineText.ScreenTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="먼저 여행을 만들어 주세요"
+                    android:textColor="@color/schedule_minimal_text" />
+
+                <TextView
+                    style="@style/TriplineText.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="여행을 만든 뒤 해당 여행 안에서 장소를 추가하고 day별 일정을 짤 수 있어요."
+                    android:textColor="@color/schedule_minimal_subtle" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonScheduleNoTripCreate"
+                        style="@style/TriplineText.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:text="새 여행 만들기"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/schedule_minimal_blue"
+                        app:cornerRadius="18dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonScheduleNoTripOpenLocker"
+                        style="@style/TriplineText.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="보관함 보기"
+                        android:textAllCaps="false"
+                        android:textColor="@color/schedule_minimal_text"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="18dp"
+                        app:strokeColor="@color/schedule_minimal_line"
+                        app:strokeWidth="1dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/scheduleEmptySection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

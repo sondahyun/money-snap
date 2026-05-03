@@ -9,7 +9,7 @@
 -- 1. UUID는 MySQL default function 대신 애플리케이션에서 생성하는 것을 권장한다.
 -- 2. 모든 테이블은 utf8mb4 / InnoDB 기준으로 생성한다.
 -- 3. trips.status 는 사용자가 직접 수정하지 않고 서버가 날짜 기준으로 계산/저장/동기화한다.
--- 4. trip_days / schedule_items / trip_route_segments / expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 deleted_at 기반 soft delete를 사용한다.
+-- 4. trip_days / schedule_items / trip_lodging_groups / trip_route_segments / expenses / expense_photos / trip_expense_categories / checklist_sections / checklist_items 는 deleted_at 기반 soft delete를 사용한다.
 
 SET NAMES utf8mb4;
 
@@ -90,7 +90,7 @@ create table trip_destinations (
     country_code char(2) not null,
     country_name varchar(100) not null,
     city_name varchar(100) not null,
-    sub_city_names varchar(255) null,
+    sub_city_names json null,
     sort_order int not null,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
@@ -171,7 +171,8 @@ create table ocr_candidates (
     flight_number varchar(30) null,
     memo_content text null,
     source_text longtext null,
-    edited_payload json not null,
+    candidate_payload json not null,
+    edited_payload json null,
     sort_order int not null default 0,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
@@ -211,6 +212,25 @@ create table trip_place_snapshots (
     key ix_trip_place_snapshots_trip_id_name (trip_id, name),
     constraint fk_trip_place_snapshots_trip
         foreign key (trip_id) references trips(id) on delete cascade
+) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
+
+create table trip_lodging_groups (
+    id char(36) not null,
+    trip_id char(36) not null,
+    trip_place_snapshot_id char(36) not null,
+    check_in_date date not null,
+    check_out_date date not null,
+    created_at datetime(6) not null default current_timestamp(6),
+    updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
+    deleted_at datetime(6) null,
+    primary key (id),
+    unique key uk_trip_lodging_groups_id_trip_id (id, trip_id),
+    key ix_trip_lodging_groups_trip_id_deleted_at (trip_id, deleted_at),
+    constraint fk_trip_lodging_groups_trip
+        foreign key (trip_id) references trips(id) on delete cascade,
+    constraint fk_trip_lodging_groups_place_snapshot
+        foreign key (trip_place_snapshot_id, trip_id) references trip_place_snapshots(id, trip_id),
+    constraint chk_trip_lodging_group_date check (check_out_date > check_in_date)
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
 
 create table schedule_items (
@@ -280,18 +300,23 @@ create table schedule_item_flights (
 create table schedule_item_lodgings (
     schedule_item_id char(36) not null,
     trip_id char(36) not null,
+    lodging_group_id char(36) not null,
     check_in_date date not null,
     check_out_date date not null,
     stay_date date not null,
     created_at datetime(6) not null default current_timestamp(6),
     updated_at datetime(6) not null default current_timestamp(6) on update current_timestamp(6),
     primary key (schedule_item_id),
+    key ix_schedule_item_lodgings_group_id_trip_id (lodging_group_id, trip_id),
     key ix_schedule_item_lodgings_trip_id_stay_date (trip_id, stay_date),
     constraint fk_schedule_item_lodgings_schedule_item
         foreign key (schedule_item_id, trip_id) references schedule_items(id, trip_id) on delete cascade,
+    constraint fk_schedule_item_lodgings_group
+        foreign key (lodging_group_id, trip_id) references trip_lodging_groups(id, trip_id),
     constraint chk_schedule_item_lodging_date check (
-        check_out_date >= check_in_date
-        and stay_date between check_in_date and check_out_date
+        check_out_date > check_in_date
+        and stay_date >= check_in_date
+        and stay_date < check_out_date
     )
 ) engine=InnoDB default charset=utf8mb4 collate=utf8mb4_unicode_ci;
 
@@ -461,8 +486,8 @@ create table exchange_rates (
 -- 1. 일정 화면의 장소 번호는 별도 컬럼이 아니라 day 내 sort_order 및 place item 순번으로 계산한다.
 -- 2. 메모는 schedule_items.item_type = 'memo'로 관리하며 숫자 배지를 갖지 않는다.
 -- 3. 항공편은 schedule_items.item_type = 'flight'와 schedule_item_flights 상세 테이블로 관리한다.
--- 4. 숙소는 schedule_items.item_type = 'lodging'과 schedule_item_lodgings 상세 테이블로 관리하며, 선택한 숙박 날짜 범위의 각 여행 일차에 표시한다.
+-- 4. 숙소 예약 단위는 trip_lodging_groups로 묶고, schedule_item_lodgings는 체크인일부터 체크아웃 전날까지 각 여행 일차에 표시될 항목을 관리한다.
 -- 5. 지출은 amount_local / amount_krw / exchange_rate_to_krw를 동시에 저장해 여행 전용 캘린더와 전역 캘린더에서 바로 활용한다.
--- 5. 상위 카테고리의 기본값 '기타'는 서비스 로직에서 여행 생성 시 자동 생성하는 것을 전제로 한다.
--- 6. 날씨 / 환율은 외부 API 결과를 캐시하는 용도로 테이블을 두었고, 캐시 미사용 시 생략 가능하다.
--- 7. 현재 선택된 여행은 user_current_trip_selections로 관리하며, 여행 삭제 시 함께 제거된다.
+-- 6. 상위 카테고리의 기본값 '기타'는 서비스 로직에서 여행 생성 시 자동 생성하는 것을 전제로 한다.
+-- 7. 날씨 / 환율은 외부 API 결과를 캐시하는 용도로 테이블을 두었고, 캐시 미사용 시 생략 가능하다.
+-- 8. 현재 선택된 여행은 user_current_trip_selections로 관리하며, 여행 soft delete 트랜잭션에서 서비스 로직으로 선택 행을 제거한다.

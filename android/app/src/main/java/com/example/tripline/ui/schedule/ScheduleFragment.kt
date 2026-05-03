@@ -130,6 +130,12 @@ class ScheduleFragment : Fragment() {
         binding.buttonAddMemoDay2.setOnClickListener {
             openMemoSheet("메모 입력", "")
         }
+        binding.buttonScheduleNoTripCreate.setOnClickListener {
+            openScreen(TriplineScreenActivity.Screen.TRIP_CREATE)
+        }
+        binding.buttonScheduleNoTripOpenLocker.setOnClickListener {
+            (activity as? MainActivity)?.navigateToTab(R.id.fragment_locker)
+        }
         binding.buttonScheduleEmptyCreateTrip.setOnClickListener {
             openScreen(TriplineScreenActivity.Screen.PLACE_SEARCH)
         }
@@ -141,7 +147,10 @@ class ScheduleFragment : Fragment() {
             updateExpandedMeta(scrollY)
         }
         updateExpandedMeta(0)
-        renderScheduleState(TriplineUiStateStore.hasSchedule(requireContext()))
+        renderScheduleState(
+            hasCurrentTrip = TriplineUiStateStore.hasCurrentTrip(requireContext()),
+            hasSchedule = TriplineUiStateStore.hasSchedule(requireContext())
+        )
 
         return binding.root
     }
@@ -149,17 +158,25 @@ class ScheduleFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         _binding?.let {
-            renderScheduleState(TriplineUiStateStore.hasSchedule(requireContext()))
+            renderScheduleState(
+                hasCurrentTrip = TriplineUiStateStore.hasCurrentTrip(requireContext()),
+                hasSchedule = TriplineUiStateStore.hasSchedule(requireContext())
+            )
         }
     }
 
-    private fun renderScheduleState(hasSchedule: Boolean) {
-        binding.scheduleContentSection.isVisible = hasSchedule
-        binding.scheduleEmptySection.isVisible = !hasSchedule
-        binding.buttonShare.isVisible = hasSchedule
-        binding.buttonScheduleMapMode.isVisible = hasSchedule
-        binding.buttonSchedulePinnedShare.isVisible = hasSchedule
-        binding.buttonSchedulePinnedMapMode.isVisible = hasSchedule
+    private fun renderScheduleState(hasCurrentTrip: Boolean, hasSchedule: Boolean) {
+        val hasScheduleContent = hasCurrentTrip && hasSchedule
+        binding.scheduleContentSection.isVisible = hasScheduleContent
+        binding.scheduleNoTripSection.isVisible = !hasCurrentTrip
+        binding.scheduleEmptySection.isVisible = hasCurrentTrip && !hasSchedule
+        binding.buttonShare.isVisible = hasScheduleContent
+        binding.buttonScheduleMapMode.isVisible = hasScheduleContent
+        binding.buttonSchedulePinnedShare.isVisible = hasScheduleContent
+        binding.buttonSchedulePinnedMapMode.isVisible = hasScheduleContent
+        binding.textSchedulePinnedTitle.isVisible = hasCurrentTrip
+        binding.textSchedulePinnedMeta.isVisible = hasCurrentTrip
+        binding.buttonSchedulePinnedMore.isVisible = hasCurrentTrip
     }
 
     private fun updateExpandedMeta(scrollY: Int) {

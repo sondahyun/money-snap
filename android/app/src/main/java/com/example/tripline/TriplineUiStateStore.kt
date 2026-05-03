@@ -8,11 +8,11 @@ object TriplineUiStateStore {
     private const val KEY_HAS_SCHEDULE = "has_schedule"
 
     fun hasCurrentTrip(context: Context): Boolean {
-        return prefs(context).getBoolean(KEY_HAS_CURRENT_TRIP, true)
+        return prefs(context).getBoolean(KEY_HAS_CURRENT_TRIP, false)
     }
 
     fun hasSchedule(context: Context): Boolean {
-        return prefs(context).getBoolean(KEY_HAS_SCHEDULE, true)
+        return prefs(context).getBoolean(KEY_HAS_SCHEDULE, false)
     }
 
     fun selectExistingTrip(context: Context) {
